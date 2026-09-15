@@ -1,1 +1,1059 @@
+```html
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Դավիթ & Մարիամ</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Serif+Armenian:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f7f3ed;
+    color: #342f2b;
+    font-family: "Noto Serif Armenian", serif;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* OPENING */
+
+.opening {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: #eee8df;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1.2s ease, visibility 1.2s ease;
+}
+
+.opening.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.opening-inner {
+    width: min(90%, 520px);
+    text-align: center;
+}
+
+.small-title {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #8b8177;
+    margin-bottom: 45px;
+}
+
+.opening-names {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(55px, 13vw, 105px);
+    line-height: .8;
+    font-weight: 300;
+    color: #302a27;
+}
+
+.opening-names span {
+    display: block;
+}
+
+.amp {
+    font-size: .48em;
+    margin: 18px 0;
+    color: #9a6d58;
+}
+
+.opening-date {
+    margin-top: 45px;
+    font-size: 13px;
+    letter-spacing: 5px;
+    color: #766b63;
+}
+
+.open-btn {
+    margin-top: 48px;
+    border: 1px solid #9b8e82;
+    background: transparent;
+    color: #514943;
+    padding: 15px 42px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.open-btn:hover {
+    background: #514943;
+    color: #fff;
+}
+
+/* MAIN */
+
+.main {
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+.main.visible {
+    opacity: 1;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 25px;
+    background: #f7f3ed;
+}
+
+.hero-top {
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: #9a6d58;
+    margin-bottom: 50px;
+}
+
+.hero-names {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(70px, 15vw, 145px);
+    font-weight: 300;
+    line-height: .75;
+    color: #342d29;
+}
+
+.hero-names div {
+    display: block;
+}
+
+.hero-amp {
+    font-size: .42em;
+    margin: 25px 0;
+    color: #9a6d58;
+}
+
+.hero-date {
+    margin-top: 60px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 25px;
+    letter-spacing: 5px;
+}
+
+.hero-line {
+    width: 1px;
+    height: 80px;
+    background: #b8aa9c;
+    margin-top: 45px;
+}
+
+/* INTRO */
+
+.intro {
+    background: #9a6d58;
+    color: #fffaf4;
+    text-align: center;
+    padding: 120px 25px;
+}
+
+.intro-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    opacity: .8;
+    margin-bottom: 35px;
+}
+
+.intro h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(42px, 8vw, 75px);
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 35px;
+}
+
+.intro p {
+    max-width: 620px;
+    margin: auto;
+    font-size: 15px;
+    line-height: 2.2;
+    font-weight: 300;
+}
+
+/* PHOTO */
+
+.photo-section {
+    padding: 100px 8%;
+    background: #f7f3ed;
+}
+
+.main-photo {
+    width: 100%;
+    max-width: 1050px;
+    height: 650px;
+    margin: auto;
+    object-fit: cover;
+    display: block;
+    filter: saturate(.75);
+}
+
+/* DATE */
+
+.date-section {
+    text-align: center;
+    padding: 120px 20px;
+    background: #eee8df;
+}
+
+.section-small {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #9a6d58;
+    margin-bottom: 30px;
+}
+
+.big-date {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(65px, 13vw, 130px);
+    font-weight: 300;
+    line-height: .8;
+}
+
+.big-date span {
+    font-size: .3em;
+    letter-spacing: 5px;
+    vertical-align: middle;
+}
+
+.date-text {
+    margin-top: 45px;
+    font-size: 14px;
+    color: #756b63;
+}
+
+/* CALENDAR */
+
+.calendar-section {
+    padding: 110px 20px;
+    background: #f7f3ed;
+    text-align: center;
+}
+
+.calendar {
+    max-width: 520px;
+    margin: 55px auto 0;
+}
+
+.month {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 34px;
+    margin-bottom: 30px;
+}
+
+.weekdays,
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.weekdays div {
+    font-size: 10px;
+    color: #9a6d58;
+    margin-bottom: 15px;
+}
+
+.days div {
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 18px;
+}
+
+.days .heart {
+    position: relative;
+    color: white;
+    z-index: 1;
+}
+
+.days .heart::before {
+    content: "♡";
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #9a6d58;
+    color: white;
+    border-radius: 50%;
+    font-size: 27px;
+    z-index: -1;
+}
+
+/* SCHEDULE */
+
+.schedule {
+    background: #eee8df;
+    padding: 120px 20px;
+    text-align: center;
+}
+
+.schedule-grid {
+    max-width: 700px;
+    margin: 60px auto 0;
+}
+
+.event {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    text-align: left;
+    border-bottom: 1px solid #cfc4b8;
+    padding: 30px 0;
+}
+
+.event-time {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 28px;
+    color: #9a6d58;
+}
+
+.event-name {
+    font-size: 15px;
+    margin-bottom: 7px;
+}
+
+.event-description {
+    font-size: 12px;
+    color: #847a72;
+}
+
+/* COUNTDOWN */
+
+.countdown {
+    background: #342d29;
+    color: #fffaf4;
+    padding: 120px 20px;
+    text-align: center;
+}
+
+.countdown-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 50px;
+    font-weight: 300;
+    margin-bottom: 60px;
+}
+
+.timer {
+    max-width: 700px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.timer-item {
+    border-right: 1px solid #665b55;
+}
+
+.timer-item:last-child {
+    border: none;
+}
+
+.timer-number {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 55px;
+    font-weight: 300;
+}
+
+.timer-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    opacity: .65;
+}
+
+/* LOCATION */
+
+.location {
+    padding: 120px 20px;
+    background: #f7f3ed;
+    text-align: center;
+}
+
+.location-box {
+    max-width: 700px;
+    margin: 55px auto 0;
+}
+
+.location-name {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.location-address {
+    color: #766d66;
+    font-size: 13px;
+    line-height: 2;
+}
+
+.map-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 35px;
+    border: 1px solid #9b8e82;
+    color: #514943;
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+/* RSVP */
+
+.rsvp {
+    padding: 130px 20px;
+    text-align: center;
+    background: #9a6d58;
+    color: white;
+}
+
+.rsvp h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 60px;
+    font-weight: 300;
+}
+
+.rsvp p {
+    margin: 25px auto 40px;
+    max-width: 500px;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.rsvp-btn {
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    padding: 15px 40px;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 80px 20px;
+    text-align: center;
+    background: #eee8df;
+}
+
+.footer-names {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 48px;
+    font-weight: 300;
+}
+
+.footer-date {
+    margin-top: 15px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #9a6d58;
+}
+
+.music-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid #9a6d58;
+    background: rgba(247,243,237,.95);
+    color: #9a6d58;
+    cursor: pointer;
+    z-index: 500;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .hero {
+        min-height: 90vh;
+    }
+
+    .hero-names {
+        font-size: 78px;
+    }
+
+    .main-photo {
+        height: 480px;
+    }
+
+    .event {
+        grid-template-columns: 85px 1fr;
+    }
+
+    .timer-number {
+        font-size: 38px;
+    }
+
+    .timer-label {
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+
+    .countdown-title {
+        font-size: 42px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- OPENING -->
+
+<section class="opening" id="opening">
+
+    <div class="opening-inner">
+
+        <div class="small-title">
+            ԴՈՒՔ ՍՏԱՑԵԼ ԵՔ ՀՐԱՎԻՐԱՏՈՄՍ
+        </div>
+
+        <div class="opening-names">
+            <span>Դավիթ</span>
+            <div class="amp">&</div>
+            <span>Մարիամ</span>
+        </div>
+
+        <div class="opening-date">
+            12 · 09 · 2026
+        </div>
+
+        <button class="open-btn" onclick="openInvitation()">
+            ԲԱՑԵԼ
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- MAIN -->
+
+<main class="main" id="main">
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-top">
+            ՄԵՐ ՀԱՏՈՒԿ ՕՐԸ
+        </div>
+
+        <div class="hero-names">
+            <div>Դավիթ</div>
+            <div class="hero-amp">&</div>
+            <div>Մարիամ</div>
+        </div>
+
+        <div class="hero-date">
+            12 · 09 · 2026
+        </div>
+
+        <div class="hero-line"></div>
+
+    </section>
+
+
+    <!-- INTRO -->
+
+    <section class="intro">
+
+        <div class="intro-label">
+            ՍԻՐԵԼԻՆԵՐՍ
+        </div>
+
+        <h2>
+            Մենք ամուսնանում ենք
+        </h2>
+
+        <p>
+            Մեր կյանքի ամենագեղեցիկ օրը ցանկանում ենք
+            կիսել մեզ համար ամենաթանկ մարդկանց հետ։
+            Սիրով սպասում ենք Ձեզ՝ միասին նշելու
+            մեր նոր ճանապարհի սկիզբը։
+        </p>
+
+    </section>
+
+
+    <!-- PHOTO -->
+
+    <section class="photo-section">
+
+        <img
+            class="main-photo"
+            src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=85"
+            alt="Wedding"
+        >
+
+    </section>
+
+
+    <!-- DATE -->
+
+    <section class="date-section">
+
+        <div class="section-small">
+            ՊԱՀՊԱՆԵՔ ԱՄՍԱԹԻՎԸ
+        </div>
+
+        <div class="big-date">
+            12 <span>ՍԵՊՏԵՄԲԵՐ</span> 2026
+        </div>
+
+        <div class="date-text">
+            Շաբաթ · Երևան
+        </div>
+
+    </section>
+
+
+    <!-- CALENDAR -->
+
+    <section class="calendar-section">
+
+        <div class="section-small">
+            ՕՐԱՑՈՒՅՑ
+        </div>
+
+        <div class="calendar">
+
+            <div class="month">
+                Սեպտեմբեր 2026
+            </div>
+
+            <div class="weekdays">
+                <div>Երկ</div>
+                <div>Երք</div>
+                <div>Չրք</div>
+                <div>Հնգ</div>
+                <div>Ուրբ</div>
+                <div>Շբթ</div>
+                <div>Կիր</div>
+            </div>
+
+            <div class="days">
+
+                <div></div>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+
+                <div>7</div>
+                <div>8</div>
+                <div>9</div>
+                <div>10</div>
+                <div>11</div>
+                <div class="heart">12</div>
+                <div>13</div>
+
+                <div>14</div>
+                <div>15</div>
+                <div>16</div>
+                <div>17</div>
+                <div>18</div>
+                <div>19</div>
+                <div>20</div>
+
+                <div>21</div>
+                <div>22</div>
+                <div>23</div>
+                <div>24</div>
+                <div>25</div>
+                <div>26</div>
+                <div>27</div>
+
+                <div>28</div>
+                <div>29</div>
+                <div>30</div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCHEDULE -->
+
+    <section class="schedule">
+
+        <div class="section-small">
+            ՕՐՎԱ ԾՐԱԳԻՐԸ
+        </div>
+
+        <div class="schedule-grid">
+
+            <div class="event">
+
+                <div class="event-time">
+                    17:00
+                </div>
+
+                <div>
+                    <div class="event-name">
+                        Պսակադրություն
+                    </div>
+
+                    <div class="event-description">
+                        Սուրբ Սարգիս եկեղեցի
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="event">
+
+                <div class="event-time">
+                    19:00
+                </div>
+
+                <div>
+                    <div class="event-name">
+                        Հյուրերի դիմավորում
+                    </div>
+
+                    <div class="event-description">
+                        Երեկոյի սկիզբ
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="event">
+
+                <div class="event-time">
+                    20:00
+                </div>
+
+                <div>
+                    <div class="event-name">
+                        Տոնական ընթրիք
+                    </div>
+
+                    <div class="event-description">
+                        Ռեստորան «Գարդեն»
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="event">
+
+                <div class="event-time">
+                    22:00
+                </div>
+
+                <div>
+                    <div class="event-name">
+                        Երաժշտություն և պար
+                    </div>
+
+                    <div class="event-description">
+                        Մինչև ուշ երեկո
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COUNTDOWN -->
+
+    <section class="countdown">
+
+        <div class="countdown-title">
+            Մինչև մեր օրը
+        </div>
+
+        <div class="timer">
+
+            <div class="timer-item">
+                <div class="timer-number" id="days">00</div>
+                <div class="timer-label">ՕՐ</div>
+            </div>
+
+            <div class="timer-item">
+                <div class="timer-number" id="hours">00</div>
+                <div class="timer-label">ԺԱՄ</div>
+            </div>
+
+            <div class="timer-item">
+                <div class="timer-number" id="minutes">00</div>
+                <div class="timer-label">ՐՈՊԵ</div>
+            </div>
+
+            <div class="timer-item">
+                <div class="timer-number" id="seconds">00</div>
+                <div class="timer-label">ՎԱՅՐԿՅԱՆ</div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LOCATION -->
+
+    <section class="location">
+
+        <div class="section-small">
+            ՈՐՏԵՂ ԵՆՔ ՀԱՆԴԻՊՈՒՄ
+        </div>
+
+        <div class="location-box">
+
+            <div class="location-name">
+                Սուրբ Սարգիս
+            </div>
+
+            <div class="location-address">
+                Սուրբ Սարգիս եկեղեցի<br>
+                Երևան
+            </div>
+
+            <a
+                class="map-btn"
+                href="https://www.google.com/maps/search/?api=1&query=Surb+Sargis+Church+Yerevan"
+                target="_blank"
+            >
+                ԲԱՑԵԼ ՔԱՐՏԵԶԸ
+            </a>
+
+        </div>
+
+
+        <div class="location-box" style="margin-top:80px;">
+
+            <div class="location-name">
+                Գարդեն
+            </div>
+
+            <div class="location-address">
+                Երևան, Հայաստան<br>
+                Տոնական երեկո
+            </div>
+
+            <a
+                class="map-btn"
+                href="https://www.google.com/maps/search/?api=1&query=Yerevan+Armenia"
+                target="_blank"
+            >
+                ԲԱՑԵԼ ՔԱՐՏԵԶԸ
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- RSVP -->
+
+    <section class="rsvp">
+
+        <h2>
+            Կսպասենք Ձեզ
+        </h2>
+
+        <p>
+            Խնդրում ենք հաստատել Ձեր ներկայությունը
+            մինչև 1 սեպտեմբեր։
+        </p>
+
+        <button class="rsvp-btn" onclick="rsvp()">
+            ՀԱՍՏԱՏԵԼ ՆԵՐԿԱՅՈՒԹՅՈՒՆԸ
+        </button>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-names">
+            Դավիթ & Մարիամ
+        </div>
+
+        <div class="footer-date">
+            12 · 09 · 2026
+        </div>
+
+    </footer>
+
+</main>
+
+
+<!-- MUSIC -->
+
+<button class="music-btn" onclick="toggleMusic()" id="musicBtn">
+    ♪
+</button>
+
+<audio id="music" loop>
+    <source src="./music.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+/* OPEN */
+
+function openInvitation() {
+
+    document.getElementById("opening").classList.add("hidden");
+
+    setTimeout(function() {
+        document.getElementById("main").classList.add("visible");
+    }, 500);
+
+    const music = document.getElementById("music");
+
+    music.play().catch(function() {});
+
+}
+
+
+/* MUSIC */
+
+let playing = false;
+
+function toggleMusic() {
+
+    const music = document.getElementById("music");
+
+    if (playing) {
+
+        music.pause();
+        document.getElementById("musicBtn").innerHTML = "♪";
+        playing = false;
+
+    } else {
+
+        music.play();
+        document.getElementById("musicBtn").innerHTML = "Ⅱ";
+        playing = true;
+
+    }
+
+}
+
+
+/* RSVP */
+
+function rsvp() {
+
+    alert(
+        "Շնորհակալություն։\n\nRSVP ձևը շուտով հասանելի կլինի։"
+    );
+
+}
+
+
+/* COUNTDOWN */
+
+const weddingDate = new Date("September 12, 2026 17:00:00").getTime();
+
+function updateCountdown() {
+
+    const now = new Date().getTime();
+
+    const distance = weddingDate - now;
+
+    if (distance <= 0) {
+
+        document.getElementById("days").innerHTML = "00";
+        document.getElementById("hours").innerHTML = "00";
+        document.getElementById("minutes").innerHTML = "00";
+        document.getElementById("seconds").innerHTML = "00";
+
+        return;
+    }
+
+    const days = Math.floor(
+        distance / (1000 * 60 * 60 * 24)
+    );
+
+    const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+    );
+
+    const minutes = Math.floor(
+        (distance % (1000 * 60 * 60))
+        / (1000 * 60)
+    );
+
+    const seconds = Math.floor(
+        (distance % (1000 * 60))
+        / 1000
+    );
+
+    document.getElementById("days").innerHTML =
+        String(days).padStart(2, "0");
+
+    document.getElementById("hours").innerHTML =
+        String(hours).padStart(2, "0");
+
+    document.getElementById("minutes").innerHTML =
+        String(minutes).padStart(2, "0");
+
+    document.getElementById("seconds").innerHTML =
+        String(seconds).padStart(2, "0");
+
+}
+
+updateCountdown();
+
+setInterval(updateCountdown, 1000);
+
+</script>
+
+</body>
+</html>
+```
 
