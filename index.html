@@ -4,42 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wedding Invitation</title>
+<title>Արամ & Սաթենիկ — Wedding</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Manrope:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Serif+Armenian:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
-/* =========================================================
-   ROOT
-========================================================= */
-
 :root{
-    --navy:#071525;
-    --navy-dark:#030a13;
-    --navy-light:#102a43;
-    --navy-soft:#0b2035;
-
-    --ivory:#f4efe4;
-    --ivory-dark:#e8dfcf;
-
-    --gold:#d8bd82;
-    --gold-light:#ead39b;
-    --gold-dark:#a98243;
-
-    --white-soft:rgba(244,239,228,.72);
+    --navy:#061525;
+    --navy2:#091d32;
+    --navy3:#102b45;
+    --cream:#f3eee3;
+    --cream2:#e8dfcf;
+    --gold:#d6bb7d;
+    --gold2:#ead49b;
+    --gold3:#9e7d43;
+    --white:#fffdf7;
+    --muted:#a9a39a;
 
     --serif:"Cormorant Garamond",serif;
-    --sans:"Manrope",sans-serif;
-    --script:"Parisienne",cursive;
+    --armenian:"Noto Serif Armenian",serif;
 }
-
-
-/* =========================================================
-   RESET
-========================================================= */
 
 *{
     margin:0;
@@ -52,380 +39,225 @@ html{
 }
 
 body{
-    margin:0;
-    background:#01050a;
-    color:var(--ivory);
+    background:var(--navy);
+    color:var(--cream);
+    font-family:var(--armenian);
     overflow-x:hidden;
-}
-
-body.locked{
-    overflow:hidden;
 }
 
 button,
 input,
-select{
+select,
+textarea{
     font:inherit;
 }
 
-button{
-    cursor:pointer;
+::selection{
+    background:var(--gold);
+    color:var(--navy);
 }
 
 
 /* =========================================================
-   MAIN WIDTH
+   OPEN SCREEN
 ========================================================= */
 
-.page{
-    width:100%;
-    max-width:620px;
-    min-height:100vh;
-    margin:0 auto;
-    position:relative;
-    overflow:hidden;
-    background:var(--navy);
-}
-
-
-/* =========================================================
-   FABRIC / PAPER TEXTURE
-========================================================= */
-
-.texture{
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    opacity:.25;
-
-    background:
-        repeating-linear-gradient(
-            112deg,
-            rgba(255,255,255,.025) 0,
-            rgba(255,255,255,.025) 1px,
-            transparent 1px,
-            transparent 5px
-        ),
-        repeating-linear-gradient(
-            25deg,
-            rgba(0,0,0,.06) 0,
-            rgba(0,0,0,.06) 1px,
-            transparent 1px,
-            transparent 4px
-        );
-
-    mix-blend-mode:screen;
-}
-
-
-/* =========================================================
-   GOLD CORNERS
-========================================================= */
-
-.gold-frame{
-    position:absolute;
-    inset:24px;
-    pointer-events:none;
-    border:1px solid rgba(216,189,130,.22);
-}
-
-.gold-frame:before,
-.gold-frame:after{
-    content:"";
-    position:absolute;
-    width:55px;
-    height:55px;
-}
-
-.gold-frame:before{
-    left:-1px;
-    top:-1px;
-    border-left:1px solid var(--gold);
-    border-top:1px solid var(--gold);
-}
-
-.gold-frame:after{
-    right:-1px;
-    bottom:-1px;
-    border-right:1px solid var(--gold);
-    border-bottom:1px solid var(--gold);
-}
-
-
-/* =========================================================
-   OPENING SCREEN
-========================================================= */
-
-.opening{
+.open-screen{
     position:fixed;
     inset:0;
-    z-index:99999;
+    z-index:9999;
 
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
     background:
         radial-gradient(
-            circle at 50% 42%,
-            rgba(24,63,95,.55),
-            transparent 36%
+            circle at 50% 38%,
+            rgba(214,187,125,.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(16,43,69,.7),
+            transparent 55%
         ),
         linear-gradient(
             145deg,
-            #020913 0%,
-            #081b2e 50%,
-            #020811 100%
+            #020b15,
+            #071a2d 50%,
+            #030b14
         );
 
     transition:
-        opacity 1.2s cubic-bezier(.77,0,.18,1),
-        visibility 1.2s;
+        opacity 1.2s ease,
+        visibility 1.2s ease,
+        transform 1.2s ease;
 }
 
-.opening.hide{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-}
-
-.opening-inner{
-    width:min(100%,620px);
-    min-height:100vh;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-
-    position:relative;
-    padding:45px 25px;
-}
-
-
-/* opening title */
-
-.opening-title{
-    text-align:center;
-
-    color:var(--gold-light);
-
-    font-family:var(--serif);
-    font-size:31px;
-    line-height:1.25;
-
-    letter-spacing:8px;
-    font-weight:400;
-
-    margin-bottom:68px;
-
-    animation:
-        openingText 1.5s ease both;
-}
-
-.opening-title span{
-    display:block;
-}
-
-@keyframes openingText{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-        letter-spacing:13px;
-    }
-    to{
-        opacity:1;
-        transform:none;
-        letter-spacing:8px;
-    }
-}
-
-
-/* =========================================================
-   WAX SEAL
-========================================================= */
-
-.seal{
-    position:relative;
-
-    width:188px;
-    height:188px;
-
-    margin-bottom:60px;
-
-    animation:
-        sealEntrance 1.5s .2s cubic-bezier(.16,1,.3,1) both,
-        sealFloat 5s 1.8s ease-in-out infinite;
-
-    filter:
-        drop-shadow(
-            0 22px 30px rgba(0,0,0,.48)
-        );
-}
-
-@keyframes sealEntrance{
-    from{
-        opacity:0;
-        transform:scale(.45) rotate(-14deg);
-    }
-    to{
-        opacity:1;
-        transform:scale(1) rotate(-2deg);
-    }
-}
-
-@keyframes sealFloat{
-    0%,100%{
-        transform:translateY(0) rotate(-2deg);
-    }
-    50%{
-        transform:translateY(-8px) rotate(2deg);
-    }
-}
-
-.seal-wax{
-    position:absolute;
-    inset:5px;
-
-    background:
-        radial-gradient(
-            circle at 30% 25%,
-            #f9e6b0 0%,
-            #d9b875 22%,
-            #a77b3e 52%,
-            #d7b36c 75%,
-            #805a2c 100%
-        );
-
-    border-radius:
-        46% 54% 49% 51% /
-        52% 44% 56% 48%;
-
-    box-shadow:
-        inset 8px 8px 14px rgba(255,255,255,.42),
-        inset -10px -12px 18px rgba(65,37,9,.38),
-        0 0 0 4px rgba(190,147,75,.55);
-}
-
-.seal-wax:before{
+.open-screen::before{
     content:"";
     position:absolute;
     inset:25px;
 
-    border:3px solid rgba(93,58,20,.55);
+    border:1px solid rgba(214,187,125,.35);
 
-    border-radius:48%;
+    pointer-events:none;
 }
 
-.seal-wax:after{
+.open-screen::after{
     content:"";
     position:absolute;
-    inset:34px;
+    inset:38px;
 
-    border:1px solid rgba(255,240,190,.5);
+    border:1px solid rgba(214,187,125,.09);
+
+    pointer-events:none;
+}
+
+.open-screen.hide{
+    opacity:0;
+    visibility:hidden;
+    transform:scale(1.04);
+    pointer-events:none;
+}
+
+.open-content{
+    position:relative;
+    z-index:2;
+    width:min(90vw,600px);
+    text-align:center;
+}
+
+.open-small{
+    font-family:var(--serif);
+    font-size:12px;
+    letter-spacing:7px;
+    color:var(--gold);
+    margin-bottom:38px;
+}
+
+.open-title{
+    font-family:var(--armenian);
+    font-size:24px;
+    font-weight:300;
+    letter-spacing:2px;
+    margin-bottom:36px;
+}
+
+.open-heart{
+    position:relative;
+    width:115px;
+    height:115px;
+    margin:0 auto 38px;
+
+    transform:rotate(-45deg);
+
+    background:
+        linear-gradient(
+            145deg,
+            #f0d69a,
+            #a9803d
+        );
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.55),
+        0 0 50px rgba(214,187,125,.12);
+
+    border-radius:12px;
+}
+
+.open-heart::before,
+.open-heart::after{
+    content:"";
+    position:absolute;
+
+    width:115px;
+    height:115px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f0d69a,
+            #a9803d
+        );
 
     border-radius:50%;
 }
 
+.open-heart::before{
+    top:-57px;
+    left:0;
+}
 
-/* seal heart */
+.open-heart::after{
+    left:57px;
+    top:0;
+}
 
-.seal-heart{
+.open-heart span{
     position:absolute;
-
-    width:87px;
-    height:80px;
-
-    left:50%;
-    top:50%;
-
-    transform:
-        translate(-50%,-46%)
-        rotate(-3deg);
-
     z-index:3;
-}
 
-.seal-heart:before,
-.seal-heart:after{
-    content:"";
+    top:50%;
+    left:50%;
 
-    position:absolute;
-    top:2px;
-
-    width:45px;
-    height:70px;
-
-    border:4px solid rgba(91,55,17,.78);
-
-    border-radius:
-        50px 50px 0 0;
-}
-
-.seal-heart:before{
-    left:3px;
     transform:
-        rotate(-43deg);
-    transform-origin:100% 100%;
+        translate(-50%,-50%)
+        rotate(45deg);
+
+    font-family:var(--serif);
+    font-size:31px;
+    color:var(--navy);
+
+    font-weight:600;
 }
 
-.seal-heart:after{
-    right:3px;
-    transform:
-        rotate(43deg);
-    transform-origin:0 100%;
+.open-button{
+    padding:15px 52px;
+
+    border:1px solid var(--gold);
+    background:transparent;
+
+    color:var(--cream);
+
+    font-size:11px;
+    letter-spacing:4px;
+
+    cursor:pointer;
+
+    transition:.35s ease;
+}
+
+.open-button:hover{
+    background:var(--gold);
+    color:var(--navy);
+
+    box-shadow:
+        0 15px 35px rgba(214,187,125,.15);
+}
+
+.open-hint{
+    margin-top:18px;
+
+    color:var(--muted);
+
+    font-size:9px;
+    letter-spacing:3px;
 }
 
 
 /* =========================================================
-   OPEN BUTTON
+   MAIN
 ========================================================= */
 
-.open-button{
-    border:0;
-    outline:0;
-    background:transparent;
-
-    color:var(--gold-light);
-
-    font-family:var(--serif);
-    font-size:28px;
-    letter-spacing:8px;
-
-    padding:8px 20px;
-
-    animation:
-        buttonEntrance 1s 1s ease both;
+.invitation{
+    opacity:0;
+    transition:opacity 1s ease;
 }
 
-@keyframes buttonEntrance{
-    from{
-        opacity:0;
-        transform:translateY(15px);
-    }
-    to{
-        opacity:1;
-        transform:none;
-    }
-}
-
-.open-button:after{
-    content:"";
-
-    display:block;
-
-    width:0;
-    height:1px;
-
-    margin:5px auto 0;
-
-    background:var(--gold);
-
-    transition:.5s;
-}
-
-.open-button:hover:after{
-    width:80%;
+.invitation.show{
+    opacity:1;
 }
 
 
@@ -436,94 +268,114 @@ button{
 .hero{
     min-height:100vh;
 
-    position:relative;
-
     display:flex;
     flex-direction:column;
-    align-items:center;
     justify-content:center;
+    align-items:center;
 
     text-align:center;
 
-    padding:80px 25px;
+    position:relative;
+    overflow:hidden;
 
     background:
         radial-gradient(
-            ellipse at 50% 25%,
-            rgba(27,69,103,.52),
-            transparent 42%
-        ),
-        radial-gradient(
-            ellipse at 50% 100%,
-            rgba(7,26,44,.8),
-            transparent 55%
+            circle at 50% 45%,
+            rgba(214,187,125,.09),
+            transparent 28%
         ),
         linear-gradient(
-            150deg,
-            #030b15,
-            #0a2035 48%,
-            #04101d
+            180deg,
+            #030d19,
+            #071b2e
         );
 }
 
-.hero .gold-frame{
-    inset:25px;
+.hero::before{
+    content:"";
+
+    position:absolute;
+    inset:35px;
+
+    border:1px solid rgba(214,187,125,.15);
 }
 
-.hero-label{
-    font-family:var(--sans);
-    font-size:10px;
+.hero-top{
+    font-family:var(--serif);
 
+    font-size:13px;
     letter-spacing:9px;
+
     color:var(--gold);
 
-    margin-bottom:38px;
+    margin-bottom:32px;
+}
 
-    text-transform:uppercase;
+.hero-line{
+    width:80px;
+    height:1px;
+
+    background:var(--gold);
+
+    opacity:.6;
+
+    margin-bottom:35px;
 }
 
 .hero-names{
     font-family:var(--serif);
-    font-weight:300;
 
-    font-size:76px;
-    line-height:.8;
+    font-size:clamp(58px,9vw,105px);
+
+    line-height:.9;
+
+    font-weight:300;
 
     letter-spacing:2px;
 }
 
 .hero-names .and{
-    display:block;
-
-    font-family:var(--script);
-
     color:var(--gold);
-
-    font-size:52px;
-
-    line-height:1.35;
+    font-size:.55em;
+    margin:0 12px;
 }
 
 .hero-date{
-    margin-top:60px;
-
-    display:flex;
-    align-items:center;
-    gap:20px;
+    margin-top:40px;
 
     font-family:var(--serif);
-    font-size:20px;
 
-    letter-spacing:7px;
+    font-size:18px;
+
+    letter-spacing:9px;
+
+    color:var(--gold2);
 }
 
-.hero-date i{
+.scroll-cue{
+    position:absolute;
+    bottom:35px;
+
+    font-size:8px;
+    letter-spacing:4px;
+
+    color:var(--muted);
+}
+
+.scroll-cue i{
     display:block;
 
-    width:50px;
-    height:1px;
+    width:1px;
+    height:45px;
 
-    background:var(--gold);
+    margin:13px auto 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            var(--gold),
+            transparent
+        );
 }
 
 
@@ -532,46 +384,34 @@ button{
 ========================================================= */
 
 .marquee{
-    height:82px;
-
-    display:flex;
-    align-items:center;
-
     overflow:hidden;
 
-    background:var(--ivory);
-    color:var(--navy);
+    border-top:1px solid rgba(214,187,125,.16);
+    border-bottom:1px solid rgba(214,187,125,.16);
 
-    border-top:1px solid var(--gold-dark);
-    border-bottom:1px solid var(--gold-dark);
+    padding:17px 0;
+
+    background:#04101d;
 }
 
 .marquee-track{
     display:flex;
     width:max-content;
 
-    animation:
-        marquee 22s linear infinite;
+    animation:marquee 25s linear infinite;
 }
 
-.marquee-item{
-    white-space:nowrap;
-
+.marquee span{
     font-family:var(--serif);
-    font-size:25px;
 
-    letter-spacing:7px;
-
-    padding:0 30px;
-}
-
-.marquee-item:after{
-    content:"✦";
-
-    margin-left:55px;
-
-    color:var(--gold-dark);
     font-size:13px;
+    letter-spacing:6px;
+
+    color:var(--gold);
+
+    padding:0 45px;
+
+    white-space:nowrap;
 }
 
 @keyframes marquee{
@@ -589,176 +429,124 @@ button{
 ========================================================= */
 
 .intro{
-    min-height:76vh;
+    padding:150px 25px;
 
-    position:relative;
+    max-width:900px;
 
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            #fffaf0,
-            transparent 55%
-        ),
-        var(--ivory);
-
-    color:var(--navy);
+    margin:auto;
 
     text-align:center;
-
-    padding:115px 38px;
 }
 
-.intro-ornament{
-    color:var(--gold-dark);
+.label{
+    font-family:var(--serif);
 
-    font-size:26px;
+    color:var(--gold);
+
+    font-size:11px;
+
+    letter-spacing:7px;
+
+    margin-bottom:25px;
+}
+
+.intro h2,
+.section-title{
+    font-family:var(--serif);
+
+    font-size:clamp(40px,6vw,68px);
+
+    font-weight:300;
 
     margin-bottom:30px;
 }
 
-.intro h2{
-    font-family:var(--serif);
-
-    font-size:44px;
-    font-weight:500;
-
-    letter-spacing:7px;
-
-    margin-bottom:34px;
-}
-
-.intro h2:after{
-    content:"";
-
-    display:block;
-
-    width:50px;
-    height:1px;
-
-    background:var(--gold-dark);
-
-    margin:25px auto 0;
-}
-
 .intro p{
-    max-width:475px;
+    max-width:650px;
 
     margin:auto;
 
-    font-family:var(--serif);
+    color:#b8b3aa;
 
-    font-size:21px;
-    line-height:1.85;
+    font-size:15px;
+
+    line-height:2.1;
+
+    font-weight:300;
 }
 
 
 /* =========================================================
-   JOURNEY
+   HEART JOURNEY
 ========================================================= */
 
 .journey{
-    min-height:1180px;
-
     position:relative;
+
+    height:1050px;
 
     overflow:hidden;
 
     background:
         radial-gradient(
-            circle at 50% 40%,
-            rgba(27,72,108,.6),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 20% 100%,
-            rgba(18,49,75,.5),
-            transparent 35%
+            circle at 50% 45%,
+            rgba(214,187,125,.07),
+            transparent 30%
         ),
         linear-gradient(
-            145deg,
-            #030b15,
-            #0a2035 50%,
-            #040d18
+            180deg,
+            #071b2e,
+            #04111f
         );
-
-    padding:95px 20px 120px;
 }
 
-.journey .gold-frame{
-    inset:25px;
-}
+.journey-header{
+    position:absolute;
 
-.journey-heading{
-    position:relative;
-    z-index:4;
+    top:80px;
+    left:50%;
+
+    transform:translateX(-50%);
 
     text-align:center;
+
+    z-index:10;
+
+    width:90%;
 }
 
-.journey-heading .month{
+.journey-header h2{
     font-family:var(--serif);
 
-    font-size:31px;
-
-    letter-spacing:10px;
-
-    color:var(--ivory);
-
-    margin-bottom:35px;
-}
-
-.journey-heading .date{
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    gap:72px;
-
-    font-family:var(--serif);
-
-    font-size:66px;
+    font-size:55px;
 
     font-weight:300;
 }
 
-.journey-heading .date span{
-    position:relative;
-}
+.journey-header p{
+    color:var(--muted);
 
-.journey-heading .date span:first-child:after{
-    content:"";
+    margin-top:12px;
 
-    position:absolute;
+    font-size:12px;
 
-    width:45px;
-    height:1px;
-
-    background:var(--gold);
-
-    right:-58px;
-    top:50%;
+    letter-spacing:2px;
 }
 
 
-/* =========================================================
-   SVG PATH
-========================================================= */
+/* SVG ROUTE */
 
 .route{
     position:absolute;
 
-    top:210px;
+    top:145px;
     left:50%;
-
-    width:205px;
-    height:820px;
 
     transform:translateX(-50%);
 
-    z-index:2;
+    width:min(205px,50vw);
 
-    pointer-events:none;
+    height:820px;
 }
 
 .route svg{
@@ -771,25 +559,87 @@ button{
 .route-path{
     fill:none;
 
-    stroke:rgba(244,239,228,.62);
+    stroke:rgba(214,187,125,.42);
 
-    stroke-width:2;
+    stroke-width:1.3;
 
-    stroke-dasharray:9 13;
+    stroke-dasharray:3 9;
 
     stroke-linecap:round;
 }
 
 
-/* =========================================================
-   MOVING HEART
-========================================================= */
+/* EVENT MARKERS */
+
+.journey-event{
+    position:absolute;
+
+    display:flex;
+    align-items:center;
+
+    width:240px;
+
+    gap:16px;
+}
+
+.journey-event.left{
+    right:calc(50% + 105px);
+
+    justify-content:flex-end;
+
+    text-align:right;
+}
+
+.journey-event.right{
+    left:calc(50% + 105px);
+
+    text-align:left;
+}
+
+.journey-event.one{
+    top:190px;
+}
+
+.journey-event.two{
+    top:390px;
+}
+
+.journey-event.three{
+    top:600px;
+}
+
+.journey-time{
+    font-family:var(--serif);
+
+    font-size:30px;
+
+    color:var(--gold);
+}
+
+.journey-name{
+    font-size:12px;
+
+    color:var(--cream);
+
+    letter-spacing:1px;
+}
+
+.journey-small{
+    margin-top:5px;
+
+    font-size:9px;
+
+    color:var(--muted);
+}
+
+
+/* MOVING HEART */
 
 .moving-heart{
     position:absolute;
 
-    width:78px;
-    height:70px;
+    width:150px;
+    height:80px;
 
     left:50%;
     top:0;
@@ -798,309 +648,286 @@ button{
 
     transform:
         translate(-50%,-50%)
-        scale(.42);
+        scale(.35);
 
-    z-index:20;
+    z-index:50;
+
+    pointer-events:none;
 
     will-change:
         left,
         top,
-        transform,
-        opacity;
+        transform;
 
-    transition:
-        opacity .35s ease;
+    transition:opacity .4s ease;
 }
 
 .moving-heart.active{
     opacity:1;
 }
 
+
+/* HEART */
+
 .heart-body{
     position:absolute;
 
-    width:52px;
-    height:52px;
+    width:55px;
+    height:55px;
 
-    left:13px;
-    top:10px;
+    left:47px;
+    top:12px;
 
-    background:var(--ivory);
+    background:var(--cream);
 
     transform:rotate(-45deg);
 
-    border-radius:7px;
+    border-radius:8px;
 
     box-shadow:
-        0 12px 25px rgba(0,0,0,.4);
+        0 15px 30px rgba(0,0,0,.45),
+        0 0 20px rgba(214,187,125,.14);
 }
 
-.heart-body:before,
-.heart-body:after{
+.heart-body::before,
+.heart-body::after{
     content:"";
 
     position:absolute;
 
-    width:52px;
-    height:52px;
+    width:55px;
+    height:55px;
 
-    background:var(--ivory);
+    background:var(--cream);
 
     border-radius:50%;
 }
 
-.heart-body:before{
-    top:-26px;
+.heart-body::before{
+    top:-27px;
     left:0;
 }
 
-.heart-body:after{
-    left:26px;
+.heart-body::after{
+    left:27px;
     top:0;
 }
+
+
+/* 7 */
 
 .heart-number{
     position:absolute;
 
-    z-index:30;
+    z-index:60;
 
-    left:50%;
-    top:50%;
+    left:75px;
+    top:40px;
 
     transform:
         translate(-50%,-50%)
         rotate(45deg);
 
-    color:var(--navy);
-
-    font-family:var(--serif);
-
-    font-size:15px;
-
-    font-weight:600;
-
-    letter-spacing:3px;
-}
-
-
-/* =========================================================
-   JOURNEY EVENTS
-========================================================= */
-
-.j-event{
-    position:absolute;
-
-    z-index:5;
-
-    width:220px;
-}
-
-.j-event .time{
-    font-family:var(--serif);
-
-    font-size:43px;
-
-    letter-spacing:5px;
-
-    line-height:1;
-}
-
-.j-event .title{
     font-family:var(--serif);
 
     font-size:22px;
 
-    margin-top:9px;
-
-    line-height:1.25;
-}
-
-.j-event .sub{
-    font-family:var(--sans);
-
-    color:var(--gold);
-
-    font-size:9px;
-
-    letter-spacing:2px;
-
-    margin-top:8px;
-}
-
-.j-event.one{
-    top:355px;
-    left:28px;
-}
-
-.j-event.two{
-    top:600px;
-    right:18px;
-
-    text-align:right;
-}
-
-.j-event.three{
-    top:850px;
-    left:28px;
-}
-
-
-/* =========================================================
-   JOURNEY BOTTOM
-========================================================= */
-
-.journey-bottom{
-    position:absolute;
-
-    bottom:40px;
-    left:0;
-    right:0;
-
-    text-align:center;
-
-    font-family:var(--sans);
-
-    font-size:8px;
-
-    letter-spacing:6px;
-
-    color:var(--gold);
-}
-
-
-/* =========================================================
-   EVENTS SECTION
-========================================================= */
-
-.events{
-    position:relative;
-
-    background:var(--ivory);
+    font-weight:600;
 
     color:var(--navy);
 
-    padding:110px 35px;
+    letter-spacing:1px;
 }
 
-.events-title{
-    text-align:center;
 
-    font-family:var(--serif);
+/* 6 / 8 */
 
-    font-size:43px;
+.heart-side-number{
+    position:absolute;
 
-    font-weight:500;
+    top:50%;
 
-    letter-spacing:7px;
+    z-index:55;
 
-    margin-bottom:65px;
-}
+    transform:translateY(-50%);
 
-.event-row{
-    display:grid;
+    color:var(--cream);
 
-    grid-template-columns:80px 1fr;
-
-    gap:20px;
-
-    padding:28px 0 40px;
-
-    border-bottom:1px solid rgba(7,21,37,.18);
-}
-
-.event-row:last-child{
-    border-bottom:0;
-}
-
-.event-row .time{
-    font-family:var(--serif);
-
-    font-size:27px;
-}
-
-.event-row h3{
     font-family:var(--serif);
 
     font-size:29px;
 
-    font-weight:500;
+    font-weight:300;
 }
 
-.event-row p{
-    margin-top:7px;
+.heart-side-number.left{
+    left:2px;
+}
 
-    font-family:var(--sans);
-
-    font-size:10px;
-
-    letter-spacing:1px;
-
-    opacity:.65;
+.heart-side-number.right{
+    right:2px;
 }
 
 
 /* =========================================================
-   LOVE STORY
+   DATE
 ========================================================= */
 
-.story{
-    min-height:78vh;
-
-    position:relative;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.date-section{
+    padding:140px 20px;
 
     text-align:center;
 
-    padding:100px 38px;
-
     background:
-        radial-gradient(
-            circle at 50% 40%,
-            rgba(25,67,101,.55),
-            transparent 40%
-        ),
         linear-gradient(
-            150deg,
-            #030b15,
-            #0a2035 50%,
-            #040d18
+            180deg,
+            #04111f,
+            #06192b
         );
 }
 
-.story-content{
-    position:relative;
-    z-index:3;
-}
-
-.story-symbol{
-    color:var(--gold);
-
-    font-size:44px;
-
-    margin-bottom:25px;
-}
-
-.story h2{
-    font-family:var(--script);
-
-    font-size:66px;
-
-    font-weight:400;
-
-    color:var(--gold-light);
-
-    margin-bottom:28px;
-}
-
-.story p{
+.date-big{
     font-family:var(--serif);
 
-    font-size:22px;
+    font-size:150px;
 
-    line-height:1.8;
+    line-height:.8;
+
+    font-weight:300;
+
+    color:transparent;
+
+    -webkit-text-stroke:1px rgba(214,187,125,.65);
+}
+
+.date-month{
+    margin-top:30px;
+
+    font-family:var(--serif);
+
+    font-size:42px;
+
+    color:var(--gold);
+}
+
+.date-year{
+    margin-top:5px;
+
+    letter-spacing:8px;
+
+    color:var(--muted);
+}
+
+
+/* =========================================================
+   EVENTS
+========================================================= */
+
+.events{
+    padding:140px 20px;
+
+    max-width:1000px;
+
+    margin:auto;
+}
+
+.events-head{
+    text-align:center;
+
+    margin-bottom:80px;
+}
+
+.events-list{
+    border-top:1px solid rgba(214,187,125,.2);
+}
+
+.event{
+    display:grid;
+
+    grid-template-columns:140px 1fr;
+
+    padding:32px 0;
+
+    border-bottom:1px solid rgba(214,187,125,.14);
+
+    align-items:center;
+}
+
+.event-time{
+    font-family:var(--serif);
+
+    font-size:38px;
+
+    color:var(--gold);
+}
+
+.event h3{
+    font-family:var(--serif);
+
+    font-size:28px;
+
+    font-weight:400;
+}
+
+.event p{
+    margin-top:6px;
+
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   PHOTO
+========================================================= */
+
+.photo-section{
+    padding:30px 20px 150px;
+}
+
+.photo{
+    max-width:1200px;
+
+    height:650px;
+
+    margin:auto;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.photo img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    filter:
+        saturate(.72)
+        contrast(1.05)
+        brightness(.78);
+
+    transition:transform 1.2s ease;
+}
+
+.photo:hover img{
+    transform:scale(1.04);
+}
+
+.photo::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 55%,
+            rgba(3,11,19,.65)
+        );
 }
 
 
@@ -1108,199 +935,46 @@ button{
    COUNTDOWN
 ========================================================= */
 
+.countdown-section{
+    padding:150px 20px;
+
+    text-align:center;
+
+    background:#030d18;
+}
+
 .countdown{
-    background:var(--ivory);
+    display:flex;
 
-    color:var(--navy);
+    justify-content:center;
 
-    text-align:center;
+    gap:clamp(25px,6vw,90px);
 
-    padding:105px 20px;
+    margin-top:60px;
 }
 
-.countdown h2{
-    font-family:var(--serif);
-
-    font-size:39px;
-
-    font-weight:500;
-
-    letter-spacing:6px;
-
-    margin-bottom:55px;
-}
-
-.counter{
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    max-width:500px;
-
-    margin:auto;
-}
-
-.counter-box{
-    position:relative;
-}
-
-.counter-box:not(:last-child):after{
-    content:"";
-
-    position:absolute;
-
-    right:0;
-    top:12%;
-
-    width:1px;
-    height:76%;
-
-    background:rgba(7,21,37,.2);
-}
-
-.counter-number{
+.count-number{
     display:block;
 
     font-family:var(--serif);
 
-    font-size:45px;
+    font-size:65px;
 
-    font-weight:400;
+    font-weight:300;
+
+    color:var(--cream);
 }
 
-.counter-label{
+.count-label{
     display:block;
 
-    margin-top:3px;
-
-    font-family:var(--sans);
-
-    font-size:8px;
-
-    letter-spacing:3px;
-
-    opacity:.65;
-}
-
-
-/* =========================================================
-   CALENDAR
-========================================================= */
-
-.calendar-section{
-    position:relative;
-
-    background:
-        radial-gradient(
-            circle at 50% 30%,
-            rgba(25,68,102,.55),
-            transparent 36%
-        ),
-        linear-gradient(
-            145deg,
-            #030b15,
-            #0a2035 50%,
-            #040d18
-        );
-
-    padding:105px 28px;
-}
-
-.calendar-title{
-    text-align:center;
-
-    font-family:var(--serif);
-
-    font-size:39px;
-
-    letter-spacing:6px;
-
-    margin-bottom:45px;
-}
-
-.calendar{
-    max-width:480px;
-
-    margin:auto;
-}
-
-.calendar-month{
-    text-align:center;
-
-    font-family:var(--serif);
-
-    font-size:29px;
-
-    letter-spacing:5px;
-
-    margin-bottom:30px;
-
-    color:var(--gold-light);
-}
-
-.weekdays,
-.days{
-    display:grid;
-
-    grid-template-columns:
-        repeat(7,1fr);
-
-    text-align:center;
-}
-
-.weekdays div{
-    font-family:var(--sans);
-
-    font-size:8px;
-
-    letter-spacing:2px;
+    margin-top:8px;
 
     color:var(--gold);
 
-    padding-bottom:18px;
-}
+    font-size:9px;
 
-.days div{
-    height:54px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    position:relative;
-
-    font-family:var(--serif);
-
-    font-size:18px;
-}
-
-.days .empty{
-    opacity:0;
-}
-
-.days .wedding{
-    color:var(--navy);
-
-    z-index:2;
-}
-
-.days .wedding:before{
-    content:"";
-
-    position:absolute;
-
-    width:39px;
-    height:39px;
-
-    border-radius:50%;
-
-    background:var(--ivory);
-
-    z-index:-1;
-
-    box-shadow:
-        0 0 0 5px rgba(216,189,130,.13);
+    letter-spacing:4px;
 }
 
 
@@ -1309,103 +983,103 @@ button{
 ========================================================= */
 
 .rsvp{
-    background:var(--ivory);
+    padding:150px 20px;
 
-    color:var(--navy);
+    max-width:650px;
+
+    margin:auto;
 
     text-align:center;
-
-    padding:110px 35px;
 }
 
-.rsvp h2{
-    font-family:var(--serif);
+.rsvp p{
+    color:var(--muted);
 
-    font-size:45px;
+    font-size:12px;
 
-    font-weight:500;
-
-    letter-spacing:7px;
-}
-
-.rsvp-line{
-    width:45px;
-    height:1px;
-
-    background:var(--gold-dark);
-
-    margin:23px auto;
-}
-
-.rsvp > p{
-    font-family:var(--serif);
-
-    font-size:20px;
-
-    line-height:1.6;
-
-    margin-bottom:42px;
+    margin-top:15px;
 }
 
 .form{
-    max-width:440px;
+    margin-top:55px;
 
-    margin:auto;
+    text-align:left;
 }
 
-.form input,
-.form select{
+.field{
+    margin-bottom:25px;
+}
+
+.field label{
+    display:block;
+
+    margin-bottom:8px;
+
+    color:var(--gold);
+
+    font-size:10px;
+
+    letter-spacing:2px;
+}
+
+.field input,
+.field select,
+.field textarea{
     width:100%;
 
-    border:0;
-    border-bottom:1px solid rgba(7,21,37,.25);
+    padding:15px 14px;
 
-    outline:0;
+    color:var(--cream);
 
-    background:transparent;
+    background:
+        rgba(255,255,255,.025);
+
+    border:
+        1px solid rgba(214,187,125,.2);
+
+    outline:none;
+
+    border-radius:0;
+}
+
+.field textarea{
+    min-height:120px;
+
+    resize:vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+    border-color:var(--gold);
+}
+
+.rsvp-button{
+    width:100%;
+
+    padding:16px;
+
+    margin-top:10px;
+
+    background:var(--gold);
+
+    border:1px solid var(--gold);
 
     color:var(--navy);
 
-    padding:17px 3px;
-
-    margin-bottom:17px;
-
-    font-family:var(--sans);
-
-    font-size:13px;
-}
-
-.form select{
     cursor:pointer;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    transition:.3s ease;
 }
 
-.form button{
-    width:100%;
-
-    border:1px solid var(--navy);
-
-    background:var(--navy);
-
-    color:var(--ivory);
-
-    padding:18px;
-
-    margin-top:17px;
-
-    font-family:var(--serif);
-
-    font-size:20px;
-
-    letter-spacing:5px;
-
-    transition:
-        background .35s,
-        color .35s;
-}
-
-.form button:hover{
+.rsvp-button:hover{
     background:transparent;
-    color:var(--navy);
+
+    color:var(--gold);
 }
 
 
@@ -1414,239 +1088,217 @@ button{
 ========================================================= */
 
 .footer{
-    min-height:65vh;
-
-    position:relative;
-
-    display:flex;
-    flex-direction:column;
-
-    justify-content:center;
-    align-items:center;
+    padding:80px 20px;
 
     text-align:center;
 
-    padding:70px 25px;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(28,73,108,.55),
-            transparent 45%
-        ),
-        #030b15;
+    border-top:1px solid rgba(214,187,125,.12);
 }
 
-.footer-script{
-    font-family:var(--script);
-
-    color:var(--gold-light);
-
-    font-size:68px;
-
-    margin-bottom:22px;
-}
-
-.footer-names{
+.footer-logo{
     font-family:var(--serif);
 
-    font-size:32px;
+    font-size:42px;
+
+    color:var(--gold);
+}
+
+.footer p{
+    margin-top:10px;
+
+    font-size:8px;
 
     letter-spacing:5px;
-}
 
-.footer-date{
-    font-family:var(--serif);
-
-    color:var(--gold);
-
-    font-size:17px;
-
-    letter-spacing:6px;
-
-    margin-top:23px;
-}
-
-.footer-heart{
-    color:var(--gold);
-
-    font-size:20px;
-
-    margin-top:35px;
+    color:var(--muted);
 }
 
 
 /* =========================================================
-   SCROLL REVEAL
+   MUSIC
 ========================================================= */
 
-.reveal{
-    opacity:0;
+.music-button{
+    position:fixed;
 
-    transform:
-        translateY(35px);
+    right:22px;
+    bottom:22px;
 
-    transition:
-        opacity 1s ease,
-        transform 1s cubic-bezier(.2,.8,.2,1);
-}
+    z-index:1000;
 
-.reveal.visible{
-    opacity:1;
+    width:48px;
+    height:48px;
 
-    transform:none;
+    border-radius:50%;
+
+    border:1px solid rgba(214,187,125,.55);
+
+    background:rgba(3,13,24,.85);
+
+    color:var(--gold);
+
+    cursor:pointer;
+
+    backdrop-filter:blur(10px);
+
+    font-size:16px;
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   MOBILE
 ========================================================= */
 
-@media(max-width:480px){
+@media(max-width:700px){
 
-    .opening-title{
-        font-size:25px;
-        letter-spacing:6px;
+    .open-screen::before{
+        inset:15px;
     }
 
-    .seal{
-        width:175px;
-        height:175px;
+    .open-screen::after{
+        inset:25px;
+    }
+
+    .open-small{
+        font-size:9px;
+        letter-spacing:4px;
+    }
+
+    .open-title{
+        font-size:19px;
+    }
+
+    .open-heart{
+        width:90px;
+        height:90px;
+    }
+
+    .open-heart::before,
+    .open-heart::after{
+        width:90px;
+        height:90px;
+    }
+
+    .open-heart::before{
+        top:-45px;
+    }
+
+    .open-heart::after{
+        left:45px;
+    }
+
+    .open-heart span{
+        font-size:24px;
+    }
+
+    .hero::before{
+        inset:18px;
+    }
+
+    .hero-top{
+        font-size:10px;
+        letter-spacing:5px;
     }
 
     .hero-names{
-        font-size:59px;
-    }
-
-    .hero-names .and{
-        font-size:43px;
-    }
-
-    .hero-date{
-        font-size:16px;
-        letter-spacing:4px;
-        gap:12px;
-    }
-
-    .hero-date i{
-        width:32px;
-    }
-
-    .intro{
-        padding:90px 28px;
-    }
-
-    .intro h2{
-        font-size:36px;
-    }
-
-    .intro p{
-        font-size:19px;
-    }
-
-    .journey{
-        min-height:1110px;
-    }
-
-    .journey-heading .month{
-        font-size:27px;
-    }
-
-    .journey-heading .date{
-        gap:50px;
-        font-size:54px;
-    }
-
-    .journey-heading .date span:first-child:after{
-        width:32px;
-        right:-42px;
-    }
-
-    .route{
-        width:165px;
-        height:750px;
-        top:205px;
-    }
-
-    .j-event{
-        width:190px;
-    }
-
-    .j-event.one{
-        top:335px;
-        left:17px;
-    }
-
-    .j-event.two{
-        top:575px;
-        right:10px;
-    }
-
-    .j-event.three{
-        top:815px;
-        left:17px;
-    }
-
-    .j-event .time{
-        font-size:35px;
-    }
-
-    .j-event .title{
-        font-size:19px;
-    }
-
-    .j-event .sub{
-        font-size:8px;
-    }
-
-    .counter-number{
-        font-size:37px;
-    }
-
-    .counter-label{
-        font-size:7px;
-        letter-spacing:2px;
-    }
-
-    .story h2{
         font-size:57px;
     }
 
-    .story p{
-        font-size:20px;
+    .hero-date{
+        font-size:14px;
+        letter-spacing:5px;
     }
 
-}
-
-
-/* =========================================================
-   VERY SMALL PHONES
-========================================================= */
-
-@media(max-width:360px){
-
-    .hero-names{
-        font-size:51px;
+    .intro{
+        padding:110px 25px;
     }
 
     .journey{
-        min-height:1080px;
+        height:950px;
+    }
+
+    .journey-header{
+        top:60px;
+    }
+
+    .journey-header h2{
+        font-size:42px;
     }
 
     .route{
-        width:145px;
+        top:140px;
+
+        width:170px;
+        height:750px;
     }
 
-    .j-event{
-        width:165px;
+    .journey-event{
+        width:125px;
     }
 
-    .j-event .title{
-        font-size:17px;
+    .journey-event.left{
+        right:calc(50% + 82px);
     }
 
-    .j-event .time{
-        font-size:31px;
+    .journey-event.right{
+        left:calc(50% + 82px);
+    }
+
+    .journey-event.one{
+        top:190px;
+    }
+
+    .journey-event.two{
+        top:365px;
+    }
+
+    .journey-event.three{
+        top:550px;
+    }
+
+    .journey-time{
+        font-size:22px;
+    }
+
+    .journey-name{
+        font-size:9px;
+    }
+
+    .journey-small{
+        font-size:7px;
+    }
+
+    .date-big{
+        font-size:110px;
+    }
+
+    .event{
+        grid-template-columns:90px 1fr;
+    }
+
+    .event-time{
+        font-size:28px;
+    }
+
+    .event h3{
+        font-size:22px;
+    }
+
+    .photo{
+        height:470px;
+    }
+
+    .countdown{
+        gap:18px;
+    }
+
+    .count-number{
+        font-size:42px;
+    }
+
+    .count-label{
+        font-size:7px;
+        letter-spacing:2px;
     }
 
 }
@@ -1655,207 +1307,144 @@ button{
 </head>
 
 
-<body class="locked">
+<body>
 
 
-<!-- =========================================================
-     OPENING
-========================================================= -->
+<!-- =====================================================
+     OPEN SCREEN
+===================================================== -->
 
-<div class="opening" id="opening">
+<div class="open-screen" id="openScreen">
 
-    <div class="opening-inner">
+    <div class="open-content">
 
-        <div class="texture"></div>
-
-        <div class="gold-frame"></div>
-
-
-        <div class="opening-title">
-            <span>Դուք ստացել եք</span>
-            <span>հրավերատոմս</span>
+        <div class="open-small">
+            EVENTO · WEDDING INVITATION
         </div>
 
-
-        <div class="seal">
-
-            <div class="seal-wax"></div>
-
-            <div class="seal-heart"></div>
-
+        <div class="open-title">
+            Դուք ստացել եք հրավիրատոմս
         </div>
 
+        <div class="open-heart">
+            <span>♥</span>
+        </div>
 
         <button
             class="open-button"
-            id="openInvitation"
+            onclick="openInvitation()"
         >
-            Բացել
+            ԲԱՑԵԼ
         </button>
+
+        <div class="open-hint">
+            ՍԵՂՄԵՔ՝ ՀՐԱՎԻՐԱՏՈՄՍԸ ԲԱՑԵԼՈՒ ՀԱՄԱՐ
+        </div>
 
     </div>
 
 </div>
 
 
+<!-- =====================================================
+     INVITATION
+===================================================== -->
 
-<main class="page">
+<main class="invitation" id="invitation">
 
 
-<!-- =========================================================
-     HERO
-========================================================= -->
+<!-- HERO -->
 
 <section class="hero">
 
-    <div class="texture"></div>
-
-    <div class="gold-frame"></div>
-
-
-    <div class="hero-label reveal">
+    <div class="hero-top">
         SAVE THE DATE
     </div>
 
+    <div class="hero-line"></div>
 
-    <div class="hero-names reveal">
-
+    <div class="hero-names">
         Արամ
-
-        <span class="and">
-            &
-        </span>
-
-        Սաթեն
-
+        <span class="and">&</span>
+        Սաթենիկ
     </div>
 
-
-    <div class="hero-date reveal">
-
-        <i></i>
-
+    <div class="hero-date">
         07 · 07 · 2027
+    </div>
 
+    <div class="scroll-cue">
+        SCROLL TO EXPLORE
         <i></i>
-
     </div>
 
 </section>
 
 
+<!-- MARQUEE -->
 
-<!-- =========================================================
-     MARQUEE
-========================================================= -->
-
-<section class="marquee">
+<div class="marquee">
 
     <div class="marquee-track">
 
-        <div class="marquee-item">
-            SAVE THE DATE
-        </div>
+        <span>SAVE THE DATE</span>
+        <span>07 · 07 · 2027</span>
+        <span>ԱՐԱՄ & ՍԱԹԵՆԻԿ</span>
 
-        <div class="marquee-item">
-            07 · 07 · 2027
-        </div>
-
-        <div class="marquee-item">
-            SAVE THE DATE
-        </div>
-
-        <div class="marquee-item">
-            07 · 07 · 2027
-        </div>
-
-
-        <div class="marquee-item">
-            SAVE THE DATE
-        </div>
-
-        <div class="marquee-item">
-            07 · 07 · 2027
-        </div>
-
-        <div class="marquee-item">
-            SAVE THE DATE
-        </div>
-
-        <div class="marquee-item">
-            07 · 07 · 2027
-        </div>
+        <span>SAVE THE DATE</span>
+        <span>07 · 07 · 2027</span>
+        <span>ԱՐԱՄ & ՍԱԹԵՆԻԿ</span>
 
     </div>
 
-</section>
+</div>
 
 
-
-<!-- =========================================================
-     INTRO
-========================================================= -->
+<!-- INTRO -->
 
 <section class="intro">
 
-    <div class="intro-ornament">
-        ✦
+    <div class="label">
+        ՍԻՐԵԼԻՆԵՐՍ
     </div>
 
-
-    <h2 class="reveal">
-        ՍԻՐԵԼԻՆԵՐՍ
+    <h2>
+        Մեր սիրո օրը
     </h2>
 
-
-    <p class="reveal">
-
-        Մեր կյանքի ամենագեղեցիկ էջը պատրաստվում ենք գրել
-        միասին և ցանկանում ենք, որ այդ օրը մեր կողքին լինեք
-        դուք՝ մեզ համար ամենաթանկ մարդիկ։
-
-        <br><br>
-
-        Սիրով սպասում ենք ձեզ՝ միասին կիսելու մեր
-        երջանկության ամենակարևոր օրը։
-
+    <p>
+        Մեր կյանքի ամենագեղեցիկ էջը սկսվում է հենց այս օրը։
+        Սիրով հրավիրում ենք Ձեզ կիսելու մեզ հետ մեր
+        միության, սիրո և երջանկության ամենակարևոր պահը։
     </p>
 
 </section>
 
 
-
-<!-- =========================================================
-     JOURNEY
-========================================================= -->
+<!-- =====================================================
+     HEART JOURNEY
+===================================================== -->
 
 <section class="journey" id="journey">
 
-    <div class="texture"></div>
+    <div class="journey-header">
 
-    <div class="gold-frame"></div>
-
-
-    <div class="journey-heading">
-
-        <div class="month reveal">
-            Հուլիս
+        <div class="label">
+            ՄԵՐ ՕՐԸ
         </div>
 
+        <h2>
+            07 · 07 · 2027
+        </h2>
 
-        <div class="date reveal">
-
-            <span>07</span>
-
-            <span>07</span>
-
-        </div>
+        <p>
+            Մեկ օր · Մեկ պատմություն · Մեկ սեր
+        </p>
 
     </div>
 
 
-
-    <!-- SVG CURVED ROUTE -->
+    <!-- ROUTE -->
 
     <div class="route" id="route">
 
@@ -1868,23 +1457,10 @@ button{
                 id="routePath"
                 class="route-path"
                 d="
-                    M 90 0
-
-                    C 155 75,
-                      170 145,
-                      108 220
-
-                    C 42 298,
-                      36 350,
-                      96 408
-
-                    C 162 470,
-                      165 535,
-                      108 610
-
-                    C 48 680,
-                      48 750,
-                      112 820
+                    M102 0
+                    C25 100, 185 170, 102 275
+                    C15 385, 185 455, 102 565
+                    C35 660, 175 735, 102 820
                 "
             />
 
@@ -1898,10 +1474,41 @@ button{
             id="movingHeart"
         >
 
+            <span class="heart-side-number left">
+                6
+            </span>
+
             <div class="heart-body"></div>
 
-            <div class="heart-number">
-                07
+            <span class="heart-number">
+                7
+            </span>
+
+            <span class="heart-side-number right">
+                8
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- EVENTS -->
+
+    <div class="journey-event left one">
+
+        <div>
+
+            <div class="journey-time">
+                12:00
+            </div>
+
+            <div class="journey-name">
+                Փեսայի տուն
+            </div>
+
+            <div class="journey-small">
+                Հանդիպում
             </div>
 
         </div>
@@ -1909,384 +1516,164 @@ button{
     </div>
 
 
+    <div class="journey-event right two">
 
-    <!-- EVENT 1 -->
+        <div>
 
-    <div class="j-event one reveal">
+            <div class="journey-time">
+                13:00
+            </div>
 
-        <div class="time">
-            12:00
-        </div>
+            <div class="journey-name">
+                Հարսնացուի տուն
+            </div>
 
-        <div class="title">
-            Փեսայի տուն
-        </div>
+            <div class="journey-small">
+                Օրհնություն
+            </div>
 
-        <div class="sub">
-            ՀԱՆԴԻՍԱՎՈՐ ՍԿԻԶԲ
-        </div>
-
-    </div>
-
-
-
-    <!-- EVENT 2 -->
-
-    <div class="j-event two reveal">
-
-        <div class="time">
-            13:00
-        </div>
-
-        <div class="title">
-            Հարսնացուի տուն
-        </div>
-
-        <div class="sub">
-            ՀԱՐՍԻ ԴԻՄԱՎՈՐՈՒՄ
         </div>
 
     </div>
 
 
+    <div class="journey-event left three">
 
-    <!-- EVENT 3 -->
+        <div>
 
-    <div class="j-event three reveal">
+            <div class="journey-time">
+                15:00
+            </div>
 
-        <div class="time">
-            15:00
+            <div class="journey-name">
+                Պսակադրություն
+            </div>
+
+            <div class="journey-small">
+                Եկեղեցի
+            </div>
+
         </div>
 
-        <div class="title">
-            Պսակադրություն
-        </div>
-
-        <div class="sub">
-            ՄԵՐ ԱՄԵՆԱԿԱՐԵՎՈՐ «ԱՅՈ»-Ն
-        </div>
-
-    </div>
-
-
-
-    <div class="journey-bottom">
-        OUR JOURNEY
     </div>
 
 </section>
 
 
+<!-- DATE -->
 
-<!-- =========================================================
-     FULL EVENTS
-========================================================= -->
+<section class="date-section">
+
+    <div class="label">
+        SAVE THE DATE
+    </div>
+
+    <div class="date-big">
+        07
+    </div>
+
+    <div class="date-month">
+        ՀՈՒԼԻՍ
+    </div>
+
+    <div class="date-year">
+        2027
+    </div>
+
+</section>
+
+
+<!-- EVENTS -->
 
 <section class="events">
 
-    <h2 class="events-title reveal">
-        ՄԵՐ ՕՐԸ
-    </h2>
+    <div class="events-head">
 
-
-    <div class="event-row reveal">
-
-        <div class="time">
-            12:00
+        <div class="label">
+            ՕՐՎԱ ԸՆԹԱՑՔԸ
         </div>
 
-        <div>
-
-            <h3>
-                Փեսայի տուն
-            </h3>
-
-            <p>
-                Հանդիպում և օրվա սկիզբ
-            </p>
-
+        <div class="section-title">
+            Սիրով սպասում ենք
         </div>
 
     </div>
 
 
-    <div class="event-row reveal">
+    <div class="events-list">
 
-        <div class="time">
-            13:00
-        </div>
+        <div class="event">
 
-        <div>
-
-            <h3>
-                Հարսնացուի տուն
-            </h3>
-
-            <p>
-                Հարսի դիմավորում
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="event-row reveal">
-
-        <div class="time">
-            15:00
-        </div>
-
-        <div>
-
-            <h3>
-                Պսակադրություն
-            </h3>
-
-            <p>
-                Սուրբ պսակադրություն
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="event-row reveal">
-
-        <div class="time">
-            17:30
-        </div>
-
-        <div>
-
-            <h3>
-                Հարսանյաց սրահ
-            </h3>
-
-            <p>
-                Տոնական երեկոյի շարունակություն
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     STORY
-========================================================= -->
-
-<section class="story">
-
-    <div class="texture"></div>
-
-    <div class="gold-frame"></div>
-
-
-    <div class="story-content">
-
-        <div class="story-symbol">
-            ♡
-        </div>
-
-
-        <h2 class="reveal">
-            Together
-        </h2>
-
-
-        <p class="reveal">
-
-            Երկու սիրտ,
-
-            <br>
-
-            մեկ պատմություն,
-
-            <br>
-
-            մեկ ամբողջ կյանք։
-
-            <br><br>
-
-            Եվ մենք ցանկանում ենք այդ նոր սկիզբը
-            կիսել հենց ձեզ հետ։
-
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     COUNTDOWN
-========================================================= -->
-
-<section class="countdown">
-
-    <h2 class="reveal">
-        ՄԻՆՉԵՎ ՄԵՐ ՕՐԸ
-    </h2>
-
-
-    <div class="counter">
-
-        <div class="counter-box">
-
-            <span
-                class="counter-number"
-                id="days"
-            >
-                00
-            </span>
-
-            <span class="counter-label">
-                ՕՐ
-            </span>
-
-        </div>
-
-
-        <div class="counter-box">
-
-            <span
-                class="counter-number"
-                id="hours"
-            >
-                00
-            </span>
-
-            <span class="counter-label">
-                ԺԱՄ
-            </span>
-
-        </div>
-
-
-        <div class="counter-box">
-
-            <span
-                class="counter-number"
-                id="minutes"
-            >
-                00
-            </span>
-
-            <span class="counter-label">
-                ՐՈՊԵ
-            </span>
-
-        </div>
-
-
-        <div class="counter-box">
-
-            <span
-                class="counter-number"
-                id="seconds"
-            >
-                00
-            </span>
-
-            <span class="counter-label">
-                ՎԱՅՐԿՅԱՆ
-            </span>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     CALENDAR
-========================================================= -->
-
-<section class="calendar-section">
-
-    <div class="texture"></div>
-
-    <div class="gold-frame"></div>
-
-
-    <h2 class="calendar-title reveal">
-        ՀՈՒԼԻՍ · 2027
-    </h2>
-
-
-    <div class="calendar">
-
-        <div class="calendar-month">
-            07
-        </div>
-
-
-        <div class="weekdays">
-
-            <div>ԵՐԿ</div>
-            <div>ԵՐՔ</div>
-            <div>ՉՈՐ</div>
-            <div>ՀՆԳ</div>
-            <div>ՈՒՐԲ</div>
-            <div>ՇԲԹ</div>
-            <div>ԿԻՐ</div>
-
-        </div>
-
-
-        <div class="days">
-
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-
-            <div>5</div>
-            <div>6</div>
-
-            <div class="wedding">
-                7
+            <div class="event-time">
+                12:00
             </div>
 
-            <div>8</div>
-            <div>9</div>
-            <div>10</div>
-            <div>11</div>
+            <div>
+                <h3>
+                    Փեսայի տուն
+                </h3>
 
-            <div>12</div>
-            <div>13</div>
-            <div>14</div>
-            <div>15</div>
-            <div>16</div>
-            <div>17</div>
-            <div>18</div>
+                <p>
+                    Հասցեն կհայտնվի այստեղ
+                </p>
+            </div>
 
-            <div>19</div>
-            <div>20</div>
-            <div>21</div>
-            <div>22</div>
-            <div>23</div>
-            <div>24</div>
-            <div>25</div>
+        </div>
 
-            <div>26</div>
-            <div>27</div>
-            <div>28</div>
-            <div>29</div>
-            <div>30</div>
-            <div>31</div>
+
+        <div class="event">
+
+            <div class="event-time">
+                13:00
+            </div>
+
+            <div>
+                <h3>
+                    Հարսնացուի տուն
+                </h3>
+
+                <p>
+                    Հասցեն կհայտնվի այստեղ
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="event">
+
+            <div class="event-time">
+                15:00
+            </div>
+
+            <div>
+                <h3>
+                    Պսակադրություն
+                </h3>
+
+                <p>
+                    Եկեղեցու հասցեն
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="event">
+
+            <div class="event-time">
+                17:30
+            </div>
+
+            <div>
+                <h3>
+                    Հարսանյաց սրահ
+                </h3>
+
+                <p>
+                    Morena Restaurant
+                </p>
+            </div>
 
         </div>
 
@@ -2295,65 +1682,187 @@ button{
 </section>
 
 
+<!-- PHOTO -->
 
-<!-- =========================================================
-     RSVP
-========================================================= -->
+<section class="photo-section">
+
+    <div class="photo">
+
+        <img
+            src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=90"
+            alt="Wedding"
+        >
+
+    </div>
+
+</section>
+
+
+<!-- COUNTDOWN -->
+
+<section class="countdown-section">
+
+    <div class="label">
+        ՄԻՆՉԵՎ ՄԵՐ ՕՐԸ
+    </div>
+
+    <div class="section-title">
+        Հաշվում ենք օրերը
+    </div>
+
+
+    <div class="countdown">
+
+        <div>
+            <span
+                class="count-number"
+                id="days"
+            >0</span>
+
+            <span class="count-label">
+                ՕՐ
+            </span>
+        </div>
+
+
+        <div>
+            <span
+                class="count-number"
+                id="hours"
+            >0</span>
+
+            <span class="count-label">
+                ԺԱՄ
+            </span>
+        </div>
+
+
+        <div>
+            <span
+                class="count-number"
+                id="minutes"
+            >0</span>
+
+            <span class="count-label">
+                ՐՈՊԵ
+            </span>
+        </div>
+
+
+        <div>
+            <span
+                class="count-number"
+                id="seconds"
+            >0</span>
+
+            <span class="count-label">
+                ՎՐԿ.
+            </span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- RSVP -->
 
 <section class="rsvp">
 
-    <h2 class="reveal">
+    <div class="label">
         RSVP
-    </h2>
+    </div>
 
-    <div class="rsvp-line"></div>
+    <div class="section-title">
+        Կգա՞ք մեզ հետ
+    </div>
 
-
-    <p class="reveal">
-
-        Խնդրում ենք հաստատել ձեր ներկայությունը
-        մինչև 20.06.2027
-
+    <p>
+        Խնդրում ենք հաստատել Ձեր մասնակցությունը։
     </p>
 
 
     <form
         class="form"
-        id="rsvpForm"
+        onsubmit="submitRSVP(event)"
     >
 
-        <input
-            type="text"
-            placeholder="Ձեր անունը"
-            required
+        <div class="field">
+
+            <label>
+                ՁԵՐ ԱՆՈՒՆԸ
+            </label>
+
+            <input
+                type="text"
+                placeholder="Անուն Ազգանուն"
+                required
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                ՄԱՍՆԱԿՑՈՒԹՅՈՒՆ
+            </label>
+
+            <select required>
+
+                <option value="">
+                    Ընտրեք
+                </option>
+
+                <option>
+                    Այո, սիրով կմասնակցեմ
+                </option>
+
+                <option>
+                    Ցավոք, չեմ կարող
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                ՀՅՈՒՐԵՐԻ ՔԱՆԱԿ
+            </label>
+
+            <select>
+
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                ՀԱՂՈՐԴԱԳՐՈՒԹՅՈՒՆ
+            </label>
+
+            <textarea
+                placeholder="Ցանկության դեպքում թողեք հաղորդագրություն..."
+            ></textarea>
+
+        </div>
+
+
+        <button
+            class="rsvp-button"
+            type="submit"
         >
-
-
-        <input
-            type="tel"
-            placeholder="Հեռախոսահամար"
-        >
-
-
-        <select required>
-
-            <option value="">
-                Կլինե՞ք մեզ հետ
-            </option>
-
-            <option value="yes">
-                Այո, սիրով
-            </option>
-
-            <option value="no">
-                Ցավոք, չեմ կարող
-            </option>
-
-        </select>
-
-
-        <button type="submit">
-            ՀԱՍՏԱՏԵԼ
+            ՀԱՍՏԱՏԵԼ ՄԱՍՆԱԿՑՈՒԹՅՈՒՆԸ
         </button>
 
     </form>
@@ -2361,36 +1870,17 @@ button{
 </section>
 
 
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
+<!-- FOOTER -->
 
 <footer class="footer">
 
-    <div class="texture"></div>
-
-    <div class="gold-frame"></div>
-
-
-    <div class="footer-script">
-        Forever
+    <div class="footer-logo">
+        A & S
     </div>
 
-
-    <div class="footer-names">
-        ԱՐԱՄ & ՍԱԹԵՆ
-    </div>
-
-
-    <div class="footer-date">
-        07 · 07 · 2027
-    </div>
-
-
-    <div class="footer-heart">
-        ♡
-    </div>
+    <p>
+        MADE WITH LOVE · EVENTO
+    </p>
 
 </footer>
 
@@ -2398,86 +1888,75 @@ button{
 </main>
 
 
+<!-- MUSIC -->
+
+<button
+    class="music-button"
+    id="musicButton"
+    onclick="toggleMusic()"
+>
+    ♪
+</button>
+
+
+<audio
+    id="music"
+    loop
+>
+    <source
+        src="music.mp3"
+        type="audio/mpeg"
+    >
+</audio>
+
 
 <script>
+
 
 /* =========================================================
    OPEN INVITATION
 ========================================================= */
 
-const opening =
-    document.getElementById("opening");
+let musicPlaying = false;
 
-const openInvitation =
-    document.getElementById("openInvitation");
+function openInvitation(){
 
+    const screen =
+        document.getElementById("openScreen");
 
-openInvitation.addEventListener(
-    "click",
-    () => {
+    const invitation =
+        document.getElementById("invitation");
 
-        opening.classList.add("hide");
+    const music =
+        document.getElementById("music");
 
-        document.body.classList.remove("locked");
+    screen.classList.add("hide");
 
-        setTimeout(() => {
+    invitation.classList.add("show");
 
-            opening.style.display = "none";
+    document.body.style.overflow = "auto";
 
-        },1200);
+    setTimeout(() => {
 
-    }
-);
+        music.play()
+            .then(() => {
 
+                musicPlaying = true;
 
+                document
+                    .getElementById("musicButton")
+                    .innerHTML = "❚❚";
 
-/* =========================================================
-   REVEAL ANIMATIONS
-========================================================= */
+            })
+            .catch(() => {});
 
-const revealElements =
-    document.querySelectorAll(".reveal");
+    },700);
 
-
-const revealObserver =
-    new IntersectionObserver(
-        entries => {
-
-            entries.forEach(entry => {
-
-                if(entry.isIntersecting){
-
-                    entry.target.classList.add(
-                        "visible"
-                    );
-
-                    revealObserver.unobserve(
-                        entry.target
-                    );
-
-                }
-
-            });
-
-        },
-        {
-            threshold:.15
-        }
-    );
-
-
-revealElements.forEach(
-    element => {
-
-        revealObserver.observe(element);
-
-    }
-);
-
+}
 
 
 /* =========================================================
-   HEART SCROLL ANIMATION
+   MOVING HEART
 ========================================================= */
 
 const journey =
@@ -2497,11 +1976,7 @@ let pathLength =
     path.getTotalLength();
 
 
-function clamp(
-    value,
-    min,
-    max
-){
+function clamp(value,min,max){
 
     return Math.min(
         Math.max(value,min),
@@ -2511,51 +1986,30 @@ function clamp(
 }
 
 
-
 function updateHeart(){
 
-    if(!journey || !path || !heart){
-        return;
-    }
-
-
-    const journeyRect =
+    const rect =
         journey.getBoundingClientRect();
-
 
     const viewport =
         window.innerHeight;
 
 
     /*
-       Animation-ի մեկնարկը
+       Երբ journey-ը մտնում է էկրան,
+       սրտիկը սկսում է շարժվել։
     */
 
-    const animationStart =
-        viewport * .82;
+    const start =
+        viewport * .92;
 
+    const end =
+        viewport * .08;
 
-    /*
-       Animation-ի վերջը
-    */
-
-    const animationEnd =
-        viewport * .12;
-
-
-    /*
-       Scroll progress
-    */
 
     let progress =
-        (
-            animationStart -
-            journeyRect.top
-        ) /
-        (
-            animationStart -
-            animationEnd
-        );
+        (start - rect.top) /
+        (start - end);
 
 
     progress =
@@ -2566,11 +2020,7 @@ function updateHeart(){
         );
 
 
-    /*
-       Սկզբում սրտիկը թաքնված է
-    */
-
-    if(progress > .015){
+    if(progress > .005){
 
         heart.classList.add("active");
 
@@ -2582,7 +2032,7 @@ function updateHeart(){
 
 
     /*
-       SVG path-ի վրա իրական կոորդինատ
+       Վերցնում ենք SVG-ի տվյալ կետը
     */
 
     const point =
@@ -2591,32 +2041,24 @@ function updateHeart(){
         );
 
 
-    /*
-       SVG → CSS coordinates
-    */
-
     const svgWidth = 205;
+
     const svgHeight = 820;
 
 
     const x =
-        (
-            point.x /
-            svgWidth
-        ) *
+        (point.x / svgWidth) *
         route.offsetWidth;
 
 
     const y =
-        (
-            point.y /
-            svgHeight
-        ) *
+        (point.y / svgHeight) *
         route.offsetHeight;
 
 
     /*
-       Սրտիկի չափը
+       Սկզբում փոքր է,
+       հետո դառնում է նորմալ չափի։
     */
 
     let scale;
@@ -2625,34 +2067,27 @@ function updateHeart(){
     if(progress < .12){
 
         scale =
-            .40 +
-            progress * 4.5;
+            .35 +
+            progress * 5;
 
-    }
-    else if(progress < .25){
+    }else if(progress < .25){
 
         scale =
-            .94 +
-            (progress - .12) * .45;
+            .95 +
+            (progress - .12) * .4;
 
-    }
-    else{
+    }else{
 
         scale = 1;
 
     }
 
 
-    /*
-       Position
-    */
-
     heart.style.left =
         x + "px";
 
     heart.style.top =
         y + "px";
-
 
     heart.style.transform =
         `
@@ -2663,41 +2098,10 @@ function updateHeart(){
 }
 
 
-
-/* =========================================================
-   SMOOTH SCROLL LOOP
-========================================================= */
-
-let ticking = false;
-
-
-function requestHeartUpdate(){
-
-    if(!ticking){
-
-        window.requestAnimationFrame(
-            () => {
-
-                updateHeart();
-
-                ticking = false;
-
-            }
-        );
-
-        ticking = true;
-
-    }
-
-}
-
-
 window.addEventListener(
     "scroll",
-    requestHeartUpdate,
-    {
-        passive:true
-    }
+    updateHeart,
+    {passive:true}
 );
 
 
@@ -2717,86 +2121,82 @@ window.addEventListener(
 updateHeart();
 
 
-
 /* =========================================================
    COUNTDOWN
 ========================================================= */
 
 const weddingDate =
     new Date(
-        "2027-07-07T17:30:00"
-    );
+        "July 7, 2027 17:30:00"
+    ).getTime();
 
 
 function updateCountdown(){
 
     const now =
-        new Date();
+        new Date().getTime();
 
-
-    let difference =
+    const distance =
         weddingDate - now;
 
 
-    if(difference < 0){
+    if(distance <= 0){
 
-        difference = 0;
+        document.getElementById("days").innerText = "0";
+        document.getElementById("hours").innerText = "0";
+        document.getElementById("minutes").innerText = "0";
+        document.getElementById("seconds").innerText = "0";
+
+        return;
 
     }
 
 
     const days =
         Math.floor(
-            difference /
-            (1000 * 60 * 60 * 24)
+            distance /
+            (1000*60*60*24)
         );
 
 
     const hours =
         Math.floor(
-            (
-                difference /
-                (1000 * 60 * 60)
-            ) % 24
+            (distance %
+            (1000*60*60*24))
+            /
+            (1000*60*60)
         );
 
 
     const minutes =
         Math.floor(
-            (
-                difference /
-                (1000 * 60)
-            ) % 60
+            (distance %
+            (1000*60*60))
+            /
+            (1000*60)
         );
 
 
     const seconds =
         Math.floor(
-            (
-                difference /
-                1000
-            ) % 60
+            (distance %
+            (1000*60))
+            /
+            1000
         );
 
 
     document.getElementById("days")
-        .textContent =
-        String(days).padStart(2,"0");
-
+        .innerText = days;
 
     document.getElementById("hours")
-        .textContent =
-        String(hours).padStart(2,"0");
-
+        .innerText = hours;
 
     document.getElementById("minutes")
-        .textContent =
-        String(minutes).padStart(2,"0");
-
+        .innerText = minutes;
 
     document.getElementById("seconds")
-        .textContent =
-        String(seconds).padStart(2,"0");
+        .innerText = seconds;
 
 }
 
@@ -2809,61 +2209,63 @@ setInterval(
 );
 
 
-
 /* =========================================================
    RSVP
 ========================================================= */
 
-document
-    .getElementById("rsvpForm")
-    .addEventListener(
-        "submit",
-        function(event){
+function submitRSVP(event){
 
-            event.preventDefault();
+    event.preventDefault();
 
-            alert(
-                "Շնորհակալություն ❤️ Ձեր պատասխանը ընդունվեց։"
-            );
-
-            this.reset();
-
-        }
+    alert(
+        "Շնորհակալություն։ Ձեր պատասխանը գրանցվեց։"
     );
 
+}
 
 
 /* =========================================================
-   SUBTLE PARALLAX
+   MUSIC
 ========================================================= */
 
-window.addEventListener(
-    "scroll",
-    () => {
+function toggleMusic(){
 
-        const scroll =
-            window.scrollY;
+    const music =
+        document.getElementById("music");
 
-        document
-            .querySelectorAll(".texture")
-            .forEach(
-                texture => {
+    const button =
+        document.getElementById("musicButton");
 
-                    texture.style.transform =
-                        `
-                        translateY(
-                            ${scroll * .018}px
-                        )
-                        `;
 
-                }
-            );
+    if(!musicPlaying){
 
-    },
-    {
-        passive:true
+        music.play()
+            .then(() => {
+
+                musicPlaying = true;
+
+                button.innerHTML = "❚❚";
+
+            })
+            .catch(() => {
+
+                alert(
+                    "Երաժշտությունը հնարավոր չէ միացնել։"
+                );
+
+            });
+
+    }else{
+
+        music.pause();
+
+        musicPlaying = false;
+
+        button.innerHTML = "♪";
+
     }
-);
+
+}
 
 </script>
 
