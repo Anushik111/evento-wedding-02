@@ -18,9 +18,9 @@
 }
 
 *{
+  box-sizing:border-box;
   margin:0;
   padding:0;
-  box-sizing:border-box;
 }
 
 html{
@@ -46,26 +46,20 @@ select{
 }
 
 
-/* =====================================================
+/* ==================================================
    OPENING
-===================================================== */
+================================================== */
 
 .opening{
   position:fixed;
   inset:0;
   z-index:99999;
 
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(201,164,91,.07),
-      transparent 42%
-    ),
-    var(--navy);
-
   display:flex;
   align-items:center;
   justify-content:center;
+
+  background:#071b2b;
 
   opacity:1;
   visibility:visible;
@@ -94,28 +88,29 @@ select{
 }
 
 
-/* =====================================================
-   YOUR STAMP IMAGE
-===================================================== */
+/* ==================================================
+   ORIGINAL STAMP
+================================================== */
 
 .seal{
-  width:250px;
-  height:250px;
-
-  position:relative;
+  width:300px;
+  height:300px;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
+  position:relative;
+  z-index:20;
+
   cursor:pointer;
 
-  margin-bottom:38px;
+  margin-bottom:35px;
 
-  -webkit-tap-highlight-color:transparent;
   user-select:none;
+  -webkit-tap-highlight-color:transparent;
 
-  animation:stampIn 1s ease both;
+  animation:stampAppear 1s ease both;
 
   transition:
     transform .35s ease;
@@ -125,54 +120,59 @@ select{
   width:100%;
   height:100%;
 
+  max-width:none;
+
   object-fit:contain;
+
+  border:0;
+  outline:0;
 
   display:block;
 
   pointer-events:none;
 
   user-select:none;
-
   -webkit-user-drag:none;
 }
 
 .seal:hover{
-  transform:scale(1.05);
+  transform:scale(1.045);
 }
 
 .seal:active{
   transform:scale(.95);
 }
 
-@keyframes stampIn{
-  from{
+@keyframes stampAppear{
+
+  0%{
     opacity:0;
-    transform:scale(.65) rotate(-8deg);
+    transform:scale(.65) rotate(-7deg);
   }
 
-  to{
+  100%{
     opacity:1;
     transform:scale(1) rotate(0);
   }
+
 }
 
 
-/* =====================================================
+/* ==================================================
    OPENING TEXT
-===================================================== */
+================================================== */
 
 .opening-title{
   color:var(--cream);
 
-  text-align:center;
-
   font-size:21px;
+  line-height:1.5;
+
+  text-align:center;
 
   letter-spacing:3px;
 
-  line-height:1.5;
-
-  margin-bottom:29px;
+  margin-bottom:30px;
 
   animation:fadeUp .9s ease .25s both;
 }
@@ -186,18 +186,18 @@ select{
 
   border-radius:50px;
 
-  padding:14px 44px;
+  padding:14px 45px;
 
   font-size:18px;
 
   cursor:pointer;
 
+  animation:fadeUp .9s ease .4s both;
+
   transition:
     background .3s ease,
     color .3s ease,
     transform .3s ease;
-
-  animation:fadeUp .9s ease .4s both;
 }
 
 .open-btn:hover{
@@ -212,30 +212,32 @@ select{
 }
 
 @keyframes fadeUp{
+
   from{
     opacity:0;
-    transform:translateY(18px);
+    transform:translateY(20px);
   }
 
   to{
     opacity:1;
     transform:translateY(0);
   }
+
 }
 
 
-/* =====================================================
+/* ==================================================
    MAIN
-===================================================== */
+================================================== */
 
 #main{
   opacity:0;
 
-  transform:translateY(25px);
+  transform:translateY(20px);
 
   transition:
-    opacity 1s ease .2s,
-    transform 1s ease .2s;
+    opacity 1s ease .25s,
+    transform 1s ease .25s;
 }
 
 #main.visible{
@@ -244,9 +246,9 @@ select{
 }
 
 
-/* =====================================================
+/* ==================================================
    HERO
-===================================================== */
+================================================== */
 
 .hero{
   min-height:100vh;
@@ -277,9 +279,9 @@ select{
 }
 
 .hero-names{
-  font-family:"Marck Script",cursive;
-
   color:var(--cream);
+
+  font-family:"Marck Script",cursive;
 
   font-size:86px;
 
@@ -301,10 +303,10 @@ select{
 
   object-fit:cover;
 
-  margin-bottom:30px;
-
   border:none;
   border-radius:0;
+
+  margin-bottom:30px;
 
   box-shadow:
     0 25px 70px rgba(0,0,0,.32);
@@ -326,7 +328,6 @@ select{
   position:absolute;
 
   bottom:28px;
-
   left:50%;
 
   transform:translateX(-50%);
@@ -341,6 +342,7 @@ select{
 }
 
 @keyframes scrollPulse{
+
   0%,100%{
     opacity:.4;
     transform:translate(-50%,0);
@@ -350,18 +352,19 @@ select{
     opacity:1;
     transform:translate(-50%,8px);
   }
+
 }
 
 
-/* =====================================================
+/* ==================================================
    JOURNEY
-===================================================== */
+================================================== */
 
 .journey{
   width:100%;
   max-width:900px;
 
-  margin:0 auto;
+  margin:auto;
 
   padding:
     100px 18px
@@ -383,30 +386,29 @@ select{
 }
 
 .route-area{
-  width:100%;
+  position:relative;
 
+  width:100%;
   max-width:650px;
 
   min-height:920px;
-
-  position:relative;
 
   margin:auto;
 }
 
 
-/* =====================================================
+/* ==================================================
    ROUTE
-===================================================== */
+================================================== */
 
 .route-svg{
   position:absolute;
 
-  width:250px;
-  height:880px;
-
   top:0;
   left:50%;
+
+  width:250px;
+  height:880px;
 
   transform:translateX(-50%);
 
@@ -428,9 +430,9 @@ select{
 }
 
 
-/* =====================================================
-   6 & 8
-===================================================== */
+/* ==================================================
+   6 AND 8
+================================================== */
 
 .fixed-number{
   position:absolute;
@@ -438,15 +440,14 @@ select{
   width:62px;
   height:62px;
 
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
   border:
     1px solid var(--gold);
 
   border-radius:50%;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
 
   color:var(--cream);
 
@@ -470,22 +471,20 @@ select{
 }
 
 
-/* =====================================================
-   MOVING HEART / 7
-===================================================== */
+/* ==================================================
+   MOVING 7 HEART
+================================================== */
 
 .moving-heart{
   position:absolute;
 
+  left:50%;
+  top:55px;
+
   width:105px;
   height:105px;
 
-  left:50%;
-
-  top:55px;
-
-  transform:
-    translate(-50%,-50%);
+  transform:translate(-50%,-50%);
 
   z-index:10;
 
@@ -498,7 +497,9 @@ select{
 .real-heart{
   width:100%;
   height:100%;
+
   display:block;
+
   overflow:visible;
 }
 
@@ -525,9 +526,9 @@ select{
 }
 
 
-/* =====================================================
+/* ==================================================
    JOURNEY EVENTS
-===================================================== */
+================================================== */
 
 .journey-event{
   position:absolute;
@@ -615,9 +616,9 @@ select{
 }
 
 
-/* =====================================================
-   STORY PHOTOS
-===================================================== */
+/* ==================================================
+   STORY
+================================================== */
 
 .story-section{
   width:100%;
@@ -632,8 +633,8 @@ select{
 .story-track{
   display:flex;
 
-  justify-content:center;
   align-items:center;
+  justify-content:center;
 
   gap:22px;
 
@@ -641,10 +642,10 @@ select{
 }
 
 .story-photo{
-  flex:0 0 auto;
-
   width:430px;
   height:570px;
+
+  flex:0 0 auto;
 
   object-fit:cover;
 
@@ -655,8 +656,8 @@ select{
 .story-controls{
   display:flex;
 
-  justify-content:center;
   align-items:center;
+  justify-content:center;
 
   gap:14px;
 
@@ -676,9 +677,9 @@ select{
 
   color:var(--gold);
 
-  cursor:pointer;
-
   font-size:20px;
+
+  cursor:pointer;
 
   transition:.25s ease;
 }
@@ -691,6 +692,7 @@ select{
 
 .story-dots{
   display:flex;
+
   gap:8px;
 }
 
@@ -700,8 +702,7 @@ select{
 
   border-radius:50%;
 
-  background:
-    rgba(201,164,91,.28);
+  background:rgba(201,164,91,.28);
 
   transition:.3s ease;
 }
@@ -713,9 +714,9 @@ select{
 }
 
 
-/* =====================================================
+/* ==================================================
    RSVP
-===================================================== */
+================================================== */
 
 .rsvp{
   width:100%;
@@ -739,10 +740,9 @@ select{
 
 .rsvp-form{
   width:100%;
-
   max-width:570px;
 
-  margin:0 auto;
+  margin:auto;
 
   display:flex;
   flex-direction:column;
@@ -783,8 +783,7 @@ select{
 
   border-radius:0;
 
-  padding:
-    12px 2px;
+  padding:12px 2px;
 
   font-size:14px;
 
@@ -822,8 +821,7 @@ select{
 
   border-radius:50px;
 
-  padding:
-    11px 20px;
+  padding:11px 20px;
 
   font-size:14px;
 
@@ -852,9 +850,9 @@ select{
 }
 
 
-/* =====================================================
+/* ==================================================
    CLOSING
-===================================================== */
+================================================== */
 
 .closing{
   text-align:center;
@@ -897,27 +895,30 @@ select{
 }
 
 
-/* =====================================================
+/* ==================================================
    MOBILE
-===================================================== */
+================================================== */
 
 @media(max-width:700px){
 
   .seal{
-    width:215px;
-    height:215px;
+    width:225px;
+    height:225px;
 
     margin-bottom:32px;
   }
 
   .opening-title{
     font-size:17px;
+
     letter-spacing:2px;
   }
 
   .open-btn{
     font-size:17px;
-    padding:13px 40px;
+
+    padding:
+      13px 40px;
   }
 
   .hero{
@@ -930,6 +931,7 @@ select{
 
   .hero-date{
     font-size:13px;
+
     letter-spacing:5px;
   }
 
@@ -950,6 +952,7 @@ select{
 
   .section-title{
     font-size:25px;
+
     margin-bottom:60px;
   }
 
@@ -1013,7 +1016,7 @@ select{
   .story-track{
     justify-content:flex-start;
 
-    overflow-x:hidden;
+    overflow:hidden;
 
     gap:12px;
   }
@@ -1030,10 +1033,15 @@ select{
   .closing-names{
     font-size:31px;
   }
+
 }
 
-
 @media(max-width:420px){
+
+  .seal{
+    width:205px;
+    height:205px;
+  }
 
   .hero-names{
     font-size:52px;
@@ -1066,6 +1074,7 @@ select{
   .closing-text{
     font-size:39px;
   }
+
 }
 
 </style>
@@ -1075,13 +1084,16 @@ select{
 <body>
 
 
-<!-- =====================================================
-     OPENING
-===================================================== -->
+<!-- ==================================================
+     OPENING PAGE
+================================================== -->
 
 <div class="opening" id="opening">
 
   <div class="opening-inner">
+
+
+    <!-- ՔՈ ՆԱԽՈՐԴ ՀԱՎԱՆԱԾ ՍԹԵՄՓԸ -->
 
     <div
       class="seal"
@@ -1094,9 +1106,8 @@ select{
 
       <img
         src="./stamp.png"
-        alt="Ոսկեգույն սթեմփ"
+        alt="Արթուր և Մարիամ սթեմփ"
         draggable="false"
-        onerror="this.style.display='none';"
       >
 
     </div>
@@ -1109,11 +1120,13 @@ select{
 
     <button
       class="open-btn"
+      id="openBtn"
       type="button"
       onclick="openInvitation()"
     >
       Բացել
     </button>
+
 
   </div>
 
@@ -1121,14 +1134,16 @@ select{
 
 
 
-<!-- =====================================================
+<!-- ==================================================
      MAIN
-===================================================== -->
+================================================== -->
 
 <main id="main">
 
 
-  <!-- HERO -->
+  <!-- ==================================================
+       HERO
+  ================================================== -->
 
   <section class="hero">
 
@@ -1163,11 +1178,12 @@ select{
 
 
 
-  <!-- =====================================================
+  <!-- ==================================================
        JOURNEY
-  ===================================================== -->
+  ================================================== -->
 
   <section class="journey">
+
 
     <h2 class="section-title">
       Օրվա ընթացքը
@@ -1254,9 +1270,11 @@ select{
 
 
 
-      <!-- EVENT 1 -->
+      <!-- 14:00 -->
 
-      <div class="journey-event left event-1">
+      <div
+        class="journey-event left event-1"
+      >
 
         <div class="event-time">
           14:00
@@ -1274,9 +1292,11 @@ select{
 
 
 
-      <!-- EVENT 2 -->
+      <!-- 15:30 -->
 
-      <div class="journey-event right event-2">
+      <div
+        class="journey-event right event-2"
+      >
 
         <div class="event-time">
           15:30
@@ -1294,9 +1314,11 @@ select{
 
 
 
-      <!-- EVENT 3 -->
+      <!-- 17:00 -->
 
-      <div class="journey-event left event-3">
+      <div
+        class="journey-event left event-3"
+      >
 
         <div class="event-time">
           17:00
@@ -1309,7 +1331,6 @@ select{
         <div class="event-place">
           Սաղմոսավանք
         </div>
-
 
         <a
           class="map-link"
@@ -1324,9 +1345,11 @@ select{
 
 
 
-      <!-- EVENT 4 -->
+      <!-- 19:00 -->
 
-      <div class="journey-event right event-4">
+      <div
+        class="journey-event right event-4"
+      >
 
         <div class="event-time">
           19:00
@@ -1339,7 +1362,6 @@ select{
         <div class="event-place">
           Palladium Hall
         </div>
-
 
         <a
           class="map-link"
@@ -1359,9 +1381,9 @@ select{
 
 
 
-  <!-- =====================================================
-       STORY PHOTOS
-  ===================================================== -->
+  <!-- ==================================================
+       STORY
+  ================================================== -->
 
   <section class="story-section">
 
@@ -1373,13 +1395,14 @@ select{
       <img
         src="./story1.jpg"
         class="story-photo"
-        alt="Մեր լուսանկարը 1"
+        alt="Արթուր և Մարիամ"
       >
+
 
       <img
         src="./story2.jpg"
         class="story-photo"
-        alt="Մեր լուսանկարը 2"
+        alt="Արթուր և Մարիամ"
       >
 
     </div>
@@ -1387,11 +1410,11 @@ select{
 
     <div class="story-controls">
 
+
       <button
         class="story-arrow"
         id="storyPrev"
         type="button"
-        aria-label="Նախորդ լուսանկարը"
       >
         ‹
       </button>
@@ -1403,6 +1426,7 @@ select{
           class="story-dot active"
           data-index="0"
         ></span>
+
 
         <span
           class="story-dot"
@@ -1416,10 +1440,10 @@ select{
         class="story-arrow"
         id="storyNext"
         type="button"
-        aria-label="Հաջորդ լուսանկարը"
       >
         ›
       </button>
+
 
     </div>
 
@@ -1427,11 +1451,12 @@ select{
 
 
 
-  <!-- =====================================================
+  <!-- ==================================================
        RSVP
-  ===================================================== -->
+  ================================================== -->
 
   <section class="rsvp">
+
 
     <h2 class="rsvp-title">
       Կհանդիպե՞նք մեր օրը
@@ -1501,8 +1526,8 @@ select{
 
           <option
             value=""
-            selected
             disabled
+            selected
           >
             Ընտրեք
           </option>
@@ -1538,8 +1563,8 @@ select{
 
           <option
             value=""
-            selected
             disabled
+            selected
           >
             Ընտրեք
           </option>
@@ -1575,31 +1600,17 @@ select{
 
           <option
             value=""
-            selected
             disabled
+            selected
           >
             Ընտրեք
           </option>
 
-          <option value="1">
-            1
-          </option>
-
-          <option value="2">
-            2
-          </option>
-
-          <option value="3">
-            3
-          </option>
-
-          <option value="4">
-            4
-          </option>
-
-          <option value="5">
-            5
-          </option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
 
         </select>
 
@@ -1628,15 +1639,16 @@ select{
         Ձեր պատասխանը գրանցվեց։
       </div>
 
+
     </form>
 
   </section>
 
 
 
-  <!-- =====================================================
+  <!-- ==================================================
        CLOSING
-  ===================================================== -->
+  ================================================== -->
 
   <section class="closing">
 
@@ -1665,9 +1677,9 @@ select{
 
 <script>
 
-/* =====================================================
-   OPEN INVITATION
-===================================================== */
+/* ==================================================
+   OPENING
+================================================== */
 
 const opening =
   document.getElementById("opening");
@@ -1675,32 +1687,44 @@ const opening =
 const main =
   document.getElementById("main");
 
+
 function openInvitation(){
 
-  if(!opening) return;
+  if(!opening){
+    return;
+  }
 
   opening.classList.add("hide");
 
-  setTimeout(() => {
+
+  setTimeout(function(){
 
     opening.style.display="none";
+
 
     if(main){
       main.classList.add("visible");
     }
 
+
     window.scrollTo(0,0);
+
 
     updateHeart();
 
   },900);
+
 }
 
 
-/* keyboard */
+
+/* ==================================================
+   STAMP KEYBOARD
+================================================== */
 
 const seal =
   document.getElementById("seal");
+
 
 if(seal){
 
@@ -1726,9 +1750,9 @@ if(seal){
 
 
 
-/* =====================================================
+/* ==================================================
    MOVING 7
-===================================================== */
+================================================== */
 
 const routeArea =
   document.getElementById("routeArea");
@@ -1739,18 +1763,26 @@ const movingHeart =
 
 function updateHeart(){
 
-  if(!routeArea || !movingHeart){
+  if(
+    !routeArea ||
+    !movingHeart
+  ){
     return;
   }
+
 
   const rect =
     routeArea.getBoundingClientRect();
 
+
   const center =
-    window.innerHeight * .5;
+    window.innerHeight * 0.5;
+
 
   let progress =
-    (center - rect.top) / rect.height;
+    (center - rect.top) /
+    rect.height;
+
 
   progress =
     Math.max(
@@ -1765,6 +1797,7 @@ function updateHeart(){
   const topPadding=55;
 
   const bottomPadding=55;
+
 
   const travel =
     routeArea.offsetHeight -
@@ -1789,20 +1822,18 @@ window.addEventListener(
   {passive:true}
 );
 
-
 window.addEventListener(
   "resize",
   updateHeart
 );
 
-
 updateHeart();
 
 
 
-/* =====================================================
+/* ==================================================
    STORY SLIDER
-===================================================== */
+================================================== */
 
 const storyTrack =
   document.getElementById("storyTrack");
@@ -1815,6 +1846,7 @@ const storyNext =
 
 const storyDots =
   document.querySelectorAll(".story-dot");
+
 
 let currentStory=0;
 
@@ -1841,9 +1873,11 @@ function showStory(index){
         ".story-photo"
       );
 
+
     if(photo){
 
       const gap=12;
+
 
       storyTrack.scrollTo({
 
@@ -1861,7 +1895,7 @@ function showStory(index){
 
 
   storyDots.forEach(
-    (dot,index)=>{
+    function(dot,index){
 
       dot.classList.toggle(
         "active",
@@ -1878,10 +1912,12 @@ if(storyPrev){
 
   storyPrev.addEventListener(
     "click",
-    ()=>{
+    function(){
+
       showStory(
         currentStory-1
       );
+
     }
   );
 
@@ -1892,10 +1928,12 @@ if(storyNext){
 
   storyNext.addEventListener(
     "click",
-    ()=>{
+    function(){
+
       showStory(
         currentStory+1
       );
+
     }
   );
 
@@ -1903,16 +1941,18 @@ if(storyNext){
 
 
 storyDots.forEach(
-  dot=>{
+  function(dot){
 
     dot.addEventListener(
       "click",
-      ()=>{
+      function(){
+
         showStory(
           Number(
             dot.dataset.index
           )
         );
+
       }
     );
 
@@ -1921,9 +1961,9 @@ storyDots.forEach(
 
 
 
-/* =====================================================
+/* ==================================================
    RSVP
-===================================================== */
+================================================== */
 
 const rsvpForm =
   document.getElementById("rsvpForm");
