@@ -1,1967 +1,1972 @@
 <!DOCTYPE html>
 <html lang="hy">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Արթուր & Մարիամ — 07.07.2027</title>
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600&family=Marck+Script&display=swap');
-
-    :root{
-      --navy:#071b2b;
-      --cream:#f1e4c5;
-      --gold:#c9a45b;
-      --gold-light:#e3c981;
-      --muted:#b9aa88;
-    }
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      background:var(--navy);
-      color:var(--cream);
-      font-family:"Comfortaa", sans-serif;
-      overflow-x:hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Արթուր & Մարիամ — 07.07.2027</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600&family=Marck+Script&display=swap');
+
+:root{
+  --navy:#071b2b;
+  --cream:#f1e4c5;
+  --gold:#c9a45b;
+  --gold-light:#e2c77e;
+  --muted:#b8a887;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--navy);
+  color:var(--cream);
+  font-family:"Comfortaa",sans-serif;
+  overflow-x:hidden;
+}
 
-    button,
-    input,
-    select{
-      font-family:inherit;
-    }
+img{
+  display:block;
+  max-width:100%;
+}
 
-    img{
-      display:block;
-      max-width:100%;
-    }
+button,
+input,
+select{
+  font-family:inherit;
+}
 
 
-    /* =========================================
-       OPENING
-    ========================================= */
+/* =====================================================
+   OPENING
+===================================================== */
 
-    .opening{
-      position:fixed;
-      inset:0;
-      z-index:99999;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(201,164,91,.06),
-          transparent 45%
-        ),
-        var(--navy);
+.opening{
+  position:fixed;
+  inset:0;
+  z-index:99999;
 
-      opacity:1;
-      visibility:visible;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(201,164,91,.07),
+      transparent 42%
+    ),
+    var(--navy);
 
-      transition:
-        opacity .9s ease,
-        visibility .9s ease;
-    }
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-    .opening.hide{
-      opacity:0;
-      visibility:hidden;
-      pointer-events:none;
-    }
+  opacity:1;
+  visibility:visible;
 
-    .opening-inner{
-      width:100%;
-      min-height:100vh;
+  transition:
+    opacity .9s ease,
+    visibility .9s ease;
+}
 
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
+.opening.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
 
-      padding:30px 20px;
-    }
+.opening-inner{
+  width:100%;
+  min-height:100vh;
 
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
 
-    /* =========================================
-       YOUR STAMP
-    ========================================= */
+  padding:30px 20px;
+}
 
-    .seal{
-      width:270px;
-      height:270px;
 
-      display:flex;
-      align-items:center;
-      justify-content:center;
+/* =====================================================
+   YOUR STAMP IMAGE
+===================================================== */
 
-      cursor:pointer;
+.seal{
+  width:250px;
+  height:250px;
 
-      margin-bottom:35px;
+  position:relative;
 
-      position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-      -webkit-tap-highlight-color:transparent;
-      user-select:none;
+  cursor:pointer;
 
-      animation:
-        stampIn 1s ease both;
+  margin-bottom:38px;
 
-      transition:
-        transform .35s ease;
-    }
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
 
-    .seal img{
-      width:100%;
-      height:100%;
+  animation:stampIn 1s ease both;
 
-      object-fit:contain;
+  transition:
+    transform .35s ease;
+}
 
-      display:block;
+.seal img{
+  width:100%;
+  height:100%;
 
-      pointer-events:none;
-      user-select:none;
-      -webkit-user-drag:none;
-    }
+  object-fit:contain;
 
-    .seal:hover{
-      transform:scale(1.045);
-    }
+  display:block;
 
-    .seal:active{
-      transform:scale(.96);
-    }
+  pointer-events:none;
 
-    @keyframes stampIn{
-      0%{
-        opacity:0;
-        transform:scale(.65) rotate(-8deg);
-      }
+  user-select:none;
 
-      100%{
-        opacity:1;
-        transform:scale(1) rotate(0);
-      }
-    }
+  -webkit-user-drag:none;
+}
 
+.seal:hover{
+  transform:scale(1.05);
+}
 
-    /* =========================================
-       OPENING TEXT
-    ========================================= */
+.seal:active{
+  transform:scale(.95);
+}
 
-    .opening-title{
-      color:var(--cream);
+@keyframes stampIn{
+  from{
+    opacity:0;
+    transform:scale(.65) rotate(-8deg);
+  }
 
-      font-size:21px;
-      line-height:1.5;
+  to{
+    opacity:1;
+    transform:scale(1) rotate(0);
+  }
+}
 
-      text-align:center;
-      letter-spacing:3px;
 
-      margin-bottom:28px;
+/* =====================================================
+   OPENING TEXT
+===================================================== */
 
-      animation:
-        fadeUp .9s ease .2s both;
-    }
+.opening-title{
+  color:var(--cream);
 
-    .open-btn{
-      border:1px solid var(--gold);
+  text-align:center;
 
-      background:transparent;
+  font-size:21px;
 
-      color:var(--gold-light);
+  letter-spacing:3px;
 
-      border-radius:50px;
+  line-height:1.5;
 
-      padding:13px 45px;
+  margin-bottom:29px;
 
-      font-size:18px;
+  animation:fadeUp .9s ease .25s both;
+}
 
-      cursor:pointer;
+.open-btn{
+  border:1px solid var(--gold);
 
-      transition:
-        background .3s ease,
-        color .3s ease,
-        transform .3s ease;
+  background:transparent;
 
-      animation:
-        fadeUp .9s ease .35s both;
-    }
+  color:var(--gold-light);
 
-    .open-btn:hover{
-      background:var(--gold);
-      color:var(--navy);
+  border-radius:50px;
 
-      transform:translateY(-2px);
-    }
+  padding:14px 44px;
 
-    .open-btn:active{
-      transform:scale(.96);
-    }
+  font-size:18px;
 
-    @keyframes fadeUp{
-      from{
-        opacity:0;
-        transform:translateY(18px);
-      }
+  cursor:pointer;
 
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
+  transition:
+    background .3s ease,
+    color .3s ease,
+    transform .3s ease;
 
+  animation:fadeUp .9s ease .4s both;
+}
 
-    /* =========================================
-       MAIN
-    ========================================= */
+.open-btn:hover{
+  background:var(--gold);
+  color:var(--navy);
 
-    #main{
-      opacity:0;
-      transform:translateY(20px);
+  transform:translateY(-2px);
+}
 
-      transition:
-        opacity 1s ease .25s,
-        transform 1s ease .25s;
-    }
+.open-btn:active{
+  transform:scale(.96);
+}
 
-    #main.visible{
-      opacity:1;
-      transform:translateY(0);
-    }
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
 
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
 
-    /* =========================================
-       HERO
-    ========================================= */
 
-    .hero{
-      min-height:100vh;
+/* =====================================================
+   MAIN
+===================================================== */
 
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
+#main{
+  opacity:0;
 
-      text-align:center;
+  transform:translateY(25px);
 
-      padding:
-        70px
-        20px
-        110px;
+  transition:
+    opacity 1s ease .2s,
+    transform 1s ease .2s;
+}
 
-      position:relative;
-    }
+#main.visible{
+  opacity:1;
+  transform:translateY(0);
+}
 
-    .hero-date{
-      color:var(--gold-light);
 
-      font-size:15px;
+/* =====================================================
+   HERO
+===================================================== */
 
-      letter-spacing:7px;
+.hero{
+  min-height:100vh;
 
-      margin-bottom:20px;
-    }
+  position:relative;
 
-    .hero-names{
-      color:var(--cream);
+  display:flex;
+  flex-direction:column;
 
-      font-family:"Marck Script", cursive;
+  align-items:center;
+  justify-content:center;
 
-      font-size:86px;
-      line-height:1;
+  text-align:center;
 
-      font-weight:400;
+  padding:
+    70px 20px
+    110px;
+}
 
-      margin-bottom:35px;
-    }
+.hero-date{
+  color:var(--gold-light);
 
-    .hero-names span{
-      color:var(--gold);
-    }
+  font-size:15px;
 
-    .hero-photo{
-      width:min(760px,94vw);
-      height:min(640px,72vh);
+  letter-spacing:7px;
 
-      object-fit:cover;
+  margin-bottom:24px;
+}
 
-      border:none;
-      border-radius:0;
+.hero-names{
+  font-family:"Marck Script",cursive;
 
-      box-shadow:
-        0 25px 70px rgba(0,0,0,.32);
+  color:var(--cream);
 
-      margin-bottom:30px;
-    }
+  font-size:86px;
 
-    .hero-caption{
-      max-width:600px;
+  line-height:1;
 
-      color:var(--muted);
+  font-weight:400;
 
-      font-size:14px;
+  margin-bottom:34px;
+}
 
-      line-height:1.9;
+.hero-names span{
+  color:var(--gold);
+}
 
-      letter-spacing:1px;
-    }
+.hero-photo{
+  width:min(760px,94vw);
 
-    .scroll-down{
-      position:absolute;
+  height:min(640px,72vh);
 
-      bottom:26px;
-      left:50%;
+  object-fit:cover;
 
-      transform:translateX(-50%);
+  margin-bottom:30px;
 
-      color:var(--gold);
+  border:none;
+  border-radius:0;
 
-      font-size:11px;
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.32);
+}
 
-      letter-spacing:4px;
+.hero-caption{
+  max-width:620px;
 
-      animation:scrollDown 2s ease-in-out infinite;
-    }
+  color:var(--muted);
 
-    @keyframes scrollDown{
-      0%,100%{
-        opacity:.4;
-        transform:translate(-50%,0);
-      }
+  font-size:14px;
 
-      50%{
-        opacity:1;
-        transform:translate(-50%,8px);
-      }
-    }
+  line-height:1.9;
 
+  letter-spacing:1px;
+}
 
-    /* =========================================
-       JOURNEY
-    ========================================= */
+.scroll-down{
+  position:absolute;
 
-    .journey{
-      max-width:900px;
+  bottom:28px;
 
-      margin:0 auto;
+  left:50%;
 
-      padding:
-        100px
-        20px
-        120px;
-    }
+  transform:translateX(-50%);
 
-    .section-title{
-      text-align:center;
+  color:var(--gold);
 
-      color:var(--cream);
+  font-size:11px;
 
-      font-size:30px;
-      font-weight:500;
+  letter-spacing:4px;
 
-      letter-spacing:2px;
+  animation:scrollPulse 2s ease-in-out infinite;
+}
 
-      margin-bottom:75px;
-    }
+@keyframes scrollPulse{
+  0%,100%{
+    opacity:.4;
+    transform:translate(-50%,0);
+  }
 
-    .route-area{
-      position:relative;
+  50%{
+    opacity:1;
+    transform:translate(-50%,8px);
+  }
+}
 
-      width:100%;
-      max-width:650px;
 
-      min-height:920px;
+/* =====================================================
+   JOURNEY
+===================================================== */
 
-      margin:0 auto;
-    }
+.journey{
+  width:100%;
+  max-width:900px;
 
+  margin:0 auto;
 
-    /* =========================================
-       SVG ROUTE
-    ========================================= */
+  padding:
+    100px 18px
+    120px;
+}
 
-    .route-svg{
-      position:absolute;
+.section-title{
+  text-align:center;
 
-      top:0;
-      left:50%;
+  color:var(--cream);
 
-      width:250px;
-      height:880px;
+  font-size:30px;
 
-      transform:translateX(-50%);
+  font-weight:500;
 
-      overflow:visible;
-    }
+  letter-spacing:2px;
 
-    .route-line{
-      fill:none;
+  margin-bottom:75px;
+}
 
-      stroke:var(--gold);
+.route-area{
+  width:100%;
 
-      stroke-width:2;
+  max-width:650px;
 
-      stroke-linecap:round;
+  min-height:920px;
 
-      stroke-dasharray:6 8;
+  position:relative;
 
-      opacity:.82;
-    }
+  margin:auto;
+}
 
 
-    /* =========================================
-       6 & 8
-    ========================================= */
+/* =====================================================
+   ROUTE
+===================================================== */
 
-    .fixed-number{
-      position:absolute;
+.route-svg{
+  position:absolute;
 
-      width:62px;
-      height:62px;
+  width:250px;
+  height:880px;
 
-      border:1px solid var(--gold);
+  top:0;
+  left:50%;
 
-      border-radius:50%;
+  transform:translateX(-50%);
 
-      display:flex;
-      align-items:center;
-      justify-content:center;
+  overflow:visible;
+}
 
-      color:var(--cream);
+.route-line{
+  fill:none;
 
-      font-size:27px;
+  stroke:var(--gold);
 
-      z-index:4;
-    }
+  stroke-width:2;
 
-    .fixed-six{
-      left:calc(50% - 155px);
-      top:50%;
-      transform:translateY(-50%);
-    }
+  stroke-linecap:round;
 
-    .fixed-eight{
-      right:calc(50% - 155px);
-      top:50%;
-      transform:translateY(-50%);
-    }
+  stroke-dasharray:6 8;
 
+  opacity:.82;
+}
 
-    /* =========================================
-       MOVING HEART WITH 7
-    ========================================= */
 
-    .moving-heart{
-      position:absolute;
+/* =====================================================
+   6 & 8
+===================================================== */
 
-      width:100px;
-      height:100px;
+.fixed-number{
+  position:absolute;
 
-      left:50%;
+  width:62px;
+  height:62px;
 
-      top:0;
+  border:
+    1px solid var(--gold);
 
-      transform:translate(-50%,-50%);
+  border-radius:50%;
 
-      z-index:10;
+  display:flex;
 
-      pointer-events:none;
+  align-items:center;
+  justify-content:center;
 
-      transition:
-        top .25s cubic-bezier(.2,.75,.2,1);
-    }
+  color:var(--cream);
 
-    .real-heart{
-      width:100%;
-      height:100%;
-      display:block;
-    }
+  font-size:27px;
 
-    .real-heart path{
-      fill:rgba(201,164,91,.08);
+  z-index:5;
+}
 
-      stroke:var(--gold);
+.fixed-six{
+  left:calc(50% - 155px);
+  top:50%;
 
-      stroke-width:3;
-    }
+  transform:translateY(-50%);
+}
 
-    .real-heart text{
-      fill:var(--gold-light);
+.fixed-eight{
+  right:calc(50% - 155px);
+  top:50%;
 
-      font-family:"Comfortaa", sans-serif;
+  transform:translateY(-50%);
+}
 
-      font-size:36px;
 
-      font-weight:500;
+/* =====================================================
+   MOVING HEART / 7
+===================================================== */
 
-      text-anchor:middle;
+.moving-heart{
+  position:absolute;
 
-      dominant-baseline:middle;
-    }
+  width:105px;
+  height:105px;
 
+  left:50%;
 
-    /* =========================================
-       JOURNEY TEXT
-    ========================================= */
+  top:55px;
 
-    .journey-event{
-      position:absolute;
+  transform:
+    translate(-50%,-50%);
 
-      width:210px;
+  z-index:10;
 
-      text-align:center;
-    }
+  pointer-events:none;
 
-    .journey-event.left{
-      right:calc(50% + 120px);
-    }
+  transition:
+    top .25s cubic-bezier(.2,.75,.2,1);
+}
 
-    .journey-event.right{
-      left:calc(50% + 120px);
-    }
+.real-heart{
+  width:100%;
+  height:100%;
+  display:block;
+  overflow:visible;
+}
 
-    .event-1{
-      top:5px;
-    }
+.real-heart path{
+  fill:rgba(201,164,91,.08);
 
-    .event-2{
-      top:250px;
-    }
+  stroke:var(--gold);
 
-    .event-3{
-      top:495px;
-    }
+  stroke-width:3;
+}
 
-    .event-4{
-      top:740px;
-    }
+.real-heart text{
+  fill:var(--gold-light);
 
-    .event-time{
-      color:var(--gold-light);
+  font-size:37px;
 
-      font-size:13px;
+  font-family:"Comfortaa",sans-serif;
 
-      letter-spacing:3px;
+  font-weight:500;
 
-      margin-bottom:8px;
-    }
+  text-anchor:middle;
 
-    .event-title{
-      color:var(--cream);
+  dominant-baseline:middle;
+}
 
-      font-size:17px;
 
-      line-height:1.5;
+/* =====================================================
+   JOURNEY EVENTS
+===================================================== */
 
-      margin-bottom:5px;
-    }
+.journey-event{
+  position:absolute;
 
-    .event-place{
-      color:var(--muted);
+  width:210px;
 
-      font-size:12px;
+  text-align:center;
+}
 
-      line-height:1.7;
-    }
+.journey-event.left{
+  right:calc(50% + 120px);
+}
 
-    .map-link{
-      display:inline-block;
+.journey-event.right{
+  left:calc(50% + 120px);
+}
 
-      color:var(--gold);
+.event-1{
+  top:5px;
+}
 
-      font-size:11px;
+.event-2{
+  top:250px;
+}
 
-      text-decoration:none;
+.event-3{
+  top:495px;
+}
 
-      margin-top:8px;
+.event-4{
+  top:740px;
+}
 
-      padding-bottom:3px;
+.event-time{
+  color:var(--gold-light);
 
-      border-bottom:
-        1px solid rgba(201,164,91,.5);
+  font-size:13px;
 
-      transition:.25s ease;
-    }
+  letter-spacing:3px;
 
-    .map-link:hover{
-      color:var(--cream);
-      border-color:var(--cream);
-    }
+  margin-bottom:8px;
+}
 
+.event-title{
+  color:var(--cream);
 
-    /* =========================================
-       STORY
-    ========================================= */
+  font-size:17px;
 
-    .story-section{
-      padding:
-        80px
-        0
-        110px;
+  line-height:1.5;
 
-      overflow:hidden;
-    }
+  margin-bottom:5px;
+}
 
-    .story-track{
-      display:flex;
+.event-place{
+  color:var(--muted);
 
-      justify-content:center;
-      align-items:center;
+  font-size:12px;
 
-      gap:22px;
+  line-height:1.7;
+}
 
-      padding:0 20px;
-    }
+.map-link{
+  display:inline-block;
 
-    .story-photo{
-      width:430px;
-      height:570px;
+  color:var(--gold);
 
-      object-fit:cover;
+  font-size:11px;
 
-      flex:0 0 auto;
+  text-decoration:none;
 
-      box-shadow:
-        0 22px 55px rgba(0,0,0,.28);
-    }
+  margin-top:8px;
 
-    .story-controls{
-      display:flex;
+  padding-bottom:3px;
 
-      align-items:center;
-      justify-content:center;
+  border-bottom:
+    1px solid rgba(201,164,91,.5);
 
-      gap:14px;
+  transition:.25s ease;
+}
 
-      margin-top:28px;
-    }
+.map-link:hover{
+  color:var(--cream);
 
-    .story-arrow{
-      width:40px;
-      height:40px;
+  border-color:var(--cream);
+}
 
-      border:
-        1px solid rgba(201,164,91,.65);
 
-      border-radius:50%;
+/* =====================================================
+   STORY PHOTOS
+===================================================== */
 
-      background:transparent;
+.story-section{
+  width:100%;
 
-      color:var(--gold);
+  padding:
+    80px 0
+    110px;
 
-      cursor:pointer;
+  overflow:hidden;
+}
 
-      font-size:20px;
+.story-track{
+  display:flex;
 
-      transition:.25s ease;
-    }
+  justify-content:center;
+  align-items:center;
 
-    .story-arrow:hover{
-      background:var(--gold);
-      color:var(--navy);
-    }
+  gap:22px;
 
-    .story-dots{
-      display:flex;
-      gap:8px;
-    }
+  padding:0 20px;
+}
 
-    .story-dot{
-      width:7px;
-      height:7px;
+.story-photo{
+  flex:0 0 auto;
 
-      border-radius:50%;
+  width:430px;
+  height:570px;
 
-      background:
-        rgba(201,164,91,.28);
+  object-fit:cover;
 
-      transition:.3s ease;
-    }
+  box-shadow:
+    0 22px 55px rgba(0,0,0,.28);
+}
 
-    .story-dot.active{
-      background:var(--gold);
-      transform:scale(1.25);
-    }
+.story-controls{
+  display:flex;
 
+  justify-content:center;
+  align-items:center;
 
-    /* =========================================
-       RSVP
-    ========================================= */
+  gap:14px;
 
-    .rsvp{
-      padding:
-        70px
-        20px
-        65px;
-    }
+  margin-top:28px;
+}
 
-    .rsvp-title{
-      text-align:center;
+.story-arrow{
+  width:40px;
+  height:40px;
 
-      color:var(--cream);
+  border:
+    1px solid rgba(201,164,91,.65);
 
-      font-size:29px;
+  border-radius:50%;
 
-      font-weight:500;
+  background:transparent;
 
-      margin-bottom:45px;
-    }
+  color:var(--gold);
 
-    .rsvp-form{
-      width:100%;
-      max-width:570px;
+  cursor:pointer;
 
-      margin:0 auto;
+  font-size:20px;
 
-      display:flex;
-      flex-direction:column;
+  transition:.25s ease;
+}
 
-      gap:17px;
-    }
+.story-arrow:hover{
+  background:var(--gold);
 
-    .form-group{
-      display:flex;
-      flex-direction:column;
+  color:var(--navy);
+}
 
-      gap:8px;
-    }
+.story-dots{
+  display:flex;
+  gap:8px;
+}
 
-    .form-label{
-      color:var(--muted);
+.story-dot{
+  width:7px;
+  height:7px;
 
-      font-size:12px;
+  border-radius:50%;
 
-      letter-spacing:1px;
-    }
+  background:
+    rgba(201,164,91,.28);
 
-    .form-input,
-    .form-select{
-      width:100%;
+  transition:.3s ease;
+}
 
-      border:none;
+.story-dot.active{
+  background:var(--gold);
 
-      border-bottom:
-        1px solid rgba(201,164,91,.4);
+  transform:scale(1.25);
+}
 
-      background:transparent;
 
-      color:var(--cream);
+/* =====================================================
+   RSVP
+===================================================== */
 
-      outline:none;
+.rsvp{
+  width:100%;
 
-      padding:
-        12px
-        2px;
+  padding:
+    70px 20px
+    65px;
+}
 
-      font-size:14px;
+.rsvp-title{
+  text-align:center;
 
-      border-radius:0;
+  color:var(--cream);
 
-      transition:.3s ease;
-    }
+  font-size:29px;
 
-    .form-input:focus,
-    .form-select:focus{
-      border-color:var(--gold);
-    }
+  font-weight:500;
 
-    .form-select option{
-      background:var(--navy);
-      color:var(--cream);
-    }
+  margin-bottom:45px;
+}
 
-    .rsvp-button-wrap{
-      display:flex;
-      justify-content:center;
+.rsvp-form{
+  width:100%;
 
-      margin-top:23px;
-    }
+  max-width:570px;
 
-    .rsvp-button{
-      width:67%;
+  margin:0 auto;
 
-      border:1px solid var(--gold);
+  display:flex;
+  flex-direction:column;
 
-      background:transparent;
+  gap:17px;
+}
 
-      color:var(--gold-light);
+.form-group{
+  display:flex;
 
-      border-radius:50px;
+  flex-direction:column;
 
-      padding:11px 20px;
+  gap:8px;
+}
 
-      font-size:14px;
+.form-label{
+  color:var(--muted);
 
-      cursor:pointer;
+  font-size:12px;
 
-      transition:.3s ease;
-    }
+  letter-spacing:1px;
+}
 
-    .rsvp-button:hover{
-      background:var(--gold);
+.form-input,
+.form-select{
+  width:100%;
 
-      color:var(--navy);
-    }
+  background:transparent;
 
-    .success-message{
-      display:none;
+  color:var(--cream);
 
-      text-align:center;
+  border:none;
 
-      color:var(--gold-light);
+  border-bottom:
+    1px solid rgba(201,164,91,.4);
 
-      font-size:13px;
+  outline:none;
 
-      line-height:1.8;
+  border-radius:0;
 
-      margin-top:23px;
-    }
+  padding:
+    12px 2px;
 
+  font-size:14px;
 
-    /* =========================================
-       CLOSING
-    ========================================= */
+  transition:.3s ease;
+}
 
-    .closing{
-      text-align:center;
+.form-input:focus,
+.form-select:focus{
+  border-color:var(--gold);
+}
 
-      padding:
-        45px
-        20px
-        35px;
-    }
+.form-select option{
+  background:var(--navy);
+  color:var(--cream);
+}
 
-    .closing-text{
-      color:var(--cream);
+.rsvp-button-wrap{
+  width:100%;
 
-      font-family:"Marck Script", cursive;
+  display:flex;
+  justify-content:center;
 
-      font-size:56px;
+  margin-top:24px;
+}
 
-      line-height:1.2;
+.rsvp-button{
+  width:67%;
 
-      margin-bottom:23px;
-    }
+  border:
+    1px solid var(--gold);
 
-    .closing-names{
-      color:var(--gold-light);
+  background:transparent;
 
-      font-family:"Marck Script", cursive;
+  color:var(--gold-light);
 
-      font-size:35px;
+  border-radius:50px;
 
-      margin-bottom:20px;
-    }
+  padding:
+    11px 20px;
 
-    .footer-contact{
-      color:var(--muted);
+  font-size:14px;
 
-      font-size:11px;
+  cursor:pointer;
 
-      line-height:2;
+  transition:.3s ease;
+}
 
-      letter-spacing:1px;
-    }
+.rsvp-button:hover{
+  background:var(--gold);
+  color:var(--navy);
+}
 
+.success-message{
+  display:none;
 
-    /* =========================================
-       MOBILE
-    ========================================= */
+  text-align:center;
 
-    @media(max-width:700px){
+  color:var(--gold-light);
 
-      .seal{
-        width:215px;
-        height:215px;
+  font-size:13px;
 
-        margin-bottom:32px;
-      }
+  line-height:1.8;
 
-      .opening-title{
-        font-size:17px;
-        letter-spacing:2px;
-      }
+  margin-top:23px;
+}
 
-      .open-btn{
-        padding:13px 40px;
-        font-size:17px;
-      }
 
-      .hero{
-        min-height:auto;
+/* =====================================================
+   CLOSING
+===================================================== */
 
-        padding:
-          80px
-          20px
-          110px;
-      }
+.closing{
+  text-align:center;
 
-      .hero-date{
-        font-size:13px;
-        letter-spacing:5px;
-      }
+  padding:
+    45px 20px
+    35px;
+}
 
-      .hero-names{
-        font-size:60px;
-      }
+.closing-text{
+  color:var(--cream);
 
-      .hero-photo{
-        width:94vw;
-        height:500px;
-      }
+  font-family:"Marck Script",cursive;
 
-      .journey{
-        padding:
-          75px
-          15px
-          100px;
-      }
+  font-size:56px;
 
-      .section-title{
-        font-size:25px;
-        margin-bottom:60px;
-      }
+  line-height:1.2;
 
-      .route-area{
-        min-height:860px;
-      }
+  margin-bottom:23px;
+}
 
-      .route-svg{
-        width:190px;
-        height:820px;
-      }
+.closing-names{
+  color:var(--gold-light);
 
-      .moving-heart{
-        width:86px;
-        height:86px;
-      }
+  font-family:"Marck Script",cursive;
 
-      .real-heart text{
-        font-size:30px;
-      }
+  font-size:35px;
 
-      .fixed-number{
-        width:52px;
-        height:52px;
-        font-size:22px;
-      }
+  margin-bottom:20px;
+}
 
-      .fixed-six{
-        left:calc(50% - 122px);
-      }
+.footer-contact{
+  color:var(--muted);
 
-      .fixed-eight{
-        right:calc(50% - 122px);
-      }
+  font-size:11px;
 
-      .journey-event{
-        width:145px;
-      }
+  line-height:2;
 
-      .journey-event.left{
-        right:calc(50% + 60px);
-      }
+  letter-spacing:1px;
+}
 
-      .journey-event.right{
-        left:calc(50% + 60px);
-      }
 
-      .event-title{
-        font-size:14px;
-      }
+/* =====================================================
+   MOBILE
+===================================================== */
 
-      .event-place{
-        font-size:11px;
-      }
+@media(max-width:700px){
 
-      .event-time{
-        font-size:11px;
-      }
+  .seal{
+    width:215px;
+    height:215px;
 
-      .story-track{
-        justify-content:flex-start;
+    margin-bottom:32px;
+  }
 
-        overflow:hidden;
+  .opening-title{
+    font-size:17px;
+    letter-spacing:2px;
+  }
 
-        gap:12px;
-      }
+  .open-btn{
+    font-size:17px;
+    padding:13px 40px;
+  }
 
-      .story-photo{
-        width:82vw;
-        height:530px;
-      }
+  .hero{
+    min-height:auto;
 
-      .closing-text{
-        font-size:43px;
-      }
+    padding:
+      80px 20px
+      110px;
+  }
 
-      .closing-names{
-        font-size:31px;
-      }
-    }
+  .hero-date{
+    font-size:13px;
+    letter-spacing:5px;
+  }
 
+  .hero-names{
+    font-size:60px;
+  }
 
-    @media(max-width:420px){
+  .hero-photo{
+    width:94vw;
+    height:500px;
+  }
 
-      .hero-names{
-        font-size:52px;
-      }
+  .journey{
+    padding:
+      75px 15px
+      100px;
+  }
 
-      .hero-photo{
-        height:460px;
-      }
+  .section-title{
+    font-size:25px;
+    margin-bottom:60px;
+  }
 
-      .route-area{
-        min-height:840px;
-      }
+  .route-area{
+    min-height:860px;
+  }
 
-      .journey-event{
-        width:122px;
-      }
+  .route-svg{
+    width:190px;
+    height:820px;
+  }
 
-      .journey-event.left{
-        right:calc(50% + 46px);
-      }
+  .moving-heart{
+    width:87px;
+    height:87px;
+  }
 
-      .journey-event.right{
-        left:calc(50% + 46px);
-      }
+  .real-heart text{
+    font-size:30px;
+  }
 
-      .fixed-six{
-        left:calc(50% - 108px);
-      }
+  .fixed-number{
+    width:52px;
+    height:52px;
 
-      .fixed-eight{
-        right:calc(50% - 108px);
-      }
+    font-size:22px;
+  }
 
-      .closing-text{
-        font-size:39px;
-      }
-    }
+  .fixed-six{
+    left:calc(50% - 122px);
+  }
 
-  </style>
+  .fixed-eight{
+    right:calc(50% - 122px);
+  }
+
+  .journey-event{
+    width:145px;
+  }
+
+  .journey-event.left{
+    right:calc(50% + 60px);
+  }
+
+  .journey-event.right{
+    left:calc(50% + 60px);
+  }
+
+  .event-title{
+    font-size:14px;
+  }
+
+  .event-place{
+    font-size:11px;
+  }
+
+  .event-time{
+    font-size:11px;
+  }
+
+  .story-track{
+    justify-content:flex-start;
+
+    overflow-x:hidden;
+
+    gap:12px;
+  }
+
+  .story-photo{
+    width:82vw;
+    height:530px;
+  }
+
+  .closing-text{
+    font-size:43px;
+  }
+
+  .closing-names{
+    font-size:31px;
+  }
+}
+
+
+@media(max-width:420px){
+
+  .hero-names{
+    font-size:52px;
+  }
+
+  .hero-photo{
+    height:460px;
+  }
+
+  .journey-event{
+    width:122px;
+  }
+
+  .journey-event.left{
+    right:calc(50% + 46px);
+  }
+
+  .journey-event.right{
+    left:calc(50% + 46px);
+  }
+
+  .fixed-six{
+    left:calc(50% - 108px);
+  }
+
+  .fixed-eight{
+    right:calc(50% - 108px);
+  }
+
+  .closing-text{
+    font-size:39px;
+  }
+}
+
+</style>
 </head>
 
 
 <body>
 
 
-  <!-- =========================================
-       OPENING SCREEN
-  ========================================= -->
+<!-- =====================================================
+     OPENING
+===================================================== -->
 
-  <div class="opening" id="opening">
+<div class="opening" id="opening">
 
-    <div class="opening-inner">
+  <div class="opening-inner">
 
-      <!-- ՔՈ ՀԱՎԱՆԱԾ ՍԹԵՄՓԸ -->
+    <div
+      class="seal"
+      id="seal"
+      role="button"
+      tabindex="0"
+      aria-label="Բացել հրավիրատոմսը"
+      onclick="openInvitation()"
+    >
 
-      <div
-        class="seal"
-        id="seal"
-        role="button"
-        tabindex="0"
-        aria-label="Բացել հրավիրատոմսը"
-        onclick="openInvitation()"
+      <img
+        src="./stamp.png"
+        alt="Ոսկեգույն սթեմփ"
+        draggable="false"
+        onerror="this.style.display='none';"
       >
 
-        <img
-          src="./stamp.png"
-          alt="Ոսկեգույն սթեմփ"
-          draggable="false"
+    </div>
+
+
+    <div class="opening-title">
+      Դուք ստացել եք հրավիրատոմս
+    </div>
+
+
+    <button
+      class="open-btn"
+      type="button"
+      onclick="openInvitation()"
+    >
+      Բացել
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main id="main">
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-date">
+      07 · 07 · 2027
+    </div>
+
+
+    <div class="hero-names">
+      Ա <span>&amp;</span> Մ
+    </div>
+
+
+    <img
+      src="./couple.jpg"
+      class="hero-photo"
+      alt="Արթուր և Մարիամ"
+    >
+
+
+    <div class="hero-caption">
+      Սիրով հրավիրում ենք Ձեզ կիսելու
+      մեր կյանքի ամենագեղեցիկ օրը
+    </div>
+
+
+    <div class="scroll-down">
+      SCROLL
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       JOURNEY
+  ===================================================== -->
+
+  <section class="journey">
+
+    <h2 class="section-title">
+      Օրվա ընթացքը
+    </h2>
+
+
+    <div
+      class="route-area"
+      id="routeArea"
+    >
+
+
+      <svg
+        class="route-svg"
+        viewBox="0 0 240 900"
+        preserveAspectRatio="none"
+      >
+
+        <path
+          class="route-line"
+          d="
+            M120 0
+            C25 105,215 175,120 285
+            C20 400,220 470,120 575
+            C30 680,210 750,120 850
+          "
+        />
+
+      </svg>
+
+
+
+      <!-- 6 -->
+
+      <div class="fixed-number fixed-six">
+        6
+      </div>
+
+
+
+      <!-- 8 -->
+
+      <div class="fixed-number fixed-eight">
+        8
+      </div>
+
+
+
+      <!-- MOVING 7 -->
+
+      <div
+        class="moving-heart"
+        id="movingHeart"
+      >
+
+        <svg
+          class="real-heart"
+          viewBox="0 0 100 100"
         >
+
+          <path
+            d="
+              M50 91
+              C44 84 8 62 8 34
+              C8 17 20 7 35 7
+              C43 7 48 11 50 20
+              C52 11 57 7 65 7
+              C80 7 92 17 92 34
+              C92 62 56 84 50 91
+              Z
+            "
+          />
+
+          <text
+            x="50"
+            y="51"
+          >
+            7
+          </text>
+
+        </svg>
 
       </div>
 
 
-      <div class="opening-title">
-        Դուք ստացել եք հրավիրատոմս
+
+      <!-- EVENT 1 -->
+
+      <div class="journey-event left event-1">
+
+        <div class="event-time">
+          14:00
+        </div>
+
+        <div class="event-title">
+          Հարսի տուն
+        </div>
+
+        <div class="event-place">
+          Մարիամի տուն
+        </div>
+
+      </div>
+
+
+
+      <!-- EVENT 2 -->
+
+      <div class="journey-event right event-2">
+
+        <div class="event-time">
+          15:30
+        </div>
+
+        <div class="event-title">
+          Փեսայի տուն
+        </div>
+
+        <div class="event-place">
+          Արթուրի տուն
+        </div>
+
+      </div>
+
+
+
+      <!-- EVENT 3 -->
+
+      <div class="journey-event left event-3">
+
+        <div class="event-time">
+          17:00
+        </div>
+
+        <div class="event-title">
+          Եկեղեցի
+        </div>
+
+        <div class="event-place">
+          Սաղմոսավանք
+        </div>
+
+
+        <a
+          class="map-link"
+          href="https://www.google.com/maps/search/?api=1&query=Saghmosavank+Monastery"
+          target="_blank"
+          rel="noopener"
+        >
+          Հասցե
+        </a>
+
+      </div>
+
+
+
+      <!-- EVENT 4 -->
+
+      <div class="journey-event right event-4">
+
+        <div class="event-time">
+          19:00
+        </div>
+
+        <div class="event-title">
+          Ռեստորան
+        </div>
+
+        <div class="event-place">
+          Palladium Hall
+        </div>
+
+
+        <a
+          class="map-link"
+          href="https://www.google.com/maps/search/?api=1&query=Palladium+Hall+Yerevan"
+          target="_blank"
+          rel="noopener"
+        >
+          Հասցե
+        </a>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       STORY PHOTOS
+  ===================================================== -->
+
+  <section class="story-section">
+
+    <div
+      class="story-track"
+      id="storyTrack"
+    >
+
+      <img
+        src="./story1.jpg"
+        class="story-photo"
+        alt="Մեր լուսանկարը 1"
+      >
+
+      <img
+        src="./story2.jpg"
+        class="story-photo"
+        alt="Մեր լուսանկարը 2"
+      >
+
+    </div>
+
+
+    <div class="story-controls">
+
+      <button
+        class="story-arrow"
+        id="storyPrev"
+        type="button"
+        aria-label="Նախորդ լուսանկարը"
+      >
+        ‹
+      </button>
+
+
+      <div class="story-dots">
+
+        <span
+          class="story-dot active"
+          data-index="0"
+        ></span>
+
+        <span
+          class="story-dot"
+          data-index="1"
+        ></span>
+
       </div>
 
 
       <button
-        class="open-btn"
-        id="openBtn"
+        class="story-arrow"
+        id="storyNext"
         type="button"
-        onclick="openInvitation()"
+        aria-label="Հաջորդ լուսանկարը"
       >
-        Բացել
+        ›
       </button>
 
     </div>
 
-  </div>
+  </section>
 
 
 
-  <!-- =========================================
-       MAIN INVITATION
-  ========================================= -->
+  <!-- =====================================================
+       RSVP
+  ===================================================== -->
 
-  <main id="main">
+  <section class="rsvp">
 
-
-    <!-- HERO -->
-
-    <section class="hero">
-
-      <div class="hero-date">
-        07 · 07 · 2027
-      </div>
-
-      <div class="hero-names">
-        Ա <span>&amp;</span> Մ
-      </div>
+    <h2 class="rsvp-title">
+      Կհանդիպե՞նք մեր օրը
+    </h2>
 
 
-      <img
-        class="hero-photo"
-        src="./couple.jpg"
-        alt="Արթուր և Մարիամ"
-      >
+    <form
+      class="rsvp-form"
+      id="rsvpForm"
+    >
 
 
-      <div class="hero-caption">
-        Սիրով հրավիրում ենք Ձեզ կիսելու
-        մեր կյանքի ամենագեղեցիկ օրը
-      </div>
+      <div class="form-group">
 
+        <label
+          class="form-label"
+          for="firstName"
+        >
+          Անուն
+        </label>
 
-      <div class="scroll-down">
-        SCROLL
-      </div>
-
-    </section>
-
-
-
-    <!-- =========================================
-         JOURNEY
-    ========================================= -->
-
-    <section class="journey">
-
-      <h2 class="section-title">
-        Օրվա ընթացքը
-      </h2>
-
-
-      <div
-        class="route-area"
-        id="routeArea"
-      >
-
-
-        <svg
-          class="route-svg"
-          viewBox="0 0 240 900"
-          preserveAspectRatio="none"
+        <input
+          class="form-input"
+          id="firstName"
+          type="text"
+          required
         >
 
-          <path
-            class="route-line"
-            d="
-              M120 0
-              C25 105,215 175,120 285
-              C20 400,220 470,120 575
-              C30 680,210 750,120 850
-            "
-          />
-
-        </svg>
+      </div>
 
 
 
-        <!-- 6 -->
+      <div class="form-group">
 
-        <div class="fixed-number fixed-six">
-          6
-        </div>
+        <label
+          class="form-label"
+          for="lastName"
+        >
+          Ազգանուն
+        </label>
 
-
-        <!-- 8 -->
-
-        <div class="fixed-number fixed-eight">
-          8
-        </div>
-
-
-
-        <!-- 7 -->
-
-        <div
-          class="moving-heart"
-          id="movingHeart"
+        <input
+          class="form-input"
+          id="lastName"
+          type="text"
+          required
         >
 
-          <svg
-            class="real-heart"
-            viewBox="0 0 100 100"
+      </div>
+
+
+
+      <div class="form-group">
+
+        <label
+          class="form-label"
+          for="attendance"
+        >
+          Կկարողանա՞ք ներկա գտնվել
+        </label>
+
+        <select
+          class="form-select"
+          id="attendance"
+          required
+        >
+
+          <option
+            value=""
+            selected
+            disabled
           >
+            Ընտրեք
+          </option>
 
-            <path
-              d="
-                M50 91
-                C44 84 8 62 8 34
-                C8 17 20 7 35 7
-                C43 7 48 11 50 20
-                C52 11 57 7 65 7
-                C80 7 92 17 92 34
-                C92 62 56 84 50 91
-                Z
-              "
-            />
+          <option value="yes">
+            Այո, սիրով
+          </option>
 
-            <text
-              x="50"
-              y="51"
-            >
-              7
-            </text>
+          <option value="no">
+            Ցավոք, ոչ
+          </option>
 
-          </svg>
-
-        </div>
-
-
-
-        <!-- EVENT 1 -->
-
-        <div
-          class="journey-event left event-1"
-        >
-
-          <div class="event-time">
-            14:00
-          </div>
-
-          <div class="event-title">
-            Հարսի տուն
-          </div>
-
-          <div class="event-place">
-            Մարիամի տուն
-          </div>
-
-        </div>
-
-
-
-        <!-- EVENT 2 -->
-
-        <div
-          class="journey-event right event-2"
-        >
-
-          <div class="event-time">
-            15:30
-          </div>
-
-          <div class="event-title">
-            Փեսայի տուն
-          </div>
-
-          <div class="event-place">
-            Արթուրի տուն
-          </div>
-
-        </div>
-
-
-
-        <!-- EVENT 3 -->
-
-        <div
-          class="journey-event left event-3"
-        >
-
-          <div class="event-time">
-            17:00
-          </div>
-
-          <div class="event-title">
-            Եկեղեցի
-          </div>
-
-          <div class="event-place">
-            Սաղմոսավանք
-          </div>
-
-          <a
-            class="map-link"
-            href="https://www.google.com/maps/search/?api=1&query=Saghmosavank+Monastery"
-            target="_blank"
-            rel="noopener"
-          >
-            Հասցե
-          </a>
-
-        </div>
-
-
-
-        <!-- EVENT 4 -->
-
-        <div
-          class="journey-event right event-4"
-        >
-
-          <div class="event-time">
-            19:00
-          </div>
-
-          <div class="event-title">
-            Ռեստորան
-          </div>
-
-          <div class="event-place">
-            Palladium Hall
-          </div>
-
-          <a
-            class="map-link"
-            href="https://www.google.com/maps/search/?api=1&query=Palladium+Hall+Yerevan"
-            target="_blank"
-            rel="noopener"
-          >
-            Հասցե
-          </a>
-
-        </div>
-
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =========================================
-         STORY PHOTOS
-    ========================================= -->
-
-    <section class="story-section">
-
-      <div
-        class="story-track"
-        id="storyTrack"
-      >
-
-        <img
-          src="./story1.jpg"
-          class="story-photo"
-          alt="Մեր լուսանկարը"
-        >
-
-        <img
-          src="./story2.jpg"
-          class="story-photo"
-          alt="Մեր լուսանկարը"
-        >
+        </select>
 
       </div>
 
 
-      <div class="story-controls">
+
+      <div class="form-group">
+
+        <label
+          class="form-label"
+          for="invitedBy"
+        >
+          Ո՞ւմ կողմից եք հրավիրված
+        </label>
+
+        <select
+          class="form-select"
+          id="invitedBy"
+          required
+        >
+
+          <option
+            value=""
+            selected
+            disabled
+          >
+            Ընտրեք
+          </option>
+
+          <option value="arthur">
+            Արթուրի կողմից
+          </option>
+
+          <option value="mariam">
+            Մարիամի կողմից
+          </option>
+
+        </select>
+
+      </div>
+
+
+
+      <div class="form-group">
+
+        <label
+          class="form-label"
+          for="guests"
+        >
+          Հյուրերի քանակ
+        </label>
+
+        <select
+          class="form-select"
+          id="guests"
+          required
+        >
+
+          <option
+            value=""
+            selected
+            disabled
+          >
+            Ընտրեք
+          </option>
+
+          <option value="1">
+            1
+          </option>
+
+          <option value="2">
+            2
+          </option>
+
+          <option value="3">
+            3
+          </option>
+
+          <option value="4">
+            4
+          </option>
+
+          <option value="5">
+            5
+          </option>
+
+        </select>
+
+      </div>
+
+
+
+      <div class="rsvp-button-wrap">
 
         <button
-          class="story-arrow"
-          id="storyPrev"
-          type="button"
+          class="rsvp-button"
+          type="submit"
         >
-          ‹
-        </button>
-
-
-        <div class="story-dots">
-
-          <span
-            class="story-dot active"
-            data-index="0"
-          ></span>
-
-          <span
-            class="story-dot"
-            data-index="1"
-          ></span>
-
-        </div>
-
-
-        <button
-          class="story-arrow"
-          id="storyNext"
-          type="button"
-        >
-          ›
+          Հաստատել ներկայությունը
         </button>
 
       </div>
 
-    </section>
 
-
-
-    <!-- =========================================
-         RSVP
-    ========================================= -->
-
-    <section class="rsvp">
-
-      <h2 class="rsvp-title">
-        Կհանդիպե՞նք մեր օրը
-      </h2>
-
-
-      <form
-        class="rsvp-form"
-        id="rsvpForm"
+      <div
+        class="success-message"
+        id="successMessage"
       >
-
-
-        <div class="form-group">
-
-          <label
-            class="form-label"
-            for="firstName"
-          >
-            Անուն
-          </label>
-
-          <input
-            class="form-input"
-            id="firstName"
-            type="text"
-            required
-          >
-
-        </div>
-
-
-
-        <div class="form-group">
-
-          <label
-            class="form-label"
-            for="lastName"
-          >
-            Ազգանուն
-          </label>
-
-          <input
-            class="form-input"
-            id="lastName"
-            type="text"
-            required
-          >
-
-        </div>
-
-
-
-        <div class="form-group">
-
-          <label
-            class="form-label"
-            for="attendance"
-          >
-            Կկարողանա՞ք ներկա գտնվել
-          </label>
-
-          <select
-            class="form-select"
-            id="attendance"
-            required
-          >
-
-            <option value="" selected disabled>
-              Ընտրեք
-            </option>
-
-            <option value="yes">
-              Այո, սիրով
-            </option>
-
-            <option value="no">
-              Ցավոք, ոչ
-            </option>
-
-          </select>
-
-        </div>
-
-
-
-        <div class="form-group">
-
-          <label
-            class="form-label"
-            for="invitedBy"
-          >
-            Ո՞ւմ կողմից եք հրավիրված
-          </label>
-
-          <select
-            class="form-select"
-            id="invitedBy"
-            required
-          >
-
-            <option value="" selected disabled>
-              Ընտրեք
-            </option>
-
-            <option value="arthur">
-              Արթուրի կողմից
-            </option>
-
-            <option value="mariam">
-              Մարիամի կողմից
-            </option>
-
-          </select>
-
-        </div>
-
-
-
-        <div class="form-group">
-
-          <label
-            class="form-label"
-            for="guests"
-          >
-            Հյուրերի քանակ
-          </label>
-
-          <select
-            class="form-select"
-            id="guests"
-            required
-          >
-
-            <option value="" selected disabled>
-              Ընտրեք
-            </option>
-
-            <option value="1">
-              1
-            </option>
-
-            <option value="2">
-              2
-            </option>
-
-            <option value="3">
-              3
-            </option>
-
-            <option value="4">
-              4
-            </option>
-
-            <option value="5">
-              5
-            </option>
-
-          </select>
-
-        </div>
-
-
-
-        <div class="rsvp-button-wrap">
-
-          <button
-            class="rsvp-button"
-            type="submit"
-          >
-            Հաստատել ներկայությունը
-          </button>
-
-        </div>
-
-
-        <div
-          class="success-message"
-          id="successMessage"
-        >
-          Շնորհակալություն ❤️
-          <br>
-          Ձեր պատասխանը գրանցվեց։
-        </div>
-
-      </form>
-
-    </section>
-
-
-
-    <!-- =========================================
-         CLOSING
-    ========================================= -->
-
-    <section class="closing">
-
-      <div class="closing-text">
-        Սիրով սպասում ենք Ձեզ
-      </div>
-
-
-      <div class="closing-names">
-        Արթուր &amp; Մարիամ
-      </div>
-
-
-      <div class="footer-contact">
-        our.eventto@gmail.com
+        Շնորհակալություն ❤️
         <br>
-        eventto.am
+        Ձեր պատասխանը գրանցվեց։
       </div>
 
-    </section>
+    </form>
 
-  </main>
+  </section>
 
 
 
-  <!-- =========================================
-       JAVASCRIPT
-  ========================================= -->
+  <!-- =====================================================
+       CLOSING
+  ===================================================== -->
 
-  <script>
+  <section class="closing">
 
-    /* -----------------------------------------
-       OPEN INVITATION
-    ----------------------------------------- */
+    <div class="closing-text">
+      Սիրով սպասում ենք Ձեզ
+    </div>
 
-    const opening =
-      document.getElementById("opening");
 
-    const main =
-      document.getElementById("main");
+    <div class="closing-names">
+      Արթուր &amp; Մարիամ
+    </div>
 
-    function openInvitation(){
 
-      if(!opening){
-        return;
-      }
+    <div class="footer-contact">
+      our.eventto@gmail.com
+      <br>
+      eventto.am
+    </div>
 
-      opening.classList.add("hide");
+  </section>
 
-      setTimeout(function(){
 
-        opening.style.display = "none";
+</main>
 
-        if(main){
-          main.classList.add("visible");
-        }
 
-        window.scrollTo(0,0);
 
-        updateHeart();
+<script>
 
-      },900);
+/* =====================================================
+   OPEN INVITATION
+===================================================== */
 
+const opening =
+  document.getElementById("opening");
+
+const main =
+  document.getElementById("main");
+
+function openInvitation(){
+
+  if(!opening) return;
+
+  opening.classList.add("hide");
+
+  setTimeout(() => {
+
+    opening.style.display="none";
+
+    if(main){
+      main.classList.add("visible");
     }
 
-
-
-    /* -----------------------------------------
-       STAMP KEYBOARD
-    ----------------------------------------- */
-
-    const seal =
-      document.getElementById("seal");
-
-    if(seal){
-
-      seal.addEventListener(
-        "keydown",
-        function(event){
-
-          if(
-            event.key === "Enter" ||
-            event.key === " "
-          ){
-
-            event.preventDefault();
-
-            openInvitation();
-
-          }
-
-        }
-      );
-
-    }
-
-
-
-    /* -----------------------------------------
-       MOVING HEART
-    ----------------------------------------- */
-
-    const routeArea =
-      document.getElementById("routeArea");
-
-    const movingHeart =
-      document.getElementById("movingHeart");
-
-
-    function updateHeart(){
-
-      if(!routeArea || !movingHeart){
-        return;
-      }
-
-      const rect =
-        routeArea.getBoundingClientRect();
-
-      const viewportCenter =
-        window.innerHeight * 0.5;
-
-
-      let progress =
-        (viewportCenter - rect.top) /
-        rect.height;
-
-
-      progress =
-        Math.max(
-          0,
-          Math.min(1, progress)
-        );
-
-
-      const paddingTop = 55;
-
-      const paddingBottom = 55;
-
-      const travel =
-        routeArea.offsetHeight -
-        paddingTop -
-        paddingBottom;
-
-
-      const newTop =
-        paddingTop +
-        (travel * progress);
-
-
-      movingHeart.style.top =
-        newTop + "px";
-
-    }
-
-
-    window.addEventListener(
-      "scroll",
-      updateHeart,
-      {passive:true}
-    );
-
-
-    window.addEventListener(
-      "resize",
-      updateHeart
-    );
-
+    window.scrollTo(0,0);
 
     updateHeart();
 
+  },900);
+}
 
 
-    /* -----------------------------------------
-       STORY SLIDER
-    ----------------------------------------- */
+/* keyboard */
 
-    const storyTrack =
-      document.getElementById("storyTrack");
+const seal =
+  document.getElementById("seal");
 
-    const storyPrev =
-      document.getElementById("storyPrev");
+if(seal){
 
-    const storyNext =
-      document.getElementById("storyNext");
-
-    const storyDots =
-      document.querySelectorAll(".story-dot");
-
-
-    let currentStory = 0;
-
-
-    function showStory(index){
-
-      currentStory =
-        Math.max(
-          0,
-          Math.min(
-            1,
-            index
-          )
-        );
-
+  seal.addEventListener(
+    "keydown",
+    function(event){
 
       if(
-        window.innerWidth <= 700 &&
-        storyTrack
+        event.key==="Enter" ||
+        event.key===" "
       ){
 
-        const photo =
-          storyTrack.querySelector(
-            ".story-photo"
-          );
+        event.preventDefault();
 
-
-        if(photo){
-
-          const gap = 12;
-
-          const position =
-            currentStory *
-            (photo.offsetWidth + gap);
-
-
-          storyTrack.scrollTo({
-            left:position,
-            behavior:"smooth"
-          });
-
-        }
+        openInvitation();
 
       }
 
-
-      storyDots.forEach(
-        function(dot,index){
-
-          dot.classList.toggle(
-            "active",
-            index === currentStory
-          );
-
-        }
-      );
-
     }
+  );
+
+}
 
 
-    if(storyPrev){
 
-      storyPrev.addEventListener(
-        "click",
-        function(){
+/* =====================================================
+   MOVING 7
+===================================================== */
 
-          showStory(
-            currentStory - 1
-          );
+const routeArea =
+  document.getElementById("routeArea");
 
-        }
-      );
-
-    }
+const movingHeart =
+  document.getElementById("movingHeart");
 
 
-    if(storyNext){
+function updateHeart(){
 
-      storyNext.addEventListener(
-        "click",
-        function(){
+  if(!routeArea || !movingHeart){
+    return;
+  }
 
-          showStory(
-            currentStory + 1
-          );
+  const rect =
+    routeArea.getBoundingClientRect();
 
-        }
-      );
+  const center =
+    window.innerHeight * .5;
 
-    }
+  let progress =
+    (center - rect.top) / rect.height;
 
-
-    storyDots.forEach(
-      function(dot){
-
-        dot.addEventListener(
-          "click",
-          function(){
-
-            showStory(
-              Number(
-                dot.dataset.index
-              )
-            );
-
-          }
-        );
-
-      }
+  progress =
+    Math.max(
+      0,
+      Math.min(
+        1,
+        progress
+      )
     );
 
 
+  const topPadding=55;
 
-    /* -----------------------------------------
-       RSVP
-    ----------------------------------------- */
+  const bottomPadding=55;
 
-    const rsvpForm =
-      document.getElementById("rsvpForm");
+  const travel =
+    routeArea.offsetHeight -
+    topPadding -
+    bottomPadding;
 
-    const successMessage =
-      document.getElementById(
-        "successMessage"
+
+  const position =
+    topPadding +
+    travel * progress;
+
+
+  movingHeart.style.top =
+    position+"px";
+
+}
+
+
+window.addEventListener(
+  "scroll",
+  updateHeart,
+  {passive:true}
+);
+
+
+window.addEventListener(
+  "resize",
+  updateHeart
+);
+
+
+updateHeart();
+
+
+
+/* =====================================================
+   STORY SLIDER
+===================================================== */
+
+const storyTrack =
+  document.getElementById("storyTrack");
+
+const storyPrev =
+  document.getElementById("storyPrev");
+
+const storyNext =
+  document.getElementById("storyNext");
+
+const storyDots =
+  document.querySelectorAll(".story-dot");
+
+let currentStory=0;
+
+
+function showStory(index){
+
+  currentStory =
+    Math.max(
+      0,
+      Math.min(
+        1,
+        index
+      )
+    );
+
+
+  if(
+    window.innerWidth<=700 &&
+    storyTrack
+  ){
+
+    const photo =
+      storyTrack.querySelector(
+        ".story-photo"
       );
 
+    if(photo){
 
-    if(rsvpForm){
+      const gap=12;
 
-      rsvpForm.addEventListener(
-        "submit",
-        function(event){
+      storyTrack.scrollTo({
 
-          event.preventDefault();
+        left:
+          currentStory *
+          (photo.offsetWidth+gap),
 
+        behavior:"smooth"
 
-          if(successMessage){
-
-            successMessage.style.display =
-              "block";
-
-          }
-
-
-          rsvpForm.reset();
-
-
-          if(successMessage){
-
-            successMessage.scrollIntoView({
-              behavior:"smooth",
-              block:"center"
-            });
-
-          }
-
-        }
-      );
+      });
 
     }
 
-  </script>
+  }
+
+
+  storyDots.forEach(
+    (dot,index)=>{
+
+      dot.classList.toggle(
+        "active",
+        index===currentStory
+      );
+
+    }
+  );
+
+}
+
+
+if(storyPrev){
+
+  storyPrev.addEventListener(
+    "click",
+    ()=>{
+      showStory(
+        currentStory-1
+      );
+    }
+  );
+
+}
+
+
+if(storyNext){
+
+  storyNext.addEventListener(
+    "click",
+    ()=>{
+      showStory(
+        currentStory+1
+      );
+    }
+  );
+
+}
+
+
+storyDots.forEach(
+  dot=>{
+
+    dot.addEventListener(
+      "click",
+      ()=>{
+        showStory(
+          Number(
+            dot.dataset.index
+          )
+        );
+      }
+    );
+
+  }
+);
+
+
+
+/* =====================================================
+   RSVP
+===================================================== */
+
+const rsvpForm =
+  document.getElementById("rsvpForm");
+
+const successMessage =
+  document.getElementById("successMessage");
+
+
+if(rsvpForm){
+
+  rsvpForm.addEventListener(
+    "submit",
+    function(event){
+
+      event.preventDefault();
+
+
+      if(successMessage){
+
+        successMessage.style.display =
+          "block";
+
+      }
+
+
+      rsvpForm.reset();
+
+
+      if(successMessage){
+
+        successMessage.scrollIntoView({
+          behavior:"smooth",
+          block:"center"
+        });
+
+      }
+
+    }
+  );
+
+}
+
+</script>
 
 </body>
 </html>
