@@ -45,10 +45,10 @@ body::before{
     content:"";
     position:fixed;
     inset:0;
-    z-index:9999;
     pointer-events:none;
+    z-index:9999;
     opacity:.07;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.18'/%3E%3C/svg%3E");
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 button,
@@ -62,9 +62,9 @@ a{
     text-decoration:none;
 }
 
-/* =========================================
+/* =========================
    OPENING
-========================================= */
+========================= */
 
 .opening{
     position:fixed;
@@ -74,9 +74,18 @@ a{
     align-items:center;
     justify-content:center;
     background:
-        radial-gradient(circle at 50% 35%,rgba(30,61,88,.60),transparent 48%),
+        radial-gradient(
+            circle at center,
+            rgba(30,61,88,.58),
+            transparent 48%
+        ),
         var(--navy);
-    transition:1s ease;
+
+    opacity:1;
+    visibility:visible;
+    transition:
+        opacity .9s ease,
+        visibility .9s ease;
 }
 
 .opening.hide{
@@ -86,40 +95,44 @@ a{
 }
 
 .opening-inner{
-    width:min(94vw,700px);
+    width:min(94vw,760px);
     text-align:center;
-    padding:24px;
+    padding:20px;
 }
 
 .seal{
-    width:250px;
-    height:250px;
+    width:245px;
+    height:245px;
     margin:0 auto 22px;
-    cursor:pointer;
     display:flex;
     align-items:center;
     justify-content:center;
-    animation:sealFloat 4s ease-in-out infinite;
-    filter:drop-shadow(0 18px 30px rgba(0,0,0,.42));
+    cursor:pointer;
+    position:relative;
+    user-select:none;
+    -webkit-tap-highlight-color:transparent;
+
+    animation:stampFloat 4s ease-in-out infinite;
 }
 
 .seal img{
     width:100%;
     height:100%;
-    display:block;
     object-fit:contain;
+    display:block;
     border:0;
     outline:0;
-    user-select:none;
     pointer-events:none;
+    user-select:none;
 }
 
-@keyframes sealFloat{
+@keyframes stampFloat{
     0%,100%{
         transform:translateY(0) rotate(-1deg);
     }
+
     50%{
-        transform:translateY(-8px) rotate(1deg);
+        transform:translateY(-7px) rotate(1deg);
     }
 }
 
@@ -127,12 +140,12 @@ a{
     color:var(--cream2);
     font-size:14px;
     letter-spacing:4px;
-    margin-bottom:24px;
+    margin-bottom:22px;
 }
 
 .open-btn{
-    padding:13px 37px;
-    border:1px solid rgba(214,187,125,.72);
+    padding:12px 35px;
+    border:1px solid rgba(214,187,125,.75);
     border-radius:999px;
     background:transparent;
     color:var(--gold2);
@@ -145,9 +158,9 @@ a{
     color:var(--navy);
 }
 
-/* =========================================
+/* =========================
    HERO
-========================================= */
+========================= */
 
 .hero{
     min-height:100vh;
@@ -158,9 +171,18 @@ a{
     padding:70px 15px;
     position:relative;
     overflow:hidden;
+
     background:
-        radial-gradient(circle at 50% 30%,#183653 0%,transparent 42%),
-        linear-gradient(180deg,#07192a,#061525);
+        radial-gradient(
+            circle at 50% 30%,
+            #183653 0%,
+            transparent 42%
+        ),
+        linear-gradient(
+            180deg,
+            #07192a,
+            #061525
+        );
 }
 
 .hero::after{
@@ -173,72 +195,75 @@ a{
 }
 
 .hero-content{
+    width:100%;
     position:relative;
     z-index:2;
-    width:100%;
 }
 
 .save-date{
-    color:var(--gold);
     font-size:10px;
+    color:var(--gold);
     letter-spacing:6px;
     margin-bottom:25px;
 }
 
 .hero-photo{
     width:min(94vw,760px);
-    margin:0 auto 34px;
+    margin:0 auto 35px;
 }
 
 .hero-photo img{
     width:100%;
     height:auto;
     display:block;
+    object-fit:contain;
     border:0;
     border-radius:0;
-    object-fit:contain;
     box-shadow:none;
 }
 
 .names{
     font-family:"Parisienne",cursive;
-    font-size:clamp(72px,13vw,145px);
+    font-size:clamp(70px,13vw,145px);
     line-height:.88;
     color:var(--cream);
 }
 
 .names .amp{
     font-family:"Cormorant Garamond",serif;
-    font-size:.47em;
+    font-size:.46em;
     color:var(--gold2);
     vertical-align:middle;
-    margin:0 .08em;
+    margin:0 .07em;
 }
 
 .hero-date{
-    margin-top:34px;
+    margin-top:35px;
+    color:var(--cream2);
     font-family:"Cormorant Garamond",serif;
     font-size:28px;
     letter-spacing:7px;
-    color:var(--cream2);
 }
 
 .hero-line{
     width:1px;
-    height:70px;
+    height:72px;
     margin:38px auto 0;
-    background:linear-gradient(var(--gold),transparent);
+    background:linear-gradient(
+        var(--gold),
+        transparent
+    );
 }
 
-/* =========================================
-   MOVING TEXT
-========================================= */
+/* =========================
+   MARQUEE
+========================= */
 
 .marquee{
     overflow:hidden;
+    background:var(--navy2);
     border-top:1px solid rgba(214,187,125,.14);
     border-bottom:1px solid rgba(214,187,125,.14);
-    background:var(--navy2);
     padding:15px 0;
 }
 
@@ -252,8 +277,8 @@ a{
     font-family:"Cormorant Garamond",serif;
     color:var(--gold);
     font-size:18px;
-    letter-spacing:6px;
-    padding:0 35px;
+    letter-spacing:5px;
+    padding:0 32px;
 }
 
 @keyframes marquee{
@@ -262,19 +287,24 @@ a{
     }
 }
 
-/* =========================================
+/* =========================
    INTRO
-========================================= */
+========================= */
 
 .intro{
-    min-height:58vh;
+    min-height:55vh;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
     padding:85px 20px;
+
     background:
-        radial-gradient(circle at center,#102b45,transparent 65%),
+        radial-gradient(
+            circle at center,
+            #102b45,
+            transparent 65%
+        ),
         var(--navy);
 }
 
@@ -285,20 +315,20 @@ a{
 .intro-symbol{
     color:var(--gold);
     font-size:34px;
-    margin-bottom:22px;
+    margin-bottom:20px;
 }
 
 .intro-label{
     color:var(--gold);
     font-size:10px;
     letter-spacing:5px;
-    margin-bottom:16px;
+    margin-bottom:15px;
 }
 
 .intro h2{
     font-family:"Cormorant Garamond",serif;
-    font-size:54px;
     font-weight:400;
+    font-size:54px;
     margin-bottom:20px;
 }
 
@@ -308,29 +338,30 @@ a{
     line-height:2;
 }
 
-/* =========================================
+/* =========================
    DIVIDER
-========================================= */
+========================= */
 
 .divider{
     width:min(650px,78%);
     height:1px;
     margin:0 auto;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        var(--gold3),
-        transparent
-    );
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold3),
+            transparent
+        );
 }
 
-/* =========================================
+/* =========================
    JOURNEY
-========================================= */
+========================= */
 
 .journey{
     position:relative;
-    min-height:1120px;
+    min-height:1070px;
     padding:85px 20px;
     background:#07192a;
     overflow:hidden;
@@ -338,15 +369,8 @@ a{
 
 .section-head{
     position:relative;
-    z-index:10;
+    z-index:30;
     text-align:center;
-}
-
-.section-label{
-    color:var(--gold);
-    font-size:10px;
-    letter-spacing:5px;
-    margin-bottom:14px;
 }
 
 .section-title{
@@ -356,43 +380,41 @@ a{
     line-height:1.1;
 }
 
-/* ROUTE */
-
 .route-wrap{
     position:absolute;
+    top:200px;
     left:50%;
-    top:205px;
-    transform:translateX(-50%);
     width:240px;
-    height:850px;
+    height:840px;
+    transform:translateX(-50%);
 }
 
 .route-svg{
     position:absolute;
     inset:0;
     width:240px;
-    height:850px;
+    height:840px;
     overflow:visible;
 }
 
 .route-line{
     fill:none;
     stroke:rgba(214,187,125,.50);
-    stroke-width:1.35;
+    stroke-width:1.4;
     stroke-dasharray:2 10;
     stroke-linecap:round;
 }
 
-/* FIXED 6 & 8 */
+/* 6 and 8 */
 
 .fixed-number{
     position:absolute;
-    top:-52px;
-    z-index:30;
-    font-family:"Cormorant Garamond",serif;
-    font-size:38px;
+    top:-50px;
+    z-index:40;
     color:var(--cream);
-    letter-spacing:6px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:37px;
+    letter-spacing:5px;
 }
 
 .route-number-6{
@@ -403,39 +425,39 @@ a{
     right:40px;
 }
 
-/* SIDE LABELS */
+/* LABELS */
 
 .route-side-label{
     position:absolute;
-    z-index:25;
+    z-index:35;
     width:185px;
     line-height:1.2;
 }
 
 .route-side-label.left{
-    left:-202px;
+    left:-205px;
     text-align:right;
 }
 
 .route-side-label.right{
-    right:-202px;
+    right:-205px;
     text-align:left;
 }
 
 .bride-home{
-    top:105px;
+    top:100px;
 }
 
 .groom-home{
-    top:280px;
+    top:270px;
 }
 
 .church-location{
-    top:470px;
+    top:455px;
 }
 
 .restaurant-location{
-    top:655px;
+    top:635px;
 }
 
 .location-name{
@@ -448,10 +470,9 @@ a{
 
 .location-place{
     display:block;
-    color:var(--cream);
     font-family:"Cormorant Garamond",serif;
+    color:var(--cream);
     font-size:26px;
-    line-height:1.05;
     margin-bottom:6px;
 }
 
@@ -468,32 +489,15 @@ a{
     color:var(--gold2);
 }
 
-.route-side-label::after{
-    content:"";
-    position:absolute;
-    top:50%;
-    width:31px;
-    height:1px;
-    background:rgba(243,238,227,.35);
-}
-
-.route-side-label.left::after{
-    right:-40px;
-}
-
-.route-side-label.right::after{
-    left:-40px;
-}
-
-/* =========================================
-   REAL HEART
-========================================= */
+/* =========================
+   REAL HEART WITH 7
+========================= */
 
 .moving-heart{
     position:absolute;
-    width:68px;
-    height:62px;
-    z-index:50;
+    width:64px;
+    height:64px;
+    z-index:60;
     opacity:0;
     pointer-events:none;
     will-change:left,top,transform;
@@ -504,7 +508,9 @@ a{
     height:100%;
     display:block;
     overflow:visible;
-    filter:drop-shadow(0 10px 22px rgba(0,0,0,.42));
+    filter:drop-shadow(
+        0 10px 20px rgba(0,0,0,.42)
+    );
 }
 
 .real-heart path{
@@ -520,12 +526,12 @@ a{
     dominant-baseline:middle;
 }
 
-/* =========================================
-   PHOTO STORY
-========================================= */
+/* =========================
+   STORY
+========================= */
 
 .story-section{
-    padding:75px 12px 90px;
+    padding:72px 0 85px;
     background:var(--navy2);
     text-align:center;
     overflow:hidden;
@@ -534,15 +540,13 @@ a{
 .story-carousel{
     position:relative;
     width:100%;
-    max-width:950px;
-    margin:0 auto;
     display:flex;
     align-items:center;
     justify-content:center;
 }
 
 .story-track{
-    width:min(82vw,560px);
+    width:min(78vw,560px);
     display:flex;
     gap:12px;
     overflow-x:auto;
@@ -559,31 +563,36 @@ a{
     flex:0 0 100%;
     min-width:100%;
     scroll-snap-align:center;
-    background:transparent;
 }
 
 .story-card img{
     width:100%;
-    height:540px;
+    height:520px;
+    display:block;
     object-fit:contain;
     object-position:center;
-    display:block;
-    border:none;
+    border:0;
+    border-radius:0;
     box-shadow:none;
     background:transparent;
 }
 
 .story-arrow{
-    flex:0 0 44px;
-    width:44px;
-    height:44px;
-    border:1px solid rgba(214,187,125,.58);
-    background:transparent;
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:10;
+
+    width:42px;
+    height:42px;
+
+    border:1px solid rgba(214,187,125,.55);
+    background:rgba(6,21,37,.45);
+
     color:var(--gold2);
     font-size:31px;
-    line-height:1;
+
     cursor:pointer;
-    z-index:10;
 }
 
 .story-arrow:hover{
@@ -591,20 +600,28 @@ a{
     color:var(--navy);
 }
 
+.story-prev{
+    left:12px;
+}
+
+.story-next{
+    right:12px;
+}
+
 .story-dots{
     display:flex;
     justify-content:center;
     gap:9px;
-    margin-top:18px;
+    margin-top:20px;
 }
 
 .story-dots button{
     width:8px;
     height:8px;
+    padding:0;
     border-radius:50%;
     border:1px solid var(--gold);
     background:transparent;
-    padding:0;
     cursor:pointer;
 }
 
@@ -612,23 +629,19 @@ a{
     background:var(--gold);
 }
 
-/* =========================================
+/* =========================
    RSVP
-========================================= */
+========================= */
 
 .rsvp{
-    padding:75px 15px 55px;
+    padding:72px 14px 50px;
     background:var(--navy);
-}
-
-.rsvp .section-title{
-    font-size:43px;
 }
 
 .rsvp-form{
     width:min(94vw,700px);
-    margin:28px auto 0;
-    padding:26px 24px 25px;
+    margin:27px auto 0;
+    padding:24px;
     border:1px solid rgba(214,187,125,.35);
     background:rgba(9,29,50,.35);
 }
@@ -636,14 +649,13 @@ a{
 .form-row{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:16px;
+    gap:15px;
 }
 
 .rsvp-form label{
     display:block;
     color:var(--cream2);
-    font-size:11px;
-    line-height:1.5;
+    font-size:10px;
     margin-bottom:15px;
 }
 
@@ -652,15 +664,18 @@ a{
     width:100%;
     margin-top:7px;
     padding:13px 14px;
+
     border:1px solid rgba(214,187,125,.35);
     border-radius:0;
-    outline:none;
-    background:rgba(6,21,37,.72);
+
+    background:rgba(6,21,37,.76);
     color:var(--cream);
+
+    outline:none;
 }
 
 .rsvp-form input::placeholder{
-    color:rgba(230,220,201,.48);
+    color:rgba(230,220,201,.45);
 }
 
 .rsvp-form input:focus,
@@ -673,18 +688,21 @@ a{
     color:var(--cream);
 }
 
-/* փոքրացված և առանձին կոճակ */
-
 .rsvp-btn{
+    width:67%;
     display:block;
-    width:68%;
     margin:22px auto 0;
-    padding:12px 16px;
+
+    padding:11px 15px;
+
     border:1px solid var(--gold);
     background:transparent;
+
     color:var(--gold2);
-    font-size:10px;
+
+    font-size:9px;
     letter-spacing:2px;
+
     cursor:pointer;
     transition:.3s ease;
 }
@@ -697,21 +715,21 @@ a{
 .form-success{
     display:none;
     text-align:center;
+    margin-top:13px;
     color:var(--gold2);
     font-size:12px;
-    margin-top:14px;
 }
 
 .form-success.show{
     display:block;
 }
 
-/* =========================================
+/* =========================
    CLOSING
-========================================= */
+========================= */
 
 .closing-message{
-    padding:22px 16px 10px;
+    padding:17px 12px 8px;
     text-align:center;
     background:var(--navy);
 }
@@ -719,22 +737,22 @@ a{
 .closing-ornament{
     color:var(--gold);
     font-size:22px;
-    margin-bottom:8px;
+    margin-bottom:7px;
 }
 
 .closing-text{
     font-family:"Parisienne",cursive;
-    font-size:clamp(58px,10vw,96px);
-    line-height:1;
     color:var(--cream);
+    font-size:clamp(55px,10vw,94px);
+    line-height:1;
 }
 
-/* =========================================
+/* =========================
    FOOTER
-========================================= */
+========================= */
 
 footer{
-    padding:12px 20px 45px;
+    padding:8px 20px 42px;
     text-align:center;
     background:var(--navy);
 }
@@ -746,30 +764,26 @@ footer{
 }
 
 .footer-contact{
-    margin-top:10px;
+    margin-top:9px;
     display:flex;
-    justify-content:center;
     align-items:center;
-    gap:12px;
-    font-size:11px;
+    justify-content:center;
+    gap:10px;
     color:var(--cream2);
-}
-
-.footer-contact a:hover{
-    color:var(--gold2);
+    font-size:11px;
 }
 
 .footer-contact span{
     color:var(--gold);
 }
 
-/* =========================================
+/* =========================
    REVEAL
-========================================= */
+========================= */
 
 .reveal{
     opacity:0;
-    transform:translateY(25px);
+    transform:translateY(22px);
     transition:1s ease;
 }
 
@@ -778,26 +792,20 @@ footer{
     transform:none;
 }
 
-/* =========================================
+/* =========================
    MOBILE
-========================================= */
+========================= */
 
 @media(max-width:700px){
-
-    .opening-inner{
-        padding:18px;
-    }
 
     .seal{
         width:175px;
         height:175px;
-        margin-bottom:16px;
     }
 
     .opening-title{
         font-size:11px;
         letter-spacing:3px;
-        margin-bottom:18px;
     }
 
     .open-btn{
@@ -811,18 +819,18 @@ footer{
     }
 
     .hero-photo{
-        width:94vw;
-        margin-bottom:26px;
+        width:95vw;
+        margin-bottom:23px;
     }
 
     .save-date{
         font-size:8px;
         letter-spacing:4px;
-        margin-bottom:18px;
+        margin-bottom:17px;
     }
 
     .names{
-        font-size:69px;
+        font-size:67px;
     }
 
     .hero-date{
@@ -837,30 +845,29 @@ footer{
     }
 
     .marquee span{
-        font-size:14px;
+        font-size:13px;
         letter-spacing:4px;
         padding:0 18px;
     }
 
     .intro{
-        min-height:52vh;
-        padding:70px 18px;
+        min-height:50vh;
+        padding:68px 18px;
     }
 
     .intro h2{
-        font-size:44px;
+        font-size:43px;
     }
 
     .intro p{
         font-size:12px;
-        line-height:1.9;
     }
 
-    /* JOURNEY */
+    /* ROUTE */
 
     .journey{
-        min-height:1060px;
-        padding-top:70px;
+        min-height:1050px;
+        padding-top:68px;
     }
 
     .section-title{
@@ -868,62 +875,61 @@ footer{
     }
 
     .route-wrap{
-        top:225px;
+        top:220px;
         width:205px;
-        height:790px;
+        height:785px;
     }
 
     .route-svg{
         width:205px;
-        height:790px;
+        height:785px;
     }
 
     .fixed-number{
-        top:-49px;
+        top:-47px;
         font-size:28px;
         letter-spacing:4px;
     }
 
     .route-number-6{
-        left:39px;
+        left:38px;
     }
 
     .route-number-8{
-        right:39px;
+        right:38px;
     }
 
     .route-side-label{
-        width:110px;
+        width:108px;
     }
 
     .route-side-label.left{
-        left:-119px;
+        left:-116px;
     }
 
     .route-side-label.right{
-        right:-119px;
+        right:-116px;
     }
 
     .bride-home{
-        top:102px;
+        top:98px;
     }
 
     .groom-home{
-        top:263px;
+        top:258px;
     }
 
     .church-location{
-        top:436px;
+        top:435px;
     }
 
     .restaurant-location{
-        top:607px;
+        top:604px;
     }
 
     .location-name{
         font-size:7px;
         letter-spacing:1.4px;
-        margin-bottom:5px;
     }
 
     .location-place{
@@ -935,23 +941,9 @@ footer{
         letter-spacing:1px;
     }
 
-    .route-side-label::after{
-        width:18px;
-    }
-
-    .route-side-label.left::after{
-        right:-22px;
-    }
-
-    .route-side-label.right::after{
-        left:-22px;
-    }
-
-    /* HEART */
-
     .moving-heart{
-        width:58px;
-        height:53px;
+        width:56px;
+        height:56px;
     }
 
     .real-heart text{
@@ -961,7 +953,7 @@ footer{
     /* STORY */
 
     .story-section{
-        padding:65px 0 80px;
+        padding:60px 0 78px;
     }
 
     .story-track{
@@ -969,42 +961,38 @@ footer{
     }
 
     .story-card img{
-        height:430px;
+        height:420px;
         object-fit:contain;
     }
 
     .story-arrow{
-        position:absolute;
-        top:50%;
-        transform:translateY(-50%);
-        width:36px;
-        height:36px;
-        flex-basis:36px;
+        width:35px;
+        height:35px;
         font-size:27px;
     }
 
     .story-prev{
-        left:4px;
+        left:5px;
     }
 
     .story-next{
-        right:4px;
+        right:5px;
     }
 
     /* RSVP */
 
     .rsvp{
-        padding:65px 10px 45px;
+        padding:62px 10px 42px;
     }
 
     .rsvp .section-title{
-        font-size:36px;
+        font-size:37px;
     }
 
     .rsvp-form{
         width:94vw;
-        padding:21px 15px 23px;
-        margin-top:24px;
+        padding:20px 15px 23px;
+        margin-top:23px;
     }
 
     .form-row{
@@ -1012,28 +1000,18 @@ footer{
         gap:0;
     }
 
-    .rsvp-form label{
-        font-size:10px;
-    }
-
     .rsvp-btn{
-        width:74%;
-        font-size:9px;
-        padding:11px 10px;
+        width:73%;
     }
 
     /* CLOSING */
 
     .closing-message{
-        padding:18px 12px 7px;
+        padding-top:16px;
     }
 
     .closing-text{
-        font-size:clamp(52px,11vw,72px);
-    }
-
-    footer{
-        padding-top:7px;
+        font-size:clamp(51px,11vw,70px);
     }
 
     .footer-names{
@@ -1042,18 +1020,17 @@ footer{
 
     .footer-contact{
         font-size:9px;
-        gap:8px;
     }
 }
 
 @media(max-width:430px){
 
     .hero-photo{
-        width:96vw;
+        width:97vw;
     }
 
     .names{
-        font-size:61px;
+        font-size:60px;
     }
 
     .route-wrap{
@@ -1080,16 +1057,12 @@ footer{
         font-size:15px;
     }
 
-    .location-address{
-        font-size:6px;
-    }
-
     .story-track{
         width:84vw;
     }
 
     .story-card img{
-        height:380px;
+        height:390px;
     }
 }
 </style>
@@ -1097,17 +1070,21 @@ footer{
 
 <body>
 
-<!-- =================================================
-     FIRST PAGE / STAMP
-================================================= -->
+<!-- =========================================
+     OPENING
+========================================= -->
 
-<div class="opening" id="opening">
+<div
+    class="opening"
+    id="opening"
+>
 
     <div class="opening-inner">
 
         <!--
-            Պետք է stamp.png-ը լինի index.html-ի կողքին։
-            Սթեմփը հենց նկար է, ոչ թե CSS-ով նկարված ձև։
+            ՍԹԵՄՓ
+            Կարելի է սեղմել անմիջապես նկարի վրա։
+            stamp.png-ը պետք է լինի index.html-ի կողքին։
         -->
 
         <div
@@ -1116,21 +1093,28 @@ footer{
             role="button"
             tabindex="0"
             aria-label="Բացել հրավիրատոմսը"
+            onclick="openInvitation()"
         >
+
             <img
                 src="./stamp.png"
                 alt="Ոսկեգույն սթեմփ"
+                draggable="false"
             >
+
         </div>
 
         <div class="opening-title">
             Դուք ստացել եք հրավիրատոմս
         </div>
 
+        <!-- Երկրորդ տարբերակ՝ բացել կոճակով -->
+
         <button
             class="open-btn"
             id="openBtn"
             type="button"
+            onclick="openInvitation()"
         >
             Բացել
         </button>
@@ -1139,9 +1123,9 @@ footer{
 
 </div>
 
-<!-- =================================================
+<!-- =========================================
      HERO
-================================================= -->
+========================================= -->
 
 <section class="hero">
 
@@ -1151,13 +1135,15 @@ footer{
             SAVE THE DATE
         </div>
 
-        <!-- Առաջին էջի նկարը՝ ամբողջական և առանց ռամկի -->
+        <!-- Առաջին էջի մեծ նկար -->
         <div class="hero-photo">
+
             <img
                 src="./couple.jpg"
                 alt="Արթուր և Մարիամ"
                 loading="eager"
             >
+
         </div>
 
         <div class="names">
@@ -1174,9 +1160,9 @@ footer{
 
 </section>
 
-<!-- =================================================
+<!-- =========================================
      MARQUEE
-================================================= -->
+========================================= -->
 
 <div class="marquee">
 
@@ -1194,9 +1180,9 @@ footer{
 
 </div>
 
-<!-- =================================================
+<!-- =========================================
      INTRO
-================================================= -->
+========================================= -->
 
 <section class="intro">
 
@@ -1228,9 +1214,9 @@ footer{
 
 <div class="divider"></div>
 
-<!-- =================================================
-     ROUTE
-================================================= -->
+<!-- =========================================
+     ՕՐՎԱ ԸՆԹԱՑՔԸ
+========================================= -->
 
 <section class="journey">
 
@@ -1252,7 +1238,6 @@ footer{
             id="routeSvg"
             viewBox="0 0 240 850"
             preserveAspectRatio="none"
-            aria-hidden="true"
         >
 
             <path
@@ -1268,12 +1253,12 @@ footer{
 
         </svg>
 
-        <!-- 6-ը ֆիքսված -->
+        <!-- 6 -->
         <div class="fixed-number route-number-6">
             6
         </div>
 
-        <!-- 8-ը ֆիքսված -->
+        <!-- 8 -->
         <div class="fixed-number route-number-8">
             8
         </div>
@@ -1317,7 +1302,7 @@ footer{
 
             <a
                 class="location-address"
-                href="https://www.google.com/maps/search/?api=1&query=99JW%2B6M8%2C%20Saghmosavan%200211%2C%20Aragatsotn%2C%20Armenia"
+                href="https://www.google.com/maps/search/?api=1&query=Saghmosavank%2C%20Armenia"
                 target="_blank"
                 rel="noopener noreferrer"
             >
@@ -1339,7 +1324,7 @@ footer{
 
             <a
                 class="location-address"
-                href="https://www.google.com/maps/search/?api=1&query=Palladium%20Hall%2C%20Tevosyan%20St.%20117%2F5%2C%20Yerevan%2C%20Armenia"
+                href="https://www.google.com/maps/search/?api=1&query=Palladium%20Hall%2C%20Tevosyan%20117%2F5%2C%20Yerevan"
                 target="_blank"
                 rel="noopener noreferrer"
             >
@@ -1349,14 +1334,13 @@ footer{
         </div>
 
         <!--
-            ԻՐԱԿԱՆ ՍՐՏԻԿ
-            Միայն 7-ն է շարժվում։
+            ՇԱՐԺՎՈՂ 7
+            Այստեղ իրական սրտի SVG-ն է։
         -->
 
         <div
             class="moving-heart"
             id="movingHeart"
-            aria-hidden="true"
         >
 
             <svg
@@ -1366,16 +1350,16 @@ footer{
 
                 <path
                     d="
-                        M50 90
-                        C45 84 9 61 9 34
-                        C9 17 21 7 35 7
+                        M50 91
+                        C44 84 8 62 8 34
+                        C8 17 20 7 35 7
                         C43 7 48 11 50 20
                         C52 11 57 7 65 7
-                        C79 7 91 17 91 34
-                        C91 61 55 84 50 90
+                        C80 7 92 17 92 34
+                        C92 62 56 84 50 91
                         Z
                     "
-                />
+                ></path>
 
                 <text
                     x="50"
@@ -1394,9 +1378,9 @@ footer{
 
 <div class="divider"></div>
 
-<!-- =================================================
-     STORY PHOTOS
-================================================= -->
+<!-- =========================================
+     ՆԿԱՐՆԵՐ
+========================================= -->
 
 <section class="story-section">
 
@@ -1406,7 +1390,7 @@ footer{
     >
 
         <button
-            class="story-arrow"
+            class="story-arrow story-prev"
             id="storyPrev"
             type="button"
             aria-label="Նախորդ նկար"
@@ -1419,7 +1403,6 @@ footer{
             id="storyTrack"
         >
 
-            <!-- Քո 1-ին ուղարկած նկարը -->
             <div class="story-card">
 
                 <img
@@ -1430,7 +1413,6 @@ footer{
 
             </div>
 
-            <!-- Քո 2-րդ ուղարկած նկարը -->
             <div class="story-card">
 
                 <img
@@ -1444,7 +1426,7 @@ footer{
         </div>
 
         <button
-            class="story-arrow"
+            class="story-arrow story-next"
             id="storyNext"
             type="button"
             aria-label="Հաջորդ նկար"
@@ -1474,9 +1456,9 @@ footer{
 
 </section>
 
-<!-- =================================================
-     RSVP
-================================================= -->
+<!-- =========================================
+     ՀԱՍՏԱՏԵԼ ՄԱՍՆԱԿՑՈՒԹՅՈՒՆԸ
+========================================= -->
 
 <section
     class="rsvp"
@@ -1632,9 +1614,9 @@ footer{
 
 </section>
 
-<!-- =================================================
+<!-- =========================================
      CLOSING
-================================================= -->
+========================================= -->
 
 <section class="closing-message">
 
@@ -1648,9 +1630,9 @@ footer{
 
 </section>
 
-<!-- =================================================
+<!-- =========================================
      FOOTER
-================================================= -->
+========================================= -->
 
 <footer>
 
@@ -1680,9 +1662,9 @@ footer{
 
 <script>
 
-/* =================================================
-   OPEN INVITATION
-================================================= */
+/* =========================================
+   ՍԹԵՄՓ — ԲԱՑԵԼ ՀՐԱՎԻՐԱՏՈՄՍԸ
+========================================= */
 
 const opening =
     document.getElementById("opening");
@@ -1693,47 +1675,72 @@ const openBtn =
 const seal =
     document.getElementById("seal");
 
+
 function openInvitation(){
+
+    if(!opening){
+        return;
+    }
 
     opening.classList.add("hide");
 
+    document.body.style.overflow = "";
+
 }
 
-/* Կոճակ */
-openBtn.addEventListener(
-    "click",
-    openInvitation
-);
+
+/* Բացել կոճակ */
+
+if(openBtn){
+
+    openBtn.addEventListener(
+        "click",
+        openInvitation
+    );
+
+}
+
 
 /* Սթեմփ */
-seal.addEventListener(
-    "click",
-    openInvitation
-);
 
-/* Սթեմփ keyboard */
-seal.addEventListener(
-    "keydown",
-    function(event){
+if(seal){
 
-        if(
-            event.key === "Enter" ||
-            event.key === " "
-        ){
+    seal.addEventListener(
+        "click",
+        function(event){
 
             event.preventDefault();
 
             openInvitation();
 
         }
-
-    }
-);
+    );
 
 
-/* =================================================
-   7-Ի ՇԱՐԺՈՒՄԸ ՈՒՂԵԳՐԻ ՎՐԱ
-================================================= */
+    seal.addEventListener(
+        "keydown",
+        function(event){
+
+            if(
+                event.key === "Enter" ||
+                event.key === " "
+            ){
+
+                event.preventDefault();
+
+                openInvitation();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   7-Ը ՇԱՐԺՎՈՒՄ Է ՈՒՂԵԳՐԻ ՎՐԱ
+========================================= */
 
 const routeWrap =
     document.getElementById("routeWrap");
@@ -1744,10 +1751,14 @@ const routePath =
 const movingHeart =
     document.getElementById("movingHeart");
 
-let pathLength =
-    routePath.getTotalLength();
 
-let heartTicking = false;
+let pathLength =
+    routePath
+    ? routePath.getTotalLength()
+    : 0;
+
+let heartFrame = false;
+
 
 function clamp(
     value,
@@ -1756,68 +1767,92 @@ function clamp(
 ){
 
     return Math.min(
-        Math.max(value,min),
+        Math.max(
+            value,
+            min
+        ),
         max
     );
 
 }
 
+
 function updateHeart(){
 
-    const routeRect =
+    if(
+        !routeWrap ||
+        !routePath ||
+        !movingHeart
+    ){
+        return;
+    }
+
+    const rect =
         routeWrap.getBoundingClientRect();
 
     const viewportHeight =
         window.innerHeight;
 
+
     /*
-      Սրտիկը սկսում է շարժվել,
-      երբ ուղեգիրը մտնում է էկրանի մեջ։
+       Սրտիկը սկսում է երևալ,
+       երբ ուղեգիրը մտնում է էկրան։
     */
 
-    const travelStart =
-        viewportHeight * 0.86;
+    const start =
+        viewportHeight * .88;
 
-    const travelEnd =
-        viewportHeight * 0.14;
+    const end =
+        viewportHeight * .15;
 
-    const totalTravel =
-        routeRect.height +
-        travelStart -
-        travelEnd;
+
+    const total =
+        rect.height +
+        start -
+        end;
+
 
     let progress =
-        (
-            travelStart -
-            routeRect.top
-        ) / totalTravel;
+        (start - rect.top) /
+        total;
+
 
     progress =
-        clamp(progress,0,1);
+        clamp(
+            progress,
+            0,
+            1
+        );
+
 
     /*
-      Smooth easing
+       Smooth movement
     */
 
     const eased =
         progress < .5
+
         ? 2 * progress * progress
+
         : 1 -
           Math.pow(
               -2 * progress + 2,
               2
           ) / 2;
 
+
     const point =
         routePath.getPointAtLength(
             pathLength * eased
         );
 
+
     const scaleX =
-        routeRect.width / 240;
+        rect.width / 240;
 
     const scaleY =
-        routeRect.height / 850;
+        rect.height / 850;
+
 
     const x =
         point.x * scaleX;
@@ -1825,20 +1860,6 @@ function updateHeart(){
     const y =
         point.y * scaleY;
 
-    /*
-      Սրտիկը մի փոքր փոքրից
-      հասնում է իր նորմալ չափին։
-    */
-
-    let scale = 1;
-
-    if(progress < .10){
-
-        scale =
-            .45 +
-            (progress / .10) * .55;
-
-    }
 
     movingHeart.style.left =
         x + "px";
@@ -1846,24 +1867,44 @@ function updateHeart(){
     movingHeart.style.top =
         y + "px";
 
+
+    /*
+       Սկզբում մի փոքր ավելի փոքր է։
+    */
+
+    let scale = 1;
+
+    if(progress < .10){
+
+        scale =
+            .55 +
+            progress / .10 * .45;
+
+    }
+
+
     movingHeart.style.transform =
         "translate(-50%,-50%) scale(" +
         scale +
         ")";
+
 
     movingHeart.style.opacity =
         progress <= 0
         ? "0"
         : "1";
 
-    heartTicking = false;
+
+    heartFrame = false;
+
 }
 
-function requestHeartUpdate(){
 
-    if(!heartTicking){
+function requestHeart(){
 
-        heartTicking = true;
+    if(!heartFrame){
+
+        heartFrame = true;
 
         requestAnimationFrame(
             updateHeart
@@ -1873,71 +1914,103 @@ function requestHeartUpdate(){
 
 }
 
+
 window.addEventListener(
     "scroll",
-    requestHeartUpdate,
-    {passive:true}
+    requestHeart,
+    {
+        passive:true
+    }
 );
+
 
 window.addEventListener(
     "resize",
     function(){
 
-        pathLength =
-            routePath.getTotalLength();
+        if(routePath){
+
+            pathLength =
+                routePath.getTotalLength();
+
+        }
 
         updateHeart();
 
     }
 );
 
+
 updateHeart();
 
 
-/* =================================================
+/* =========================================
    REVEAL
-================================================= */
+========================================= */
 
-const revealObserver =
-    new IntersectionObserver(
-        function(entries){
+const revealElements =
+    document.querySelectorAll(".reveal");
 
-            entries.forEach(
-                function(entry){
 
-                    if(entry.isIntersecting){
+if(
+    "IntersectionObserver" in window
+){
 
-                        entry.target.classList.add(
-                            "show"
-                        );
+    const observer =
+        new IntersectionObserver(
+            function(entries){
+
+                entries.forEach(
+                    function(entry){
+
+                        if(
+                            entry.isIntersecting
+                        ){
+
+                            entry.target.classList.add(
+                                "show"
+                            );
+
+                        }
 
                     }
+                );
 
-                }
-            );
+            },
+            {
+                threshold:.12
+            }
+        );
 
-        },
-        {
-            threshold:.12
-        }
-    );
 
-document
-    .querySelectorAll(".reveal")
-    .forEach(
+    revealElements.forEach(
         function(element){
 
-            revealObserver.observe(
+            observer.observe(
                 element
             );
 
         }
     );
 
+}else{
 
-/* =================================================
+    revealElements.forEach(
+        function(element){
+
+            element.classList.add(
+                "show"
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================
    STORY CAROUSEL
-================================================= */
+========================================= */
 
 const storyTrack =
     document.getElementById("storyTrack");
@@ -1948,13 +2021,6 @@ const storyPrev =
 const storyNext =
     document.getElementById("storyNext");
 
-const storyDots =
-    [
-        ...document.querySelectorAll(
-            "#storyDots button"
-        )
-    ];
-
 const storyCards =
     [
         ...document.querySelectorAll(
@@ -1962,7 +2028,32 @@ const storyCards =
         )
     ];
 
+const storyDots =
+    [
+        ...document.querySelectorAll(
+            "#storyDots button"
+        )
+    ];
+
+
 let storyIndex = 0;
+
+
+function updateStoryDots(){
+
+    storyDots.forEach(
+        function(dot,index){
+
+            dot.classList.toggle(
+                "active",
+                index === storyIndex
+            );
+
+        }
+    );
+
+}
+
 
 function goToStory(index){
 
@@ -1977,20 +2068,39 @@ function goToStory(index){
         ) %
         storyCards.length;
 
-    storyCards[
-        storyIndex
-    ].scrollIntoView({
-        behavior:"smooth",
-        block:"nearest",
-        inline:"center"
-    });
 
-    storyDots.forEach(
-        function(dot,i){
+    const card =
+        storyCards[storyIndex];
 
-            dot.classList.toggle(
-                "active",
-                i === storyIndex
+
+    if(card){
+
+        card.scrollIntoView({
+
+            behavior:"smooth",
+
+            block:"nearest",
+
+            inline:"center"
+
+        });
+
+    }
+
+
+    updateStoryDots();
+
+}
+
+
+if(storyPrev){
+
+    storyPrev.addEventListener(
+        "click",
+        function(){
+
+            goToStory(
+                storyIndex - 1
             );
 
         }
@@ -1998,27 +2108,22 @@ function goToStory(index){
 
 }
 
-storyPrev.addEventListener(
-    "click",
-    function(){
 
-        goToStory(
-            storyIndex - 1
-        );
+if(storyNext){
 
-    }
-);
+    storyNext.addEventListener(
+        "click",
+        function(){
 
-storyNext.addEventListener(
-    "click",
-    function(){
+            goToStory(
+                storyIndex + 1
+            );
 
-        goToStory(
-            storyIndex + 1
-        );
+        }
+    );
 
-    }
-);
+}
+
 
 storyDots.forEach(
     function(dot,index){
@@ -2035,57 +2140,73 @@ storyDots.forEach(
     }
 );
 
-/* Touch swipe */
+
+/* Swipe */
 
 let touchStartX = 0;
 
-storyTrack.addEventListener(
-    "touchstart",
-    function(event){
 
-        touchStartX =
-            event.touches[0].clientX;
+if(storyTrack){
 
-    },
-    {passive:true}
-);
+    storyTrack.addEventListener(
+        "touchstart",
+        function(event){
 
-storyTrack.addEventListener(
-    "touchend",
-    function(event){
+            touchStartX =
+                event.changedTouches[0].clientX;
 
-        const touchEndX =
-            event.changedTouches[0].clientX;
-
-        const distance =
-            touchEndX - touchStartX;
-
-        if(Math.abs(distance) < 45){
-            return;
+        },
+        {
+            passive:true
         }
+    );
 
-        if(distance > 0){
 
-            goToStory(
-                storyIndex - 1
-            );
+    storyTrack.addEventListener(
+        "touchend",
+        function(event){
 
-        }else{
+            const touchEndX =
+                event.changedTouches[0].clientX;
 
-            goToStory(
-                storyIndex + 1
-            );
+            const distance =
+                touchEndX -
+                touchStartX;
 
+
+            if(
+                Math.abs(distance) < 45
+            ){
+                return;
+            }
+
+
+            if(distance > 0){
+
+                goToStory(
+                    storyIndex - 1
+                );
+
+            }else{
+
+                goToStory(
+                    storyIndex + 1
+                );
+
+            }
+
+        },
+        {
+            passive:true
         }
+    );
 
-    },
-    {passive:true}
-);
+}
 
 
-/* =================================================
+/* =========================================
    RSVP
-================================================= */
+========================================= */
 
 const rsvpForm =
     document.getElementById("rsvpForm");
@@ -2093,31 +2214,45 @@ const rsvpForm =
 const formSuccess =
     document.getElementById("formSuccess");
 
-rsvpForm.addEventListener(
-    "submit",
-    function(event){
 
-        event.preventDefault();
+if(rsvpForm){
 
-        formSuccess.classList.add(
-            "show"
-        );
+    rsvpForm.addEventListener(
+        "submit",
+        function(event){
 
-        rsvpForm.reset();
+            event.preventDefault();
 
-        setTimeout(
-            function(){
+            if(formSuccess){
 
-                formSuccess.classList.remove(
+                formSuccess.classList.add(
                     "show"
                 );
 
-            },
-            7000
-        );
+            }
 
-    }
-);
+            rsvpForm.reset();
+
+
+            setTimeout(
+                function(){
+
+                    if(formSuccess){
+
+                        formSuccess.classList.remove(
+                            "show"
+                        );
+
+                    }
+
+                },
+                7000
+            );
+
+        }
+    );
+
+}
 
 </script>
 
