@@ -3,29 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Արամ & Սաթենիկ — Wedding</title>
+<title>Արամ & Սաթենիկ — 07.07.2027</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Serif+Armenian:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
     --navy:#061525;
     --navy2:#091d32;
     --navy3:#102b45;
     --cream:#f3eee3;
-    --cream2:#e8dfcf;
+    --cream2:#e6dcc9;
     --gold:#d6bb7d;
     --gold2:#ead49b;
-    --gold3:#9e7d43;
-    --white:#fffdf7;
-    --muted:#a9a39a;
-
-    --serif:"Cormorant Garamond",serif;
-    --armenian:"Noto Serif Armenian",serif;
+    --gold3:#96743d;
+    --muted:#aaa69d;
 }
 
 *{
@@ -41,2040 +35,1165 @@ html{
 body{
     background:var(--navy);
     color:var(--cream);
-    font-family:var(--armenian);
+    font-family:"Noto Serif Armenian",serif;
     overflow-x:hidden;
 }
 
-button,
-input,
-select,
-textarea{
-    font:inherit;
-}
-
-::selection{
-    background:var(--gold);
-    color:var(--navy);
-}
-
-
-/* =========================================================
-   OPEN SCREEN
-========================================================= */
-
-.open-screen{
+body:before{
+    content:"";
     position:fixed;
     inset:0;
-    z-index:9999;
+    pointer-events:none;
+    z-index:999;
+    opacity:.12;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+}
 
+section{
+    position:relative;
+}
+
+.serif{
+    font-family:"Cormorant Garamond",serif;
+}
+
+.gold{
+    color:var(--gold);
+}
+
+/* OPEN */
+
+.opening{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    background:
+        radial-gradient(circle at center,rgba(30,61,88,.6),transparent 50%),
+        var(--navy);
     display:flex;
     align-items:center;
     justify-content:center;
-
-    background:
-        radial-gradient(
-            circle at 50% 38%,
-            rgba(214,187,125,.12),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 50% 100%,
-            rgba(16,43,69,.7),
-            transparent 55%
-        ),
-        linear-gradient(
-            145deg,
-            #020b15,
-            #071a2d 50%,
-            #030b14
-        );
-
-    transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease,
-        transform 1.2s ease;
+    transition:1.2s ease;
 }
 
-.open-screen::before{
-    content:"";
-    position:absolute;
-    inset:25px;
-
-    border:1px solid rgba(214,187,125,.35);
-
-    pointer-events:none;
-}
-
-.open-screen::after{
-    content:"";
-    position:absolute;
-    inset:38px;
-
-    border:1px solid rgba(214,187,125,.09);
-
-    pointer-events:none;
-}
-
-.open-screen.hide{
+.opening.hide{
     opacity:0;
     visibility:hidden;
-    transform:scale(1.04);
     pointer-events:none;
 }
 
-.open-content{
-    position:relative;
-    z-index:2;
-    width:min(90vw,600px);
+.opening-inner{
     text-align:center;
 }
 
-.open-small{
-    font-family:var(--serif);
-    font-size:12px;
-    letter-spacing:7px;
-    color:var(--gold);
-    margin-bottom:38px;
-}
-
-.open-title{
-    font-family:var(--armenian);
-    font-size:24px;
-    font-weight:300;
-    letter-spacing:2px;
-    margin-bottom:36px;
-}
-
-.open-heart{
+.seal{
+    width:135px;
+    height:135px;
+    margin:0 auto 40px;
     position:relative;
-    width:115px;
-    height:115px;
-    margin:0 auto 38px;
-
     transform:rotate(-45deg);
-
-    background:
-        linear-gradient(
-            145deg,
-            #f0d69a,
-            #a9803d
-        );
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.55),
-        0 0 50px rgba(214,187,125,.12);
-
-    border-radius:12px;
+    animation:sealFloat 4s ease-in-out infinite;
 }
 
-.open-heart::before,
-.open-heart::after{
+.seal:before{
     content:"";
     position:absolute;
-
-    width:115px;
-    height:115px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #f0d69a,
-            #a9803d
-        );
-
-    border-radius:50%;
+    width:86px;
+    height:86px;
+    background:linear-gradient(145deg,var(--gold2),var(--gold3));
+    left:25px;
+    top:25px;
+    border-radius:12px;
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.5),
+        inset 2px 2px 5px rgba(255,255,255,.3);
 }
 
-.open-heart::before{
-    top:-57px;
-    left:0;
-}
-
-.open-heart::after{
-    left:57px;
-    top:0;
-}
-
-.open-heart span{
+.seal:after{
+    content:"♡";
     position:absolute;
-    z-index:3;
-
-    top:50%;
-    left:50%;
-
-    transform:
-        translate(-50%,-50%)
-        rotate(45deg);
-
-    font-family:var(--serif);
-    font-size:31px;
+    inset:0;
     color:var(--navy);
-
-    font-weight:600;
+    font-family:"Cormorant Garamond",serif;
+    font-size:62px;
+    line-height:135px;
+    transform:rotate(45deg);
 }
 
-.open-button{
-    padding:15px 52px;
+@keyframes sealFloat{
+    0%,100%{transform:rotate(-45deg) translateY(0)}
+    50%{transform:rotate(-45deg) translateY(-10px)}
+}
 
-    border:1px solid var(--gold);
+.opening-title{
+    font-size:15px;
+    letter-spacing:5px;
+    color:var(--cream2);
+    margin-bottom:26px;
+}
+
+.open-btn{
+    border:1px solid rgba(214,187,125,.6);
     background:transparent;
-
-    color:var(--cream);
-
-    font-size:11px;
-    letter-spacing:4px;
-
+    color:var(--gold2);
+    padding:14px 42px;
+    border-radius:100px;
+    font-family:inherit;
+    letter-spacing:3px;
     cursor:pointer;
-
-    transition:.35s ease;
+    transition:.4s;
 }
 
-.open-button:hover{
+.open-btn:hover{
     background:var(--gold);
     color:var(--navy);
-
-    box-shadow:
-        0 15px 35px rgba(214,187,125,.15);
 }
 
-.open-hint{
-    margin-top:18px;
-
-    color:var(--muted);
-
-    font-size:9px;
-    letter-spacing:3px;
-}
-
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-.invitation{
-    opacity:0;
-    transition:opacity 1s ease;
-}
-
-.invitation.show{
-    opacity:1;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
+/* HERO */
 
 .hero{
     min-height:100vh;
-
     display:flex;
-    flex-direction:column;
-    justify-content:center;
     align-items:center;
-
+    justify-content:center;
     text-align:center;
-
-    position:relative;
-    overflow:hidden;
-
     background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(214,187,125,.09),
-            transparent 28%
-        ),
-        linear-gradient(
-            180deg,
-            #030d19,
-            #071b2e
-        );
+        radial-gradient(circle at 50% 35%,#183653 0%,transparent 40%),
+        linear-gradient(180deg,#07192a,#061525);
+    overflow:hidden;
 }
 
-.hero::before{
+.hero:after{
     content:"";
-
     position:absolute;
-    inset:35px;
-
-    border:1px solid rgba(214,187,125,.15);
+    width:600px;
+    height:600px;
+    border:1px solid rgba(214,187,125,.13);
+    border-radius:50%;
 }
 
-.hero-top{
-    font-family:var(--serif);
+.hero-content{
+    z-index:2;
+}
 
-    font-size:13px;
-    letter-spacing:9px;
-
+.small{
+    font-size:11px;
+    letter-spacing:7px;
     color:var(--gold);
-
-    margin-bottom:32px;
-}
-
-.hero-line{
-    width:80px;
-    height:1px;
-
-    background:var(--gold);
-
-    opacity:.6;
-
     margin-bottom:35px;
 }
 
-.hero-names{
-    font-family:var(--serif);
-
-    font-size:clamp(58px,9vw,105px);
-
-    line-height:.9;
-
+.names{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(70px,12vw,150px);
+    line-height:.75;
     font-weight:300;
-
-    letter-spacing:2px;
+    letter-spacing:-4px;
 }
 
-.hero-names .and{
+.amp{
+    font-size:.48em;
     color:var(--gold);
-    font-size:.55em;
-    margin:0 12px;
+    vertical-align:middle;
 }
 
 .hero-date{
-    margin-top:40px;
-
-    font-family:var(--serif);
-
-    font-size:18px;
-
+    margin-top:48px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:24px;
     letter-spacing:9px;
-
-    color:var(--gold2);
+    color:var(--cream2);
 }
 
-.scroll-cue{
-    position:absolute;
-    bottom:35px;
-
-    font-size:8px;
-    letter-spacing:4px;
-
-    color:var(--muted);
-}
-
-.scroll-cue i{
-    display:block;
-
+.hero-line{
     width:1px;
-    height:45px;
-
-    margin:13px auto 0;
-
-    background:
-        linear-gradient(
-            to bottom,
-            var(--gold),
-            transparent
-        );
+    height:85px;
+    background:linear-gradient(var(--gold),transparent);
+    margin:50px auto 0;
 }
 
-
-/* =========================================================
-   MARQUEE
-========================================================= */
+/* MARQUEE */
 
 .marquee{
-    overflow:hidden;
-
     border-top:1px solid rgba(214,187,125,.16);
     border-bottom:1px solid rgba(214,187,125,.16);
-
-    padding:17px 0;
-
-    background:#04101d;
+    overflow:hidden;
+    padding:18px 0;
+    background:var(--navy2);
 }
 
 .marquee-track{
     display:flex;
     width:max-content;
-
-    animation:marquee 25s linear infinite;
+    animation:marquee 30s linear infinite;
 }
 
 .marquee span{
-    font-family:var(--serif);
-
-    font-size:13px;
-    letter-spacing:6px;
-
+    font-family:"Cormorant Garamond",serif;
+    font-size:20px;
+    letter-spacing:8px;
     color:var(--gold);
-
-    padding:0 45px;
-
-    white-space:nowrap;
+    padding:0 40px;
 }
 
 @keyframes marquee{
-    from{
-        transform:translateX(0);
-    }
-    to{
-        transform:translateX(-50%);
-    }
+    to{transform:translateX(-50%)}
 }
 
-
-/* =========================================================
-   INTRO
-========================================================= */
+/* INTRO */
 
 .intro{
-    padding:150px 25px;
-
-    max-width:900px;
-
-    margin:auto;
-
+    min-height:80vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     text-align:center;
+    padding:100px 25px;
+    background:
+        radial-gradient(circle at center,#102b45,transparent 65%),
+        var(--navy);
 }
 
-.label{
-    font-family:var(--serif);
+.intro-inner{
+    max-width:700px;
+}
 
+.ornament{
     color:var(--gold);
-
-    font-size:11px;
-
-    letter-spacing:7px;
-
-    margin-bottom:25px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:40px;
+    margin-bottom:35px;
 }
 
-.intro h2,
-.section-title{
-    font-family:var(--serif);
-
-    font-size:clamp(40px,6vw,68px);
-
+.intro h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:65px;
     font-weight:300;
-
     margin-bottom:30px;
 }
 
 .intro p{
-    max-width:650px;
-
-    margin:auto;
-
-    color:#b8b3aa;
-
+    color:var(--muted);
+    line-height:2.2;
     font-size:15px;
-
-    line-height:2.1;
-
-    font-weight:300;
 }
 
-
-/* =========================================================
-   HEART JOURNEY
-========================================================= */
+/* JOURNEY */
 
 .journey{
-    position:relative;
-
-    height:1050px;
-
+    min-height:1250px;
+    padding:120px 20px;
+    background:#07192a;
     overflow:hidden;
-
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(214,187,125,.07),
-            transparent 30%
-        ),
-        linear-gradient(
-            180deg,
-            #071b2e,
-            #04111f
-        );
 }
 
-.journey-header{
-    position:absolute;
-
-    top:80px;
-    left:50%;
-
-    transform:translateX(-50%);
-
+.section-head{
     text-align:center;
-
-    z-index:10;
-
-    width:90%;
+    position:relative;
+    z-index:5;
 }
 
-.journey-header h2{
-    font-family:var(--serif);
+.section-label{
+    color:var(--gold);
+    letter-spacing:6px;
+    font-size:10px;
+    margin-bottom:18px;
+}
 
-    font-size:55px;
-
+.section-title{
+    font-family:"Cormorant Garamond",serif;
     font-weight:300;
+    font-size:65px;
 }
 
-.journey-header p{
-    color:var(--muted);
-
-    margin-top:12px;
-
-    font-size:12px;
-
-    letter-spacing:2px;
-}
-
-
-/* SVG ROUTE */
-
-.route{
+.route-wrap{
     position:absolute;
-
-    top:145px;
     left:50%;
-
+    top:270px;
     transform:translateX(-50%);
-
-    width:min(205px,50vw);
-
-    height:820px;
+    width:240px;
+    height:850px;
 }
 
-.route svg{
-    width:100%;
-    height:100%;
-
+.route-svg{
+    position:absolute;
+    inset:0;
+    width:240px;
+    height:850px;
     overflow:visible;
 }
 
-.route-path{
+.route-line{
     fill:none;
-
-    stroke:rgba(214,187,125,.42);
-
-    stroke-width:1.3;
-
-    stroke-dasharray:3 9;
-
+    stroke:rgba(214,187,125,.45);
+    stroke-width:1.2;
+    stroke-dasharray:2 10;
     stroke-linecap:round;
 }
-
-
-/* EVENT MARKERS */
-
-.journey-event{
-    position:absolute;
-
-    display:flex;
-    align-items:center;
-
-    width:240px;
-
-    gap:16px;
-}
-
-.journey-event.left{
-    right:calc(50% + 105px);
-
-    justify-content:flex-end;
-
-    text-align:right;
-}
-
-.journey-event.right{
-    left:calc(50% + 105px);
-
-    text-align:left;
-}
-
-.journey-event.one{
-    top:190px;
-}
-
-.journey-event.two{
-    top:390px;
-}
-
-.journey-event.three{
-    top:600px;
-}
-
-.journey-time{
-    font-family:var(--serif);
-
-    font-size:30px;
-
-    color:var(--gold);
-}
-
-.journey-name{
-    font-size:12px;
-
-    color:var(--cream);
-
-    letter-spacing:1px;
-}
-
-.journey-small{
-    margin-top:5px;
-
-    font-size:9px;
-
-    color:var(--muted);
-}
-
 
 /* MOVING HEART */
 
 .moving-heart{
     position:absolute;
-
-    width:150px;
-    height:80px;
-
-    left:50%;
+    width:180px;
+    height:100px;
+    z-index:20;
+    left:120px;
     top:0;
-
     opacity:0;
-
-    transform:
-        translate(-50%,-50%)
-        scale(.35);
-
-    z-index:50;
-
     pointer-events:none;
-
-    will-change:
-        left,
-        top,
-        transform;
-
-    transition:opacity .4s ease;
+    will-change:transform;
 }
 
-.moving-heart.active{
-    opacity:1;
-}
-
-
-/* HEART */
-
-.heart-body{
+.heart-shape{
     position:absolute;
-
-    width:55px;
-    height:55px;
-
-    left:47px;
-    top:12px;
-
+    width:62px;
+    height:62px;
+    left:59px;
+    top:19px;
     background:var(--cream);
-
     transform:rotate(-45deg);
-
-    border-radius:8px;
-
+    border-radius:9px;
     box-shadow:
-        0 15px 30px rgba(0,0,0,.45),
-        0 0 20px rgba(214,187,125,.14);
+        0 15px 35px rgba(0,0,0,.5),
+        0 0 30px rgba(214,187,125,.2);
 }
 
-.heart-body::before,
-.heart-body::after{
+.heart-shape:before,
+.heart-shape:after{
     content:"";
-
     position:absolute;
-
-    width:55px;
-    height:55px;
-
+    width:62px;
+    height:62px;
     background:var(--cream);
-
     border-radius:50%;
 }
 
-.heart-body::before{
-    top:-27px;
+.heart-shape:before{
+    top:-31px;
     left:0;
 }
 
-.heart-body::after{
-    left:27px;
+.heart-shape:after{
     top:0;
+    left:31px;
 }
 
-
-/* 7 */
-
-.heart-number{
+.heart-seven{
     position:absolute;
-
-    z-index:60;
-
-    left:75px;
-    top:40px;
-
-    transform:
-        translate(-50%,-50%)
-        rotate(45deg);
-
-    font-family:var(--serif);
-
-    font-size:22px;
-
-    font-weight:600;
-
+    z-index:30;
+    left:90px;
+    top:50px;
+    transform:translate(-50%,-50%) rotate(45deg);
+    font-family:"Cormorant Garamond",serif;
     color:var(--navy);
-
-    letter-spacing:1px;
+    font-size:30px;
+    font-weight:600;
 }
 
-
-/* 6 / 8 */
-
-.heart-side-number{
+.side-number{
     position:absolute;
-
     top:50%;
-
-    z-index:55;
-
     transform:translateY(-50%);
-
+    z-index:35;
     color:var(--cream);
-
-    font-family:var(--serif);
-
-    font-size:29px;
-
+    font-family:"Cormorant Garamond",serif;
+    font-size:34px;
     font-weight:300;
 }
 
-.heart-side-number.left{
-    left:2px;
+.side-number.left{
+    left:8px;
 }
 
-.heart-side-number.right{
-    right:2px;
+.side-number.right{
+    right:8px;
 }
 
+/* FIXED DATE MARKERS */
 
-/* =========================================================
-   DATE
-========================================================= */
-
-.date-section{
-    padding:140px 20px;
-
-    text-align:center;
-
-    background:
-        linear-gradient(
-            180deg,
-            #04111f,
-            #06192b
-        );
+.marker{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:4;
+    display:flex;
+    align-items:center;
+    gap:25px;
+    width:430px;
+    justify-content:center;
 }
 
-.date-big{
-    font-family:var(--serif);
-
-    font-size:150px;
-
-    line-height:.8;
-
-    font-weight:300;
-
-    color:transparent;
-
-    -webkit-text-stroke:1px rgba(214,187,125,.65);
+.marker span{
+    font-family:"Cormorant Garamond",serif;
+    font-size:25px;
+    color:rgba(243,238,227,.6);
 }
 
-.date-month{
-    margin-top:30px;
-
-    font-family:var(--serif);
-
-    font-size:42px;
-
-    color:var(--gold);
+.marker i{
+    width:6px;
+    height:6px;
+    background:var(--gold);
+    border-radius:50%;
+    box-shadow:0 0 12px var(--gold);
 }
 
-.date-year{
-    margin-top:5px;
+.m1{top:300px}
+.m2{top:475px}
+.m3{top:650px}
+.m4{top:825px}
+.m5{top:1000px}
 
-    letter-spacing:8px;
-
-    color:var(--muted);
-}
-
-
-/* =========================================================
-   EVENTS
-========================================================= */
+/* EVENT */
 
 .events{
     padding:140px 20px;
-
-    max-width:1000px;
-
-    margin:auto;
+    background:var(--navy);
 }
 
-.events-head{
-    text-align:center;
-
-    margin-bottom:80px;
-}
-
-.events-list{
-    border-top:1px solid rgba(214,187,125,.2);
+.events-grid{
+    max-width:950px;
+    margin:70px auto 0;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:rgba(214,187,125,.2);
 }
 
 .event{
-    display:grid;
+    padding:55px 35px;
+    background:var(--navy);
+    text-align:center;
+    transition:.5s;
+}
 
-    grid-template-columns:140px 1fr;
-
-    padding:32px 0;
-
-    border-bottom:1px solid rgba(214,187,125,.14);
-
-    align-items:center;
+.event:hover{
+    background:var(--navy2);
 }
 
 .event-time{
-    font-family:var(--serif);
-
-    font-size:38px;
-
+    font-family:"Cormorant Garamond",serif;
     color:var(--gold);
+    font-size:48px;
 }
 
 .event h3{
-    font-family:var(--serif);
-
-    font-size:28px;
-
+    font-size:16px;
     font-weight:400;
+    margin:15px 0;
 }
 
 .event p{
-    margin-top:6px;
-
     color:var(--muted);
-
-    font-size:11px;
+    font-size:12px;
 }
 
+/* BIG DATE */
 
-/* =========================================================
-   PHOTO
-========================================================= */
-
-.photo-section{
-    padding:30px 20px 150px;
-}
-
-.photo{
-    max-width:1200px;
-
-    height:650px;
-
-    margin:auto;
-
-    overflow:hidden;
-
-    position:relative;
-}
-
-.photo img{
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    filter:
-        saturate(.72)
-        contrast(1.05)
-        brightness(.78);
-
-    transition:transform 1.2s ease;
-}
-
-.photo:hover img{
-    transform:scale(1.04);
-}
-
-.photo::after{
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            180deg,
-            transparent 55%,
-            rgba(3,11,19,.65)
-        );
-}
-
-
-/* =========================================================
-   COUNTDOWN
-========================================================= */
-
-.countdown-section{
-    padding:150px 20px;
-
-    text-align:center;
-
-    background:#030d18;
-}
-
-.countdown{
+.big-date{
+    min-height:85vh;
     display:flex;
-
+    align-items:center;
     justify-content:center;
-
-    gap:clamp(25px,6vw,90px);
-
-    margin-top:60px;
+    text-align:center;
+    background:
+        linear-gradient(rgba(6,21,37,.7),rgba(6,21,37,.9)),
+        radial-gradient(circle,#173956,#061525 70%);
 }
 
-.count-number{
-    display:block;
+.date-number{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(130px,25vw,310px);
+    line-height:.7;
+    color:transparent;
+    -webkit-text-stroke:1px rgba(214,187,125,.65);
+    letter-spacing:-15px;
+}
 
-    font-family:var(--serif);
-
-    font-size:65px;
-
-    font-weight:300;
-
+.date-month{
+    margin-top:45px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:28px;
+    letter-spacing:12px;
     color:var(--cream);
 }
 
-.count-label{
-    display:block;
-
-    margin-top:8px;
-
+.date-year{
+    margin-top:15px;
     color:var(--gold);
+    letter-spacing:8px;
+}
 
-    font-size:9px;
+/* PHOTO */
 
+.photo{
+    min-height:75vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--navy2);
+    padding:100px 20px;
+}
+
+.photo-frame{
+    width:min(600px,90vw);
+    aspect-ratio:4/5;
+    border:1px solid rgba(214,187,125,.4);
+    padding:12px;
+    position:relative;
+}
+
+.photo-inner{
+    width:100%;
+    height:100%;
+    background:
+        linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.01)),
+        #0d263c;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.photo-inner span{
+    font-family:"Cormorant Garamond",serif;
+    color:rgba(243,238,227,.4);
+    font-size:22px;
     letter-spacing:4px;
 }
 
+/* COUNTDOWN */
 
-/* =========================================================
-   RSVP
-========================================================= */
+.countdown{
+    padding:130px 20px;
+    text-align:center;
+    background:#07192a;
+}
+
+.timer{
+    max-width:850px;
+    margin:70px auto 0;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+}
+
+.timer-box{
+    border-left:1px solid rgba(214,187,125,.2);
+    padding:25px;
+}
+
+.timer-box:last-child{
+    border-right:1px solid rgba(214,187,125,.2);
+}
+
+.timer-number{
+    font-family:"Cormorant Garamond",serif;
+    font-size:65px;
+    font-weight:300;
+    color:var(--cream);
+}
+
+.timer-label{
+    font-size:10px;
+    letter-spacing:4px;
+    color:var(--gold);
+}
+
+/* RSVP */
 
 .rsvp{
     padding:150px 20px;
-
-    max-width:650px;
-
-    margin:auto;
-
     text-align:center;
+    background:var(--navy);
+}
+
+.rsvp h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:75px;
+    font-weight:300;
 }
 
 .rsvp p{
     color:var(--muted);
-
-    font-size:12px;
-
-    margin-top:15px;
+    margin:25px auto 45px;
 }
 
-.form{
-    margin-top:55px;
-
-    text-align:left;
-}
-
-.field{
-    margin-bottom:25px;
-}
-
-.field label{
-    display:block;
-
-    margin-bottom:8px;
-
-    color:var(--gold);
-
-    font-size:10px;
-
-    letter-spacing:2px;
-}
-
-.field input,
-.field select,
-.field textarea{
-    width:100%;
-
-    padding:15px 14px;
-
-    color:var(--cream);
-
-    background:
-        rgba(255,255,255,.025);
-
-    border:
-        1px solid rgba(214,187,125,.2);
-
-    outline:none;
-
-    border-radius:0;
-}
-
-.field textarea{
-    min-height:120px;
-
-    resize:vertical;
-}
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus{
-    border-color:var(--gold);
-}
-
-.rsvp-button{
-    width:100%;
-
-    padding:16px;
-
-    margin-top:10px;
-
-    background:var(--gold);
-
+.rsvp-btn{
+    display:inline-block;
     border:1px solid var(--gold);
-
-    color:var(--navy);
-
-    cursor:pointer;
-
-    font-size:10px;
-
+    color:var(--gold2);
+    text-decoration:none;
+    padding:15px 45px;
     letter-spacing:3px;
-
-    transition:.3s ease;
+    transition:.4s;
 }
 
-.rsvp-button:hover{
-    background:transparent;
-
-    color:var(--gold);
+.rsvp-btn:hover{
+    background:var(--gold);
+    color:var(--navy);
 }
 
+/* FOOTER */
 
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.footer{
+footer{
     padding:80px 20px;
-
     text-align:center;
-
-    border-top:1px solid rgba(214,187,125,.12);
+    border-top:1px solid rgba(214,187,125,.15);
 }
 
-.footer-logo{
-    font-family:var(--serif);
+.footer-names{
+    font-family:"Cormorant Garamond",serif;
+    font-size:55px;
+    font-weight:300;
+}
 
-    font-size:42px;
-
+.footer-date{
+    margin-top:15px;
     color:var(--gold);
+    letter-spacing:6px;
+    font-size:11px;
 }
 
-.footer p{
-    margin-top:10px;
+/* MUSIC */
 
-    font-size:8px;
-
-    letter-spacing:5px;
-
-    color:var(--muted);
-}
-
-
-/* =========================================================
-   MUSIC
-========================================================= */
-
-.music-button{
+.music{
     position:fixed;
-
-    right:22px;
-    bottom:22px;
-
-    z-index:1000;
-
+    right:25px;
+    bottom:25px;
     width:48px;
     height:48px;
-
+    border:1px solid rgba(214,187,125,.5);
     border-radius:50%;
-
-    border:1px solid rgba(214,187,125,.55);
-
-    background:rgba(3,13,24,.85);
-
+    background:rgba(6,21,37,.8);
     color:var(--gold);
-
+    z-index:500;
     cursor:pointer;
-
-    backdrop-filter:blur(10px);
-
-    font-size:16px;
 }
 
+.music.playing{
+    animation:spin 4s linear infinite;
+}
 
-/* =========================================================
-   MOBILE
-========================================================= */
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+/* REVEAL */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:1s ease;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:none;
+}
+
+/* MOBILE */
 
 @media(max-width:700px){
 
-    .open-screen::before{
-        inset:15px;
-    }
-
-    .open-screen::after{
-        inset:25px;
-    }
-
-    .open-small{
-        font-size:9px;
-        letter-spacing:4px;
-    }
-
-    .open-title{
-        font-size:19px;
-    }
-
-    .open-heart{
-        width:90px;
-        height:90px;
-    }
-
-    .open-heart::before,
-    .open-heart::after{
-        width:90px;
-        height:90px;
-    }
-
-    .open-heart::before{
-        top:-45px;
-    }
-
-    .open-heart::after{
-        left:45px;
-    }
-
-    .open-heart span{
-        font-size:24px;
-    }
-
-    .hero::before{
-        inset:18px;
-    }
-
-    .hero-top{
-        font-size:10px;
-        letter-spacing:5px;
-    }
-
-    .hero-names{
-        font-size:57px;
+    .names{
+        font-size:70px;
     }
 
     .hero-date{
-        font-size:14px;
+        font-size:18px;
         letter-spacing:5px;
     }
 
-    .intro{
-        padding:110px 25px;
+    .intro h2,
+    .section-title{
+        font-size:48px;
     }
 
     .journey{
-        height:950px;
+        min-height:1150px;
     }
 
-    .journey-header{
-        top:60px;
+    .route-wrap{
+        top:270px;
+        width:205px;
+        height:780px;
     }
 
-    .journey-header h2{
-        font-size:42px;
+    .route-svg{
+        width:205px;
+        height:780px;
     }
 
-    .route{
-        top:140px;
-
-        width:170px;
-        height:750px;
+    .marker{
+        width:330px;
     }
 
-    .journey-event{
-        width:125px;
+    .events-grid{
+        grid-template-columns:1fr;
     }
 
-    .journey-event.left{
-        right:calc(50% + 82px);
+    .timer{
+        grid-template-columns:1fr 1fr;
+        gap:20px;
     }
 
-    .journey-event.right{
-        left:calc(50% + 82px);
+    .timer-box{
+        border:1px solid rgba(214,187,125,.15);
     }
 
-    .journey-event.one{
-        top:190px;
+    .timer-number{
+        font-size:48px;
     }
 
-    .journey-event.two{
-        top:365px;
+    .rsvp h2{
+        font-size:55px;
     }
-
-    .journey-event.three{
-        top:550px;
-    }
-
-    .journey-time{
-        font-size:22px;
-    }
-
-    .journey-name{
-        font-size:9px;
-    }
-
-    .journey-small{
-        font-size:7px;
-    }
-
-    .date-big{
-        font-size:110px;
-    }
-
-    .event{
-        grid-template-columns:90px 1fr;
-    }
-
-    .event-time{
-        font-size:28px;
-    }
-
-    .event h3{
-        font-size:22px;
-    }
-
-    .photo{
-        height:470px;
-    }
-
-    .countdown{
-        gap:18px;
-    }
-
-    .count-number{
-        font-size:42px;
-    }
-
-    .count-label{
-        font-size:7px;
-        letter-spacing:2px;
-    }
-
 }
-
 </style>
 </head>
 
-
 <body>
 
+<!-- OPENING -->
 
-<!-- =====================================================
-     OPEN SCREEN
-===================================================== -->
+<div class="opening" id="opening">
+    <div class="opening-inner">
 
-<div class="open-screen" id="openScreen">
+        <div class="seal"></div>
 
-    <div class="open-content">
-
-        <div class="open-small">
-            EVENTO · WEDDING INVITATION
-        </div>
-
-        <div class="open-title">
+        <div class="opening-title">
             Դուք ստացել եք հրավիրատոմս
         </div>
 
-        <div class="open-heart">
-            <span>♥</span>
-        </div>
-
-        <button
-            class="open-button"
-            onclick="openInvitation()"
-        >
-            ԲԱՑԵԼ
+        <button class="open-btn" id="openBtn">
+            Բացել
         </button>
 
-        <div class="open-hint">
-            ՍԵՂՄԵՔ՝ ՀՐԱՎԻՐԱՏՈՄՍԸ ԲԱՑԵԼՈՒ ՀԱՄԱՐ
-        </div>
-
     </div>
-
 </div>
 
+<!-- MUSIC -->
 
-<!-- =====================================================
-     INVITATION
-===================================================== -->
+<button class="music" id="musicBtn">♪</button>
 
-<main class="invitation" id="invitation">
-
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
 
 <!-- HERO -->
 
 <section class="hero">
 
-    <div class="hero-top">
-        SAVE THE DATE
-    </div>
+    <div class="hero-content">
 
-    <div class="hero-line"></div>
+        <div class="small">
+            SAVE THE DATE
+        </div>
 
-    <div class="hero-names">
-        Արամ
-        <span class="and">&</span>
-        Սաթենիկ
-    </div>
+        <div class="names">
+            Արամ <span class="amp">&</span> Սաթենիկ
+        </div>
 
-    <div class="hero-date">
-        07 · 07 · 2027
-    </div>
+        <div class="hero-date">
+            07 · 07 · 2027
+        </div>
 
-    <div class="scroll-cue">
-        SCROLL TO EXPLORE
-        <i></i>
+        <div class="hero-line"></div>
+
     </div>
 
 </section>
 
-
 <!-- MARQUEE -->
 
 <div class="marquee">
-
     <div class="marquee-track">
-
         <span>SAVE THE DATE</span>
         <span>07 · 07 · 2027</span>
-        <span>ԱՐԱՄ & ՍԱԹԵՆԻԿ</span>
-
+        <span>ARAM & SATENIK</span>
         <span>SAVE THE DATE</span>
         <span>07 · 07 · 2027</span>
-        <span>ԱՐԱՄ & ՍԱԹԵՆԻԿ</span>
-
+        <span>ARAM & SATENIK</span>
     </div>
-
 </div>
-
 
 <!-- INTRO -->
 
 <section class="intro">
 
-    <div class="label">
-        ՍԻՐԵԼԻՆԵՐՍ
-    </div>
+    <div class="intro-inner reveal">
 
-    <h2>
-        Մեր սիրո օրը
-    </h2>
+        <div class="ornament">♡</div>
 
-    <p>
-        Մեր կյանքի ամենագեղեցիկ էջը սկսվում է հենց այս օրը։
-        Սիրով հրավիրում ենք Ձեզ կիսելու մեզ հետ մեր
-        միության, սիրո և երջանկության ամենակարևոր պահը։
-    </p>
-
-</section>
-
-
-<!-- =====================================================
-     HEART JOURNEY
-===================================================== -->
-
-<section class="journey" id="journey">
-
-    <div class="journey-header">
-
-        <div class="label">
-            ՄԵՐ ՕՐԸ
+        <div class="section-label">
+            ՍԻՐԵԼԻՆԵՐՍ
         </div>
 
         <h2>
-            07 · 07 · 2027
+            Մեր սիրո օրը
         </h2>
 
         <p>
-            Մեկ օր · Մեկ պատմություն · Մեկ սեր
+            Սիրով հրավիրում ենք Ձեզ կիսելու
+            մեր կյանքի ամենագեղեցիկ ու կարևոր
+            օրվա ուրախությունը։
+            Ձեր ներկայությունը մեզ համար կլինի
+            ամենաթանկ նվերը։
         </p>
 
     </div>
 
+</section>
 
-    <!-- ROUTE -->
+<!-- JOURNEY -->
 
-    <div class="route" id="route">
+<section class="journey" id="journey">
 
-        <svg
-            viewBox="0 0 205 820"
-            preserveAspectRatio="none"
-        >
+    <div class="section-head reveal">
+
+        <div class="section-label">
+            OUR JOURNEY
+        </div>
+
+        <div class="section-title">
+            Մինչև մեր օրը
+        </div>
+
+    </div>
+
+    <div class="route-wrap" id="routeWrap">
+
+        <svg class="route-svg"
+             id="routeSvg"
+             viewBox="0 0 240 850">
 
             <path
                 id="routePath"
-                class="route-path"
+                class="route-line"
                 d="
-                    M102 0
-                    C25 100, 185 170, 102 275
-                    C15 385, 185 455, 102 565
-                    C35 660, 175 735, 102 820
+                M120 0
+                C25 105,215 175,120 285
+                C20 400,220 470,120 575
+                C30 680,210 750,120 850
                 "
             />
 
         </svg>
 
+        <div class="moving-heart" id="movingHeart">
 
-        <!-- MOVING HEART -->
+            <span class="side-number left">6</span>
 
-        <div
-            class="moving-heart"
-            id="movingHeart"
-        >
+            <div class="heart-shape"></div>
 
-            <span class="heart-side-number left">
-                6
-            </span>
+            <span class="heart-seven">7</span>
 
-            <div class="heart-body"></div>
-
-            <span class="heart-number">
-                7
-            </span>
-
-            <span class="heart-side-number right">
-                8
-            </span>
+            <span class="side-number right">8</span>
 
         </div>
 
-    </div>
-
-
-    <!-- EVENTS -->
-
-    <div class="journey-event left one">
-
-        <div>
-
-            <div class="journey-time">
-                12:00
-            </div>
-
-            <div class="journey-name">
-                Փեսայի տուն
-            </div>
-
-            <div class="journey-small">
-                Հանդիպում
-            </div>
-
+        <div class="marker m1">
+            <span>06</span>
+            <i></i>
+            <span>07</span>
         </div>
 
-    </div>
-
-
-    <div class="journey-event right two">
-
-        <div>
-
-            <div class="journey-time">
-                13:00
-            </div>
-
-            <div class="journey-name">
-                Հարսնացուի տուն
-            </div>
-
-            <div class="journey-small">
-                Օրհնություն
-            </div>
-
+        <div class="marker m2">
+            <span>07</span>
+            <i></i>
+            <span>07</span>
         </div>
 
-    </div>
+        <div class="marker m3">
+            <span>07</span>
+            <i></i>
+            <span>07</span>
+        </div>
 
+        <div class="marker m4">
+            <span>08</span>
+            <i></i>
+            <span>07</span>
+        </div>
 
-    <div class="journey-event left three">
-
-        <div>
-
-            <div class="journey-time">
-                15:00
-            </div>
-
-            <div class="journey-name">
-                Պսակադրություն
-            </div>
-
-            <div class="journey-small">
-                Եկեղեցի
-            </div>
-
+        <div class="marker m5">
+            <span>09</span>
+            <i></i>
+            <span>07</span>
         </div>
 
     </div>
 
 </section>
-
-
-<!-- DATE -->
-
-<section class="date-section">
-
-    <div class="label">
-        SAVE THE DATE
-    </div>
-
-    <div class="date-big">
-        07
-    </div>
-
-    <div class="date-month">
-        ՀՈՒԼԻՍ
-    </div>
-
-    <div class="date-year">
-        2027
-    </div>
-
-</section>
-
 
 <!-- EVENTS -->
 
 <section class="events">
 
-    <div class="events-head">
+    <div class="section-head reveal">
 
-        <div class="label">
-            ՕՐՎԱ ԸՆԹԱՑՔԸ
+        <div class="section-label">
+            THE DAY
         </div>
 
         <div class="section-title">
-            Սիրով սպասում ենք
+            Մեր օրվա ընթացքը
         </div>
 
     </div>
 
+    <div class="events-grid">
 
-    <div class="events-list">
-
-        <div class="event">
-
-            <div class="event-time">
-                12:00
-            </div>
-
-            <div>
-                <h3>
-                    Փեսայի տուն
-                </h3>
-
-                <p>
-                    Հասցեն կհայտնվի այստեղ
-                </p>
-            </div>
-
+        <div class="event reveal">
+            <div class="event-time">12:00</div>
+            <h3>Փեսայի տուն</h3>
+            <p>Սկսում ենք մեր գեղեցիկ օրը</p>
         </div>
 
-
-        <div class="event">
-
-            <div class="event-time">
-                13:00
-            </div>
-
-            <div>
-                <h3>
-                    Հարսնացուի տուն
-                </h3>
-
-                <p>
-                    Հասցեն կհայտնվի այստեղ
-                </p>
-            </div>
-
+        <div class="event reveal">
+            <div class="event-time">13:00</div>
+            <h3>Հարսնացուի տուն</h3>
+            <p>Հանդիպում և ավանդական արարողություն</p>
         </div>
 
-
-        <div class="event">
-
-            <div class="event-time">
-                15:00
-            </div>
-
-            <div>
-                <h3>
-                    Պսակադրություն
-                </h3>
-
-                <p>
-                    Եկեղեցու հասցեն
-                </p>
-            </div>
-
+        <div class="event reveal">
+            <div class="event-time">15:00</div>
+            <h3>Պսակադրություն</h3>
+            <p>Մեր սիրո ամենակարևոր պահը</p>
         </div>
 
-
-        <div class="event">
-
-            <div class="event-time">
-                17:30
-            </div>
-
-            <div>
-                <h3>
-                    Հարսանյաց սրահ
-                </h3>
-
-                <p>
-                    Morena Restaurant
-                </p>
-            </div>
-
+        <div class="event reveal">
+            <div class="event-time">17:30</div>
+            <h3>Հարսանյաց սրահ</h3>
+            <p>Երեկոյի տոնական շարունակությունը</p>
         </div>
 
     </div>
 
 </section>
 
+<!-- DATE -->
+
+<section class="big-date">
+
+    <div>
+
+        <div class="date-number">
+            07
+        </div>
+
+        <div class="date-month">
+            ՀՈՒԼԻՍ
+        </div>
+
+        <div class="date-year">
+            2027
+        </div>
+
+    </div>
+
+</section>
 
 <!-- PHOTO -->
 
-<section class="photo-section">
+<section class="photo">
 
-    <div class="photo">
+    <div class="photo-frame reveal">
 
-        <img
-            src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=90"
-            alt="Wedding"
-        >
+        <div class="photo-inner">
+            <span>OUR STORY</span>
+        </div>
 
     </div>
 
 </section>
-
 
 <!-- COUNTDOWN -->
 
-<section class="countdown-section">
+<section class="countdown">
 
-    <div class="label">
-        ՄԻՆՉԵՎ ՄԵՐ ՕՐԸ
+    <div class="section-head">
+
+        <div class="section-label">
+            COUNTDOWN
+        </div>
+
+        <div class="section-title">
+            Մինչև մեր օրը
+        </div>
+
     </div>
 
-    <div class="section-title">
-        Հաշվում ենք օրերը
-    </div>
+    <div class="timer">
 
-
-    <div class="countdown">
-
-        <div>
-            <span
-                class="count-number"
-                id="days"
-            >0</span>
-
-            <span class="count-label">
-                ՕՐ
-            </span>
+        <div class="timer-box">
+            <div class="timer-number" id="days">00</div>
+            <div class="timer-label">ՕՐ</div>
         </div>
 
-
-        <div>
-            <span
-                class="count-number"
-                id="hours"
-            >0</span>
-
-            <span class="count-label">
-                ԺԱՄ
-            </span>
+        <div class="timer-box">
+            <div class="timer-number" id="hours">00</div>
+            <div class="timer-label">ԺԱՄ</div>
         </div>
 
-
-        <div>
-            <span
-                class="count-number"
-                id="minutes"
-            >0</span>
-
-            <span class="count-label">
-                ՐՈՊԵ
-            </span>
+        <div class="timer-box">
+            <div class="timer-number" id="minutes">00</div>
+            <div class="timer-label">ՐՈՊԵ</div>
         </div>
 
-
-        <div>
-            <span
-                class="count-number"
-                id="seconds"
-            >0</span>
-
-            <span class="count-label">
-                ՎՐԿ.
-            </span>
+        <div class="timer-box">
+            <div class="timer-number" id="seconds">00</div>
+            <div class="timer-label">ՎԱՅՐԿՅԱՆ</div>
         </div>
 
     </div>
 
 </section>
-
 
 <!-- RSVP -->
 
 <section class="rsvp">
 
-    <div class="label">
+    <div class="section-label">
         RSVP
     </div>
 
-    <div class="section-title">
-        Կգա՞ք մեզ հետ
-    </div>
+    <h2>
+        Կլինե՞ք մեզ հետ
+    </h2>
 
     <p>
-        Խնդրում ենք հաստատել Ձեր մասնակցությունը։
+        Խնդրում ենք հաստատել Ձեր մասնակցությունը
+        մինչև 20.06.2027
     </p>
 
-
-    <form
-        class="form"
-        onsubmit="submitRSVP(event)"
-    >
-
-        <div class="field">
-
-            <label>
-                ՁԵՐ ԱՆՈՒՆԸ
-            </label>
-
-            <input
-                type="text"
-                placeholder="Անուն Ազգանուն"
-                required
-            >
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                ՄԱՍՆԱԿՑՈՒԹՅՈՒՆ
-            </label>
-
-            <select required>
-
-                <option value="">
-                    Ընտրեք
-                </option>
-
-                <option>
-                    Այո, սիրով կմասնակցեմ
-                </option>
-
-                <option>
-                    Ցավոք, չեմ կարող
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                ՀՅՈՒՐԵՐԻ ՔԱՆԱԿ
-            </label>
-
-            <select>
-
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-
-            </select>
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                ՀԱՂՈՐԴԱԳՐՈՒԹՅՈՒՆ
-            </label>
-
-            <textarea
-                placeholder="Ցանկության դեպքում թողեք հաղորդագրություն..."
-            ></textarea>
-
-        </div>
-
-
-        <button
-            class="rsvp-button"
-            type="submit"
-        >
-            ՀԱՍՏԱՏԵԼ ՄԱՍՆԱԿՑՈՒԹՅՈՒՆԸ
-        </button>
-
-    </form>
+    <a href="#" class="rsvp-btn">
+        ՀԱՍՏԱՏԵԼ ՄԱՍՆԱԿՑՈՒԹՅՈՒՆԸ
+    </a>
 
 </section>
 
-
 <!-- FOOTER -->
 
-<footer class="footer">
+<footer>
 
-    <div class="footer-logo">
-        A & S
+    <div class="footer-names">
+        Արամ & Սաթենիկ
     </div>
 
-    <p>
-        MADE WITH LOVE · EVENTO
-    </p>
+    <div class="footer-date">
+        07 · 07 · 2027
+    </div>
 
 </footer>
 
-
-</main>
-
-
-<!-- MUSIC -->
-
-<button
-    class="music-button"
-    id="musicButton"
-    onclick="toggleMusic()"
->
-    ♪
-</button>
-
-
-<audio
-    id="music"
-    loop
->
-    <source
-        src="music.mp3"
-        type="audio/mpeg"
-    >
-</audio>
-
-
 <script>
 
+/* OPEN */
 
-/* =========================================================
-   OPEN INVITATION
-========================================================= */
+const opening = document.getElementById("opening");
+const openBtn = document.getElementById("openBtn");
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
 
-let musicPlaying = false;
+openBtn.addEventListener("click",()=>{
 
-function openInvitation(){
+    opening.classList.add("hide");
 
-    const screen =
-        document.getElementById("openScreen");
+    music.play().catch(()=>{});
 
-    const invitation =
-        document.getElementById("invitation");
+    musicBtn.classList.add("playing");
 
-    const music =
-        document.getElementById("music");
-
-    screen.classList.add("hide");
-
-    invitation.classList.add("show");
-
-    document.body.style.overflow = "auto";
-
-    setTimeout(() => {
-
-        music.play()
-            .then(() => {
-
-                musicPlaying = true;
-
-                document
-                    .getElementById("musicButton")
-                    .innerHTML = "❚❚";
-
-            })
-            .catch(() => {});
-
-    },700);
-
-}
+});
 
 
-/* =========================================================
-   MOVING HEART
-========================================================= */
+/* MUSIC */
 
-const journey =
-    document.getElementById("journey");
+musicBtn.addEventListener("click",()=>{
 
-const route =
-    document.getElementById("route");
+    if(music.paused){
 
-const path =
-    document.getElementById("routePath");
-
-const heart =
-    document.getElementById("movingHeart");
-
-
-let pathLength =
-    path.getTotalLength();
-
-
-function clamp(value,min,max){
-
-    return Math.min(
-        Math.max(value,min),
-        max
-    );
-
-}
-
-
-function updateHeart(){
-
-    const rect =
-        journey.getBoundingClientRect();
-
-    const viewport =
-        window.innerHeight;
-
-
-    /*
-       Երբ journey-ը մտնում է էկրան,
-       սրտիկը սկսում է շարժվել։
-    */
-
-    const start =
-        viewport * .92;
-
-    const end =
-        viewport * .08;
-
-
-    let progress =
-        (start - rect.top) /
-        (start - end);
-
-
-    progress =
-        clamp(
-            progress,
-            0,
-            1
-        );
-
-
-    if(progress > .005){
-
-        heart.classList.add("active");
+        music.play();
+        musicBtn.classList.add("playing");
 
     }else{
 
-        heart.classList.remove("active");
+        music.pause();
+        musicBtn.classList.remove("playing");
 
     }
 
+});
+
+
+/* HEART SCROLL ANIMATION */
+
+const journey = document.getElementById("journey");
+const routeWrap = document.getElementById("routeWrap");
+const routeSvg = document.getElementById("routeSvg");
+const routePath = document.getElementById("routePath");
+const movingHeart = document.getElementById("movingHeart");
+
+let pathLength = routePath.getTotalLength();
+let ticking = false;
+
+function clamp(value,min,max){
+    return Math.min(Math.max(value,min),max);
+}
+
+function updateHeart(){
+
+    const sectionRect = journey.getBoundingClientRect();
+    const routeRect = routeSvg.getBoundingClientRect();
 
     /*
-       Վերցնում ենք SVG-ի տվյալ կետը
+      Animation starts when the journey enters the screen
+      and finishes near the bottom of the journey.
     */
 
-    const point =
-        path.getPointAtLength(
-            pathLength * progress
-        );
+    const start = window.innerHeight * 0.92;
+    const finish = window.innerHeight * 0.08;
 
+    let progress =
+        (start - sectionRect.top) /
+        (start - finish);
 
-    const svgWidth = 205;
-
-    const svgHeight = 820;
-
-
-    const x =
-        (point.x / svgWidth) *
-        route.offsetWidth;
-
-
-    const y =
-        (point.y / svgHeight) *
-        route.offsetHeight;
-
+    progress = clamp(progress,0,1);
 
     /*
-       Սկզբում փոքր է,
-       հետո դառնում է նորմալ չափի։
+      Smooth easing
+    */
+
+    const eased =
+        progress < .5
+        ? 2 * progress * progress
+        : 1 - Math.pow(-2 * progress + 2,2) / 2;
+
+    const point =
+        routePath.getPointAtLength(pathLength * eased);
+
+    /*
+      Convert SVG coordinates to real screen coordinates.
+    */
+
+    const scaleX =
+        routeRect.width / 240;
+
+    const scaleY =
+        routeRect.height / 850;
+
+    const x = point.x * scaleX;
+    const y = point.y * scaleY;
+
+    /*
+      Start small and grow beautifully.
     */
 
     let scale;
 
-
     if(progress < .12){
 
-        scale =
-            .35 +
-            progress * 5;
-
-    }else if(progress < .25){
-
-        scale =
-            .95 +
-            (progress - .12) * .4;
+        scale = .25 + (progress / .12) * .75;
 
     }else{
 
@@ -2082,190 +1201,135 @@ function updateHeart(){
 
     }
 
+    movingHeart.style.left = x + "px";
+    movingHeart.style.top = y + "px";
 
-    heart.style.left =
-        x + "px";
+    movingHeart.style.transform =
+        `translate(-50%,-50%) scale(${scale})`;
 
-    heart.style.top =
-        y + "px";
+    movingHeart.style.opacity =
+        progress <= 0 ? "0" : "1";
 
-    heart.style.transform =
-        `
-        translate(-50%,-50%)
-        scale(${scale})
-        `;
+    ticking = false;
+}
+
+function requestHeart(){
+
+    if(!ticking){
+
+        requestAnimationFrame(updateHeart);
+
+        ticking = true;
+
+    }
 
 }
 
-
 window.addEventListener(
     "scroll",
-    updateHeart,
+    requestHeart,
     {passive:true}
 );
 
-
 window.addEventListener(
     "resize",
-    () => {
-
-        pathLength =
-            path.getTotalLength();
-
+    ()=>{
+        pathLength = routePath.getTotalLength();
         updateHeart();
-
     }
 );
-
 
 updateHeart();
 
 
-/* =========================================================
-   COUNTDOWN
-========================================================= */
+/* REVEAL */
+
+const observer =
+    new IntersectionObserver(
+        entries=>{
+
+            entries.forEach(entry=>{
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("show");
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.15
+        }
+    );
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(el=>observer.observe(el));
+
+
+/* COUNTDOWN */
 
 const weddingDate =
-    new Date(
-        "July 7, 2027 17:30:00"
-    ).getTime();
-
+    new Date("2027-07-07T15:00:00").getTime();
 
 function updateCountdown(){
 
-    const now =
-        new Date().getTime();
+    const now = new Date().getTime();
 
     const distance =
         weddingDate - now;
 
-
     if(distance <= 0){
 
-        document.getElementById("days").innerText = "0";
-        document.getElementById("hours").innerText = "0";
-        document.getElementById("minutes").innerText = "0";
-        document.getElementById("seconds").innerText = "0";
+        document.getElementById("days").textContent="00";
+        document.getElementById("hours").textContent="00";
+        document.getElementById("minutes").textContent="00";
+        document.getElementById("seconds").textContent="00";
 
         return;
 
     }
 
-
     const days =
-        Math.floor(
-            distance /
-            (1000*60*60*24)
-        );
-
+        Math.floor(distance / (1000*60*60*24));
 
     const hours =
         Math.floor(
-            (distance %
-            (1000*60*60*24))
-            /
-            (1000*60*60)
+            (distance % (1000*60*60*24))
+            /(1000*60*60)
         );
-
 
     const minutes =
         Math.floor(
-            (distance %
-            (1000*60*60))
-            /
-            (1000*60)
+            (distance % (1000*60*60))
+            /(1000*60)
         );
-
 
     const seconds =
         Math.floor(
-            (distance %
-            (1000*60))
-            /
-            1000
+            (distance % (1000*60))
+            /1000
         );
 
+    document.getElementById("days").textContent =
+        String(days).padStart(2,"0");
 
-    document.getElementById("days")
-        .innerText = days;
+    document.getElementById("hours").textContent =
+        String(hours).padStart(2,"0");
 
-    document.getElementById("hours")
-        .innerText = hours;
+    document.getElementById("minutes").textContent =
+        String(minutes).padStart(2,"0");
 
-    document.getElementById("minutes")
-        .innerText = minutes;
-
-    document.getElementById("seconds")
-        .innerText = seconds;
+    document.getElementById("seconds").textContent =
+        String(seconds).padStart(2,"0");
 
 }
-
 
 updateCountdown();
 
-setInterval(
-    updateCountdown,
-    1000
-);
-
-
-/* =========================================================
-   RSVP
-========================================================= */
-
-function submitRSVP(event){
-
-    event.preventDefault();
-
-    alert(
-        "Շնորհակալություն։ Ձեր պատասխանը գրանցվեց։"
-    );
-
-}
-
-
-/* =========================================================
-   MUSIC
-========================================================= */
-
-function toggleMusic(){
-
-    const music =
-        document.getElementById("music");
-
-    const button =
-        document.getElementById("musicButton");
-
-
-    if(!musicPlaying){
-
-        music.play()
-            .then(() => {
-
-                musicPlaying = true;
-
-                button.innerHTML = "❚❚";
-
-            })
-            .catch(() => {
-
-                alert(
-                    "Երաժշտությունը հնարավոր չէ միացնել։"
-                );
-
-            });
-
-    }else{
-
-        music.pause();
-
-        musicPlaying = false;
-
-        button.innerHTML = "♪";
-
-    }
-
-}
+setInterval(updateCountdown,1000);
 
 </script>
 
