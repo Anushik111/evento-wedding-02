@@ -8,6 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Sans+Armenian:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
 
 <style>
@@ -47,12 +48,7 @@ body::before{
     z-index:9999;
     pointer-events:none;
     opacity:.07;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.18'/%3E%3C/svg%3E");
 }
 
 button,
@@ -61,19 +57,24 @@ select{
     font:inherit;
 }
 
-/* =========================
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+/* =========================================
    OPENING
-========================= */
+========================================= */
 
 .opening{
     position:fixed;
     inset:0;
     z-index:5000;
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     background:
-        radial-gradient(circle at center,rgba(30,61,88,.58),transparent 48%),
+        radial-gradient(circle at 50% 35%,rgba(30,61,88,.60),transparent 48%),
         var(--navy);
     transition:1s ease;
 }
@@ -85,21 +86,32 @@ select{
 }
 
 .opening-inner{
-    width:min(94vw,780px);
+    width:min(94vw,700px);
     text-align:center;
     padding:24px;
 }
 
-/* ՍԹԵՄՓ */
 .seal{
-    width:230px;
-    height:230px;
-    margin:0 auto 24px;
-    background:url("./stamp.png") center/contain no-repeat;
+    width:250px;
+    height:250px;
+    margin:0 auto 22px;
     cursor:pointer;
-    user-select:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     animation:sealFloat 4s ease-in-out infinite;
-    filter:drop-shadow(0 18px 28px rgba(0,0,0,.4));
+    filter:drop-shadow(0 18px 30px rgba(0,0,0,.42));
+}
+
+.seal img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:contain;
+    border:0;
+    outline:0;
+    user-select:none;
+    pointer-events:none;
 }
 
 @keyframes sealFloat{
@@ -112,19 +124,18 @@ select{
 }
 
 .opening-title{
+    color:var(--cream2);
     font-size:14px;
     letter-spacing:4px;
-    color:var(--cream2);
-    margin-bottom:22px;
+    margin-bottom:24px;
 }
 
 .open-btn{
+    padding:13px 37px;
     border:1px solid rgba(214,187,125,.72);
+    border-radius:999px;
     background:transparent;
     color:var(--gold2);
-    border-radius:999px;
-    padding:12px 35px;
-    letter-spacing:2px;
     cursor:pointer;
     transition:.3s ease;
 }
@@ -134,18 +145,18 @@ select{
     color:var(--navy);
 }
 
-/* =========================
+/* =========================================
    HERO
-========================= */
+========================================= */
 
 .hero{
     min-height:100vh;
-    position:relative;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:80px 18px;
+    padding:70px 15px;
+    position:relative;
     overflow:hidden;
     background:
         radial-gradient(circle at 50% 30%,#183653 0%,transparent 42%),
@@ -155,9 +166,9 @@ select{
 .hero::after{
     content:"";
     position:absolute;
-    width:580px;
-    height:580px;
-    border:1px solid rgba(214,187,125,.13);
+    width:560px;
+    height:560px;
+    border:1px solid rgba(214,187,125,.12);
     border-radius:50%;
 }
 
@@ -167,38 +178,38 @@ select{
     width:100%;
 }
 
-.hero-photo{
-    width:min(90vw,720px);
-    margin:0 auto 34px;
-}
-
-.hero-photo img{
-    display:block;
-    width:100%;
-    height:auto;
-    object-fit:contain;
-    border:none;
-    border-radius:0;
-    box-shadow:none;
-}
-
 .save-date{
     color:var(--gold);
     font-size:10px;
     letter-spacing:6px;
-    margin-bottom:24px;
+    margin-bottom:25px;
+}
+
+.hero-photo{
+    width:min(94vw,760px);
+    margin:0 auto 34px;
+}
+
+.hero-photo img{
+    width:100%;
+    height:auto;
+    display:block;
+    border:0;
+    border-radius:0;
+    object-fit:contain;
+    box-shadow:none;
 }
 
 .names{
     font-family:"Parisienne",cursive;
-    font-size:clamp(70px,13vw,145px);
-    line-height:.9;
+    font-size:clamp(72px,13vw,145px);
+    line-height:.88;
     color:var(--cream);
 }
 
 .names .amp{
     font-family:"Cormorant Garamond",serif;
-    font-size:.45em;
+    font-size:.47em;
     color:var(--gold2);
     vertical-align:middle;
     margin:0 .08em;
@@ -214,14 +225,14 @@ select{
 
 .hero-line{
     width:1px;
-    height:75px;
-    margin:40px auto 0;
+    height:70px;
+    margin:38px auto 0;
     background:linear-gradient(var(--gold),transparent);
 }
 
-/* =========================
-   MARQUEE
-========================= */
+/* =========================================
+   MOVING TEXT
+========================================= */
 
 .marquee{
     overflow:hidden;
@@ -232,16 +243,16 @@ select{
 }
 
 .marquee-track{
-    display:flex;
     width:max-content;
+    display:flex;
     animation:marquee 28s linear infinite;
 }
 
 .marquee span{
-    color:var(--gold);
     font-family:"Cormorant Garamond",serif;
+    color:var(--gold);
     font-size:18px;
-    letter-spacing:7px;
+    letter-spacing:6px;
     padding:0 35px;
 }
 
@@ -251,17 +262,17 @@ select{
     }
 }
 
-/* =========================
+/* =========================================
    INTRO
-========================= */
+========================================= */
 
 .intro{
-    min-height:65vh;
+    min-height:58vh;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:90px 20px;
+    padding:85px 20px;
     background:
         radial-gradient(circle at center,#102b45,transparent 65%),
         var(--navy);
@@ -273,36 +284,36 @@ select{
 
 .intro-symbol{
     color:var(--gold);
-    font-size:36px;
-    margin-bottom:25px;
+    font-size:34px;
+    margin-bottom:22px;
 }
 
 .intro-label{
     color:var(--gold);
     font-size:10px;
     letter-spacing:5px;
-    margin-bottom:18px;
+    margin-bottom:16px;
 }
 
 .intro h2{
     font-family:"Cormorant Garamond",serif;
-    font-size:55px;
+    font-size:54px;
     font-weight:400;
-    margin-bottom:22px;
+    margin-bottom:20px;
 }
 
 .intro p{
     color:var(--muted);
-    line-height:2;
     font-size:14px;
+    line-height:2;
 }
 
-/* =========================
+/* =========================================
    DIVIDER
-========================= */
+========================================= */
 
 .divider{
-    width:min(620px,78%);
+    width:min(650px,78%);
     height:1px;
     margin:0 auto;
     background:linear-gradient(
@@ -313,42 +324,44 @@ select{
     );
 }
 
-/* =========================
+/* =========================================
    JOURNEY
-========================= */
+========================================= */
 
 .journey{
     position:relative;
-    min-height:1150px;
-    padding:90px 20px;
+    min-height:1120px;
+    padding:85px 20px;
     background:#07192a;
     overflow:hidden;
 }
 
 .section-head{
     position:relative;
-    z-index:5;
+    z-index:10;
     text-align:center;
 }
 
 .section-label{
     color:var(--gold);
-    letter-spacing:5px;
     font-size:10px;
-    margin-bottom:15px;
+    letter-spacing:5px;
+    margin-bottom:14px;
 }
 
 .section-title{
     font-family:"Cormorant Garamond",serif;
+    font-size:50px;
     font-weight:400;
-    font-size:52px;
     line-height:1.1;
 }
+
+/* ROUTE */
 
 .route-wrap{
     position:absolute;
     left:50%;
-    top:250px;
+    top:205px;
     transform:translateX(-50%);
     width:240px;
     height:850px;
@@ -364,68 +377,68 @@ select{
 
 .route-line{
     fill:none;
-    stroke:rgba(214,187,125,.5);
-    stroke-width:1.4;
+    stroke:rgba(214,187,125,.50);
+    stroke-width:1.35;
     stroke-dasharray:2 10;
     stroke-linecap:round;
 }
 
-/* 6 / 8 */
+/* FIXED 6 & 8 */
 
 .fixed-number{
     position:absolute;
-    top:-65px;
+    top:-52px;
     z-index:30;
-    color:var(--cream);
     font-family:"Cormorant Garamond",serif;
-    font-size:36px;
-    letter-spacing:5px;
+    font-size:38px;
+    color:var(--cream);
+    letter-spacing:6px;
 }
 
-.number-6{
-    left:42px;
+.route-number-6{
+    left:40px;
 }
 
-.number-8{
-    right:42px;
+.route-number-8{
+    right:40px;
 }
 
-/* SIDE LOCATIONS */
+/* SIDE LABELS */
 
-.route-label{
+.route-side-label{
     position:absolute;
     z-index:25;
-    width:175px;
-    line-height:1.25;
+    width:185px;
+    line-height:1.2;
 }
 
-.route-label.left{
-    left:-195px;
+.route-side-label.left{
+    left:-202px;
     text-align:right;
 }
 
-.route-label.right{
-    right:-195px;
+.route-side-label.right{
+    right:-202px;
     text-align:left;
 }
 
-.route-label.one{
-    top:110px;
+.bride-home{
+    top:105px;
 }
 
-.route-label.two{
+.groom-home{
     top:280px;
 }
 
-.route-label.three{
+.church-location{
     top:470px;
 }
 
-.route-label.four{
-    top:650px;
+.restaurant-location{
+    top:655px;
 }
 
-.route-label .type{
+.location-name{
     display:block;
     color:var(--gold);
     font-size:9px;
@@ -433,15 +446,16 @@ select{
     margin-bottom:6px;
 }
 
-.route-label .place{
+.location-place{
     display:block;
-    font-family:"Cormorant Garamond",serif;
-    font-size:27px;
     color:var(--cream);
+    font-family:"Cormorant Garamond",serif;
+    font-size:26px;
+    line-height:1.05;
     margin-bottom:6px;
 }
 
-.route-label .map-link{
+.location-address{
     display:inline-block;
     color:var(--cream2);
     font-size:9px;
@@ -450,18 +464,35 @@ select{
     padding-bottom:2px;
 }
 
-.route-label .map-link:hover{
+.location-address:hover{
     color:var(--gold2);
 }
 
-/* =========================
+.route-side-label::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    width:31px;
+    height:1px;
+    background:rgba(243,238,227,.35);
+}
+
+.route-side-label.left::after{
+    right:-40px;
+}
+
+.route-side-label.right::after{
+    left:-40px;
+}
+
+/* =========================================
    REAL HEART
-========================= */
+========================================= */
 
 .moving-heart{
     position:absolute;
-    width:74px;
-    height:68px;
+    width:68px;
+    height:62px;
     z-index:50;
     opacity:0;
     pointer-events:none;
@@ -473,7 +504,7 @@ select{
     height:100%;
     display:block;
     overflow:visible;
-    filter:drop-shadow(0 12px 23px rgba(0,0,0,.38));
+    filter:drop-shadow(0 10px 22px rgba(0,0,0,.42));
 }
 
 .real-heart path{
@@ -483,36 +514,37 @@ select{
 .real-heart text{
     fill:var(--navy);
     font-family:"Cormorant Garamond",serif;
-    font-size:20px;
+    font-size:18px;
     font-weight:500;
     text-anchor:middle;
     dominant-baseline:middle;
 }
 
-/* =========================
-   STORY
-========================= */
+/* =========================================
+   PHOTO STORY
+========================================= */
 
 .story-section{
-    padding:90px 15px 105px;
+    padding:75px 12px 90px;
     background:var(--navy2);
+    text-align:center;
     overflow:hidden;
 }
 
 .story-carousel{
     position:relative;
-    width:min(100%,900px);
+    width:100%;
+    max-width:950px;
     margin:0 auto;
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:10px;
 }
 
 .story-track{
-    width:min(86vw,530px);
+    width:min(82vw,560px);
     display:flex;
-    gap:14px;
+    gap:12px;
     overflow-x:auto;
     scroll-snap-type:x mandatory;
     scroll-behavior:smooth;
@@ -527,27 +559,31 @@ select{
     flex:0 0 100%;
     min-width:100%;
     scroll-snap-align:center;
-    background:var(--navy);
-    border:1px solid rgba(214,187,125,.35);
-    padding:5px;
+    background:transparent;
 }
 
 .story-card img{
     width:100%;
-    height:530px;
+    height:540px;
+    object-fit:contain;
+    object-position:center;
     display:block;
-    object-fit:cover;
+    border:none;
+    box-shadow:none;
+    background:transparent;
 }
 
 .story-arrow{
-    flex:0 0 43px;
-    width:43px;
-    height:43px;
-    border:1px solid rgba(214,187,125,.55);
+    flex:0 0 44px;
+    width:44px;
+    height:44px;
+    border:1px solid rgba(214,187,125,.58);
     background:transparent;
     color:var(--gold2);
-    font-size:30px;
+    font-size:31px;
+    line-height:1;
     cursor:pointer;
+    z-index:10;
 }
 
 .story-arrow:hover{
@@ -559,16 +595,16 @@ select{
     display:flex;
     justify-content:center;
     gap:9px;
-    margin-top:22px;
+    margin-top:18px;
 }
 
 .story-dots button{
     width:8px;
     height:8px;
-    padding:0;
     border-radius:50%;
     border:1px solid var(--gold);
     background:transparent;
+    padding:0;
     cursor:pointer;
 }
 
@@ -576,27 +612,25 @@ select{
     background:var(--gold);
 }
 
-/* =========================
+/* =========================================
    RSVP
-========================= */
+========================================= */
 
 .rsvp{
-    padding:90px 18px 75px;
+    padding:75px 15px 55px;
     background:var(--navy);
-    text-align:center;
 }
 
 .rsvp .section-title{
-    font-size:46px;
+    font-size:43px;
 }
 
 .rsvp-form{
     width:min(94vw,700px);
-    margin:34px auto 0;
-    padding:30px;
+    margin:28px auto 0;
+    padding:26px 24px 25px;
     border:1px solid rgba(214,187,125,.35);
-    background:rgba(9,29,50,.4);
-    text-align:left;
+    background:rgba(9,29,50,.35);
 }
 
 .form-row{
@@ -610,23 +644,23 @@ select{
     color:var(--cream2);
     font-size:11px;
     line-height:1.5;
-    margin-bottom:16px;
+    margin-bottom:15px;
 }
 
 .rsvp-form input,
 .rsvp-form select{
     width:100%;
     margin-top:7px;
+    padding:13px 14px;
     border:1px solid rgba(214,187,125,.35);
     border-radius:0;
+    outline:none;
     background:rgba(6,21,37,.72);
     color:var(--cream);
-    padding:13px 14px;
-    outline:none;
 }
 
 .rsvp-form input::placeholder{
-    color:rgba(230,220,201,.45);
+    color:rgba(230,220,201,.48);
 }
 
 .rsvp-form input:focus,
@@ -634,23 +668,25 @@ select{
     border-color:var(--gold);
 }
 
-.rsvp-form select option{
+.rsvp-form option{
     background:var(--navy);
     color:var(--cream);
 }
 
+/* փոքրացված և առանձին կոճակ */
+
 .rsvp-btn{
     display:block;
-    width:78%;
-    margin:16px auto 0;
-    padding:13px 18px;
+    width:68%;
+    margin:22px auto 0;
+    padding:12px 16px;
     border:1px solid var(--gold);
     background:transparent;
     color:var(--gold2);
-    font-size:11px;
+    font-size:10px;
     letter-spacing:2px;
     cursor:pointer;
-    transition:.3s;
+    transition:.3s ease;
 }
 
 .rsvp-btn:hover{
@@ -663,59 +699,59 @@ select{
     text-align:center;
     color:var(--gold2);
     font-size:12px;
-    margin-top:15px;
+    margin-top:14px;
 }
 
 .form-success.show{
     display:block;
 }
 
-/* =========================
+/* =========================================
    CLOSING
-========================= */
+========================================= */
 
 .closing-message{
-    padding:25px 20px 20px;
+    padding:22px 16px 10px;
     text-align:center;
     background:var(--navy);
 }
 
 .closing-ornament{
     color:var(--gold);
-    font-size:25px;
-    margin-bottom:10px;
+    font-size:22px;
+    margin-bottom:8px;
 }
 
 .closing-text{
     font-family:"Parisienne",cursive;
-    font-size:clamp(52px,9vw,86px);
+    font-size:clamp(58px,10vw,96px);
     line-height:1;
     color:var(--cream);
 }
 
-/* =========================
+/* =========================================
    FOOTER
-========================= */
+========================================= */
 
 footer{
-    padding:25px 20px 55px;
-    background:var(--navy);
+    padding:12px 20px 45px;
     text-align:center;
+    background:var(--navy);
 }
 
 .footer-names{
     font-family:"Cormorant Garamond",serif;
-    font-size:30px;
+    font-size:27px;
     color:var(--cream);
 }
 
 .footer-contact{
+    margin-top:10px;
     display:flex;
     justify-content:center;
     align-items:center;
     gap:12px;
-    margin-top:17px;
-    font-size:12px;
+    font-size:11px;
     color:var(--cream2);
 }
 
@@ -727,9 +763,9 @@ footer{
     color:var(--gold);
 }
 
-/* =========================
+/* =========================================
    REVEAL
-========================= */
+========================================= */
 
 .reveal{
     opacity:0;
@@ -742,71 +778,77 @@ footer{
     transform:none;
 }
 
-/* =========================
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
 @media(max-width:700px){
 
-    .opening{
-        align-items:center;
+    .opening-inner{
+        padding:18px;
     }
 
     .seal{
         width:175px;
         height:175px;
-        margin-bottom:18px;
+        margin-bottom:16px;
     }
 
     .opening-title{
-        font-size:12px;
+        font-size:11px;
         letter-spacing:3px;
+        margin-bottom:18px;
+    }
+
+    .open-btn{
+        padding:11px 30px;
+        font-size:13px;
     }
 
     .hero{
         min-height:100svh;
-        padding:50px 10px;
+        padding:45px 10px;
     }
 
     .hero-photo{
         width:94vw;
-        margin-bottom:24px;
+        margin-bottom:26px;
     }
 
     .save-date{
-        font-size:9px;
+        font-size:8px;
         letter-spacing:4px;
-        margin-bottom:19px;
+        margin-bottom:18px;
     }
 
     .names{
-        font-size:66px;
+        font-size:69px;
     }
 
     .hero-date{
         font-size:19px;
         letter-spacing:5px;
-        margin-top:28px;
+        margin-top:27px;
     }
 
     .hero-line{
-        height:55px;
-        margin-top:30px;
+        height:50px;
+        margin-top:28px;
     }
 
     .marquee span{
-        font-size:15px;
-        letter-spacing:5px;
-        padding:0 20px;
+        font-size:14px;
+        letter-spacing:4px;
+        padding:0 18px;
     }
 
     .intro{
-        min-height:55vh;
-        padding:75px 20px;
+        min-height:52vh;
+        padding:70px 18px;
     }
 
     .intro h2{
-        font-size:43px;
+        font-size:44px;
     }
 
     .intro p{
@@ -814,140 +856,155 @@ footer{
         line-height:1.9;
     }
 
+    /* JOURNEY */
+
     .journey{
-        min-height:1080px;
-        padding-top:75px;
+        min-height:1060px;
+        padding-top:70px;
     }
 
     .section-title{
-        font-size:42px;
+        font-size:41px;
     }
 
     .route-wrap{
-        top:245px;
+        top:225px;
         width:205px;
-        height:780px;
+        height:790px;
     }
 
     .route-svg{
         width:205px;
-        height:780px;
+        height:790px;
     }
 
     .fixed-number{
-        top:-52px;
-        font-size:29px;
+        top:-49px;
+        font-size:28px;
         letter-spacing:4px;
     }
 
-    .number-6{
-        left:40px;
+    .route-number-6{
+        left:39px;
     }
 
-    .number-8{
-        right:40px;
+    .route-number-8{
+        right:39px;
     }
 
-    .route-label{
-        width:105px;
+    .route-side-label{
+        width:110px;
     }
 
-    .route-label.left{
-        left:-111px;
+    .route-side-label.left{
+        left:-119px;
     }
 
-    .route-label.right{
-        right:-111px;
+    .route-side-label.right{
+        right:-119px;
     }
 
-    .route-label.one{
-        top:105px;
+    .bride-home{
+        top:102px;
     }
 
-    .route-label.two{
-        top:270px;
+    .groom-home{
+        top:263px;
     }
 
-    .route-label.three{
-        top:440px;
+    .church-location{
+        top:436px;
     }
 
-    .route-label.four{
-        top:610px;
+    .restaurant-location{
+        top:607px;
     }
 
-    .route-label .type{
+    .location-name{
         font-size:7px;
-        letter-spacing:1.5px;
+        letter-spacing:1.4px;
+        margin-bottom:5px;
     }
 
-    .route-label .place{
+    .location-place{
         font-size:17px;
     }
 
-    .route-label .map-link{
+    .location-address{
         font-size:7px;
         letter-spacing:1px;
     }
 
+    .route-side-label::after{
+        width:18px;
+    }
+
+    .route-side-label.left::after{
+        right:-22px;
+    }
+
+    .route-side-label.right::after{
+        left:-22px;
+    }
+
+    /* HEART */
+
     .moving-heart{
-        width:66px;
-        height:61px;
+        width:58px;
+        height:53px;
     }
 
     .real-heart text{
-        font-size:18px;
+        font-size:16px;
     }
+
+    /* STORY */
 
     .story-section{
-        padding:70px 0 80px;
-    }
-
-    .story-carousel{
-        width:100%;
+        padding:65px 0 80px;
     }
 
     .story-track{
-        width:86vw;
-    }
-
-    .story-card{
-        min-width:100%;
+        width:82vw;
     }
 
     .story-card img{
-        width:100%;
-        height:390px;
-        object-fit:cover;
+        height:430px;
+        object-fit:contain;
     }
 
     .story-arrow{
         position:absolute;
         top:50%;
         transform:translateY(-50%);
-        z-index:5;
+        width:36px;
+        height:36px;
+        flex-basis:36px;
+        font-size:27px;
     }
 
     .story-prev{
-        left:6px;
+        left:4px;
     }
 
     .story-next{
-        right:6px;
+        right:4px;
     }
 
+    /* RSVP */
+
     .rsvp{
-        padding:70px 12px 55px;
+        padding:65px 10px 45px;
     }
 
     .rsvp .section-title{
-        font-size:39px;
+        font-size:36px;
     }
 
     .rsvp-form{
         width:94vw;
-        padding:20px 15px 24px;
-        margin-top:27px;
+        padding:21px 15px 23px;
+        margin-top:24px;
     }
 
     .form-row{
@@ -955,55 +1012,116 @@ footer{
         gap:0;
     }
 
-    .rsvp-btn{
-        width:78%;
+    .rsvp-form label{
         font-size:10px;
-        padding:12px 12px;
     }
 
+    .rsvp-btn{
+        width:74%;
+        font-size:9px;
+        padding:11px 10px;
+    }
+
+    /* CLOSING */
+
     .closing-message{
-        padding-top:18px;
-        padding-bottom:12px;
+        padding:18px 12px 7px;
     }
 
     .closing-text{
-        font-size:clamp(45px,11vw,66px);
+        font-size:clamp(52px,11vw,72px);
     }
 
     footer{
-        padding-top:15px;
+        padding-top:7px;
     }
 
     .footer-names{
-        font-size:26px;
+        font-size:24px;
     }
 
     .footer-contact{
-        font-size:10px;
+        font-size:9px;
+        gap:8px;
     }
 }
 
+@media(max-width:430px){
+
+    .hero-photo{
+        width:96vw;
+    }
+
+    .names{
+        font-size:61px;
+    }
+
+    .route-wrap{
+        width:195px;
+    }
+
+    .route-svg{
+        width:195px;
+    }
+
+    .route-side-label{
+        width:98px;
+    }
+
+    .route-side-label.left{
+        left:-105px;
+    }
+
+    .route-side-label.right{
+        right:-105px;
+    }
+
+    .location-place{
+        font-size:15px;
+    }
+
+    .location-address{
+        font-size:6px;
+    }
+
+    .story-track{
+        width:84vw;
+    }
+
+    .story-card img{
+        height:380px;
+    }
+}
 </style>
 </head>
 
 <body>
 
-<!-- =========================================
-     OPENING
-========================================= -->
+<!-- =================================================
+     FIRST PAGE / STAMP
+================================================= -->
 
 <div class="opening" id="opening">
 
     <div class="opening-inner">
 
-        <!-- Սթեմփ -->
+        <!--
+            Պետք է stamp.png-ը լինի index.html-ի կողքին։
+            Սթեմփը հենց նկար է, ոչ թե CSS-ով նկարված ձև։
+        -->
+
         <div
             class="seal"
             id="seal"
             role="button"
             tabindex="0"
             aria-label="Բացել հրավիրատոմսը"
-        ></div>
+        >
+            <img
+                src="./stamp.png"
+                alt="Ոսկեգույն սթեմփ"
+            >
+        </div>
 
         <div class="opening-title">
             Դուք ստացել եք հրավիրատոմս
@@ -1021,9 +1139,9 @@ footer{
 
 </div>
 
-<!-- =========================================
+<!-- =================================================
      HERO
-========================================= -->
+================================================= -->
 
 <section class="hero">
 
@@ -1033,10 +1151,12 @@ footer{
             SAVE THE DATE
         </div>
 
+        <!-- Առաջին էջի նկարը՝ ամբողջական և առանց ռամկի -->
         <div class="hero-photo">
             <img
                 src="./couple.jpg"
                 alt="Արթուր և Մարիամ"
+                loading="eager"
             >
         </div>
 
@@ -1054,9 +1174,9 @@ footer{
 
 </section>
 
-<!-- =========================================
+<!-- =================================================
      MARQUEE
-========================================= -->
+================================================= -->
 
 <div class="marquee">
 
@@ -1074,9 +1194,9 @@ footer{
 
 </div>
 
-<!-- =========================================
+<!-- =================================================
      INTRO
-========================================= -->
+================================================= -->
 
 <section class="intro">
 
@@ -1108,9 +1228,9 @@ footer{
 
 <div class="divider"></div>
 
-<!-- =========================================
-     JOURNEY
-========================================= -->
+<!-- =================================================
+     ROUTE
+================================================= -->
 
 <section class="journey">
 
@@ -1132,6 +1252,7 @@ footer{
             id="routeSvg"
             viewBox="0 0 240 850"
             preserveAspectRatio="none"
+            aria-hidden="true"
         >
 
             <path
@@ -1147,56 +1268,56 @@ footer{
 
         </svg>
 
-        <!-- Ֆիքսված 6 -->
-        <div class="fixed-number number-6">
+        <!-- 6-ը ֆիքսված -->
+        <div class="fixed-number route-number-6">
             6
         </div>
 
-        <!-- Ֆիքսված 8 -->
-        <div class="fixed-number number-8">
+        <!-- 8-ը ֆիքսված -->
+        <div class="fixed-number route-number-8">
             8
         </div>
 
         <!-- Հարսի տուն -->
-        <div class="route-label left one">
+        <div class="route-side-label left bride-home">
 
-            <span class="type">
+            <span class="location-name">
                 ՀԱՐՍԻ ՏՈՒՆ
             </span>
 
-            <span class="place">
+            <span class="location-place">
                 Հարսի տուն
             </span>
 
         </div>
 
         <!-- Փեսայի տուն -->
-        <div class="route-label right two">
+        <div class="route-side-label right groom-home">
 
-            <span class="type">
+            <span class="location-name">
                 ՓԵՍԱՅԻ ՏՈՒՆ
             </span>
 
-            <span class="place">
+            <span class="location-place">
                 Փեսայի տուն
             </span>
 
         </div>
 
         <!-- Եկեղեցի -->
-        <div class="route-label left three">
+        <div class="route-side-label left church-location">
 
-            <span class="type">
+            <span class="location-name">
                 ԵԿԵՂԵՑԻ
             </span>
 
-            <span class="place">
+            <span class="location-place">
                 Սաղմոսավանք
             </span>
 
             <a
-                class="map-link"
-                href="https://www.google.com/maps/search/?api=1&query=Saghmosavank%2C%20Armenia"
+                class="location-address"
+                href="https://www.google.com/maps/search/?api=1&query=99JW%2B6M8%2C%20Saghmosavan%200211%2C%20Aragatsotn%2C%20Armenia"
                 target="_blank"
                 rel="noopener noreferrer"
             >
@@ -1206,19 +1327,19 @@ footer{
         </div>
 
         <!-- Ռեստորան -->
-        <div class="route-label right four">
+        <div class="route-side-label right restaurant-location">
 
-            <span class="type">
+            <span class="location-name">
                 ՌԵՍՏՈՐԱՆ
             </span>
 
-            <span class="place">
+            <span class="location-place">
                 Palladium Hall
             </span>
 
             <a
-                class="map-link"
-                href="https://www.google.com/maps/search/?api=1&query=Palladium%20Hall%2C%20Tevosyan%20117%2F5%2C%20Yerevan"
+                class="location-address"
+                href="https://www.google.com/maps/search/?api=1&query=Palladium%20Hall%2C%20Tevosyan%20St.%20117%2F5%2C%20Yerevan%2C%20Armenia"
                 target="_blank"
                 rel="noopener noreferrer"
             >
@@ -1228,36 +1349,37 @@ footer{
         </div>
 
         <!--
+            ԻՐԱԿԱՆ ՍՐՏԻԿ
             Միայն 7-ն է շարժվում։
-            Սրտիկը իրական SVG է։
         -->
+
         <div
             class="moving-heart"
             id="movingHeart"
+            aria-hidden="true"
         >
 
             <svg
                 class="real-heart"
-                viewBox="0 0 100 90"
-                aria-hidden="true"
+                viewBox="0 0 100 100"
             >
 
                 <path
                     d="
-                        M50 85
-                        C43 78 8 56 8 29
-                        C8 12 28 4 41 15
-                        L50 24
-                        L59 15
-                        C72 4 92 12 92 29
-                        C92 56 57 78 50 85
+                        M50 90
+                        C45 84 9 61 9 34
+                        C9 17 21 7 35 7
+                        C43 7 48 11 50 20
+                        C52 11 57 7 65 7
+                        C79 7 91 17 91 34
+                        C91 61 55 84 50 90
                         Z
                     "
-                ></path>
+                />
 
                 <text
                     x="50"
-                    y="48"
+                    y="51"
                 >
                     7
                 </text>
@@ -1272,19 +1394,19 @@ footer{
 
 <div class="divider"></div>
 
-<!-- =========================================
-     STORY IMAGES
-========================================= -->
+<!-- =================================================
+     STORY PHOTOS
+================================================= -->
 
 <section class="story-section">
 
     <div
-        class="story-carousel reveal"
+        class="story-carousel"
         id="storyCarousel"
     >
 
         <button
-            class="story-arrow story-prev"
+            class="story-arrow"
             id="storyPrev"
             type="button"
             aria-label="Նախորդ նկար"
@@ -1297,6 +1419,7 @@ footer{
             id="storyTrack"
         >
 
+            <!-- Քո 1-ին ուղարկած նկարը -->
             <div class="story-card">
 
                 <img
@@ -1307,6 +1430,7 @@ footer{
 
             </div>
 
+            <!-- Քո 2-րդ ուղարկած նկարը -->
             <div class="story-card">
 
                 <img
@@ -1320,7 +1444,7 @@ footer{
         </div>
 
         <button
-            class="story-arrow story-next"
+            class="story-arrow"
             id="storyNext"
             type="button"
             aria-label="Հաջորդ նկար"
@@ -1350,9 +1474,9 @@ footer{
 
 </section>
 
-<!-- =========================================
+<!-- =================================================
      RSVP
-========================================= -->
+================================================= -->
 
 <section
     class="rsvp"
@@ -1387,6 +1511,7 @@ footer{
                     placeholder="Ձեր անունը"
                     required
                 >
+
             </label>
 
             <label>
@@ -1398,6 +1523,7 @@ footer{
                     placeholder="Ձեր ազգանունը"
                     required
                 >
+
             </label>
 
         </div>
@@ -1431,7 +1557,7 @@ footer{
         </label>
 
         <label>
-            Ո՞ւմ կողմից եք հրավրված
+            Ո՞ւմ կողմից եք հրավիրված
 
             <select
                 name="invitedBy"
@@ -1506,9 +1632,9 @@ footer{
 
 </section>
 
-<!-- =========================================
+<!-- =================================================
      CLOSING
-========================================= -->
+================================================= -->
 
 <section class="closing-message">
 
@@ -1522,9 +1648,9 @@ footer{
 
 </section>
 
-<!-- =========================================
+<!-- =================================================
      FOOTER
-========================================= -->
+================================================= -->
 
 <footer>
 
@@ -1553,16 +1679,24 @@ footer{
 </footer>
 
 <script>
-/* =========================
-   OPEN INVITATION
-========================= */
 
-const opening = document.getElementById("opening");
-const openBtn = document.getElementById("openBtn");
-const seal = document.getElementById("seal");
+/* =================================================
+   OPEN INVITATION
+================================================= */
+
+const opening =
+    document.getElementById("opening");
+
+const openBtn =
+    document.getElementById("openBtn");
+
+const seal =
+    document.getElementById("seal");
 
 function openInvitation(){
+
     opening.classList.add("hide");
+
 }
 
 /* Կոճակ */
@@ -1571,13 +1705,13 @@ openBtn.addEventListener(
     openInvitation
 );
 
-/* ՍԹԵՄՓ */
+/* Սթեմփ */
 seal.addEventListener(
     "click",
     openInvitation
 );
 
-/* Սթեմփը keyboard-ով */
+/* Սթեմփ keyboard */
 seal.addEventListener(
     "keydown",
     function(event){
@@ -1586,17 +1720,20 @@ seal.addEventListener(
             event.key === "Enter" ||
             event.key === " "
         ){
+
             event.preventDefault();
+
             openInvitation();
+
         }
 
     }
 );
 
 
-/* =========================
+/* =================================================
    7-Ի ՇԱՐԺՈՒՄԸ ՈՒՂԵԳՐԻ ՎՐԱ
-========================= */
+================================================= */
 
 const routeWrap =
     document.getElementById("routeWrap");
@@ -1610,17 +1747,19 @@ const movingHeart =
 let pathLength =
     routePath.getTotalLength();
 
-let ticking = false;
+let heartTicking = false;
 
 function clamp(
     value,
     min,
     max
 ){
+
     return Math.min(
         Math.max(value,min),
         max
     );
+
 }
 
 function updateHeart(){
@@ -1631,11 +1770,16 @@ function updateHeart(){
     const viewportHeight =
         window.innerHeight;
 
+    /*
+      Սրտիկը սկսում է շարժվել,
+      երբ ուղեգիրը մտնում է էկրանի մեջ։
+    */
+
     const travelStart =
-        viewportHeight * 0.82;
+        viewportHeight * 0.86;
 
     const travelEnd =
-        viewportHeight * 0.18;
+        viewportHeight * 0.14;
 
     const totalTravel =
         routeRect.height +
@@ -1652,8 +1796,9 @@ function updateHeart(){
         clamp(progress,0,1);
 
     /*
-      Սահուն easing
+      Smooth easing
     */
+
     const eased =
         progress < .5
         ? 2 * progress * progress
@@ -1680,25 +1825,26 @@ function updateHeart(){
     const y =
         point.y * scaleY;
 
+    /*
+      Սրտիկը մի փոքր փոքրից
+      հասնում է իր նորմալ չափին։
+    */
+
+    let scale = 1;
+
+    if(progress < .10){
+
+        scale =
+            .45 +
+            (progress / .10) * .55;
+
+    }
+
     movingHeart.style.left =
         x + "px";
 
     movingHeart.style.top =
         y + "px";
-
-    /*
-      Սկզբում փոքր է,
-      հետո դառնում է նորմալ չափի։
-    */
-    let scale = 1;
-
-    if(progress < .12){
-
-        scale =
-            .35 +
-            (progress / .12) * .65;
-
-    }
 
     movingHeart.style.transform =
         "translate(-50%,-50%) scale(" +
@@ -1710,27 +1856,27 @@ function updateHeart(){
         ? "0"
         : "1";
 
-    ticking = false;
+    heartTicking = false;
 }
 
 function requestHeartUpdate(){
 
-    if(!ticking){
+    if(!heartTicking){
+
+        heartTicking = true;
 
         requestAnimationFrame(
             updateHeart
         );
 
-        ticking = true;
     }
+
 }
 
 window.addEventListener(
     "scroll",
     requestHeartUpdate,
-    {
-        passive:true
-    }
+    {passive:true}
 );
 
 window.addEventListener(
@@ -1748,9 +1894,9 @@ window.addEventListener(
 updateHeart();
 
 
-/* =========================
-   REVEAL ANIMATION
-========================= */
+/* =================================================
+   REVEAL
+================================================= */
 
 const revealObserver =
     new IntersectionObserver(
@@ -1772,7 +1918,7 @@ const revealObserver =
 
         },
         {
-            threshold:.15
+            threshold:.12
         }
     );
 
@@ -1789,9 +1935,9 @@ document
     );
 
 
-/* =========================
+/* =================================================
    STORY CAROUSEL
-========================= */
+================================================= */
 
 const storyTrack =
     document.getElementById("storyTrack");
@@ -1820,6 +1966,10 @@ let storyIndex = 0;
 
 function goToStory(index){
 
+    if(!storyCards.length){
+        return;
+    }
+
     storyIndex =
         (
             index +
@@ -1845,6 +1995,7 @@ function goToStory(index){
 
         }
     );
+
 }
 
 storyPrev.addEventListener(
@@ -1884,10 +2035,57 @@ storyDots.forEach(
     }
 );
 
+/* Touch swipe */
 
-/* =========================
-   RSVP FORM
-========================= */
+let touchStartX = 0;
+
+storyTrack.addEventListener(
+    "touchstart",
+    function(event){
+
+        touchStartX =
+            event.touches[0].clientX;
+
+    },
+    {passive:true}
+);
+
+storyTrack.addEventListener(
+    "touchend",
+    function(event){
+
+        const touchEndX =
+            event.changedTouches[0].clientX;
+
+        const distance =
+            touchEndX - touchStartX;
+
+        if(Math.abs(distance) < 45){
+            return;
+        }
+
+        if(distance > 0){
+
+            goToStory(
+                storyIndex - 1
+            );
+
+        }else{
+
+            goToStory(
+                storyIndex + 1
+            );
+
+        }
+
+    },
+    {passive:true}
+);
+
+
+/* =================================================
+   RSVP
+================================================= */
 
 const rsvpForm =
     document.getElementById("rsvpForm");
@@ -1920,6 +2118,7 @@ rsvpForm.addEventListener(
 
     }
 );
+
 </script>
 
 </body>
